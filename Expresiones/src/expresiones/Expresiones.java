@@ -10,9 +10,10 @@ public class Expresiones {
 
   
     public static void main(String[] args) {
-        float a=19,b=10;
-        int c=0;
-        c=(int)(a+b);//expresión
+        int a=19,b=10;
+        float c=0;
+        c=(a+b);//expresión
         System.out.println("La suma es ="+c);
     
+    }
 }
