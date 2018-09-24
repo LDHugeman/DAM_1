@@ -19,9 +19,9 @@ public class ConsumoCamion {
        float Litros=40.12f;
        float c1=1000f,c2=1200f;
        float Consumo=Litros*100/(c2-c1);
-       System.out.printf("el propietario  %s",Propietario);
-       System.out.printf("la matrícula es  %s",Matricula);
-       System.out.printf("el consumo es %.1f",Consumo);
+       System.out.printf("el propietario  %s%n",Propietario);
+       System.out.printf("la matrícula es  %s%n",Matricula);
+       System.out.printf("el consumo es %f%n",Consumo);
        
     }
     
