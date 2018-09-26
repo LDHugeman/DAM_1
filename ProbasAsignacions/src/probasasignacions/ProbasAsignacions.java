@@ -22,31 +22,40 @@ public class ProbasAsignacions {
         System.out.println("O valor de igualado é: " +igualado);
         System.out.println("O valor de número é: " +numero);
         System.out.println();
-        
-        
-        char caracter = '5';
-        System.out.println(caracter);
+              
         
         //Conversión de caracter a número
-        int caracter_numero = caracter;
+        char caracter = '5';
+        System.out.println(caracter);
+      
+        int caracter_numero = caracter; //Conversión implícita
         System.out.println(caracter_numero);
-        caracter_numero = (int)caracter;
+        caracter_numero = (int)caracter; //Conversión explícita
         System.out.println(caracter_numero);
         
+        //Conversión de número a caracter (require casteo, conversión explícita)
+        char numero_caracter = (char)numero;
+        System.out.println(numero_caracter);
+        
         //Conversión de texto/string a enteiro
-        int enteiro = Integer.parseInt("7000");
+        int texto_enteiro = Integer.parseInt("7000");
+        System.out.println(texto_enteiro);
         
         //Conversión de short a enteiro
         short numero_corto = 32000;
-        int numeroCorto_enteiro = numero_corto;
+        int numeroCorto_enteiro = numero_corto; //Conversión implícita
         System.out.println(numeroCorto_enteiro);
         numeroCorto_enteiro = 1000000;
-        numero_corto = (short)numeroCorto_enteiro;
+        numero_corto = (short)numeroCorto_enteiro; //Conversión explícita
         System.out.println(numero_corto);
         
+        //Conversión de decimal a enteiro
+        int decimal_enteiro = (int) constante_flotante;
+        System.out.println(decimal_enteiro);
         
-        int numero_decimal = (int) constante_flotante;
-        System.out.println(numero_decimal);
+        //Conversión de enteiro a decimal
+        float enteiro_decimal = numero; //Fai desaparecer a parte decimal
+        System.out.println(enteiro_decimal);
     }
     
 }
