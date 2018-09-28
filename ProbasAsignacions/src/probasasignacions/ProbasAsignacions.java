@@ -56,6 +56,11 @@ public class ProbasAsignacions {
         //Conversión de enteiro a decimal
         float enteiro_decimal = numero; //Fai desaparecer a parte decimal
         System.out.println(enteiro_decimal);
+        
+        //Conversión de byte a enteiro
+        byte numeroPequeno = 125;
+        int numeroPequeno_enteiro = numeroPequeno; //Pódese facer tanto de forma implícita como explícita
+        System.out.println(numeroPequeno_enteiro);
     }
     
 }
