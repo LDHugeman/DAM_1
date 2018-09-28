@@ -24,11 +24,11 @@ public class BibliotecaBufferedReader {
         int prestamosTotales = Integer.parseInt(lee.readLine());
 
         //PROCESO
-        int tasaDeConsulta = (int) ((numeroConsultas * 100) / prestamosTotales);
+        int tasaDeConsulta = (int) (numeroConsultas * 100) / prestamosTotales;
 
         //SALIDA
         System.out.printf("El libro %s se consultó %d veces.%n", titulo, numeroConsultas);
-
+        System.out.printf("La tasa de consulta en el mes de %s es %d%% %n", mes, tasaDeConsulta);
     }
 
 }
