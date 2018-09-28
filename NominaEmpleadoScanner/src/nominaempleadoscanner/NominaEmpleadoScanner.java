@@ -19,9 +19,9 @@ public class NominaEmpleadoScanner {
         String empleado = sc.nextLine();
         System.out.printf("Sueldo base: ");
         float sueldo = sc.nextFloat(); 
-        System.out.println("Porcentaje de descuento: ");
+        System.out.printf("Porcentaje de descuento: ");
         float porcentajeDescuento = sc.nextFloat();
-        System.out.println("Horas extra trabajadas: ");
+        System.out.printf("Horas extra trabajadas: ");
         byte horasExtraTrabajadas = sc.nextByte();
         System.out.printf("Precio hora: ");
         float precioHora = sc.nextFloat();
