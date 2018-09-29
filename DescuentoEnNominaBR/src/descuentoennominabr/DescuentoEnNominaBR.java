@@ -24,9 +24,9 @@ public class DescuentoEnNominaBR {
         
         //SALIDA
         
-        System.out.printf("El empleado %s faltó %d %n", empleado, horasFaltadas);
+        System.out.printf("El empleado %s faltó %d horas. %n", empleado, horasFaltadas);
         System.out.printf("Le corresponde un descuento de %.2f euros.%n", descuento);
-        System.out.printf("Le restan %d para el próximo mes. %n",horasPendientesProximoMes);
+        System.out.printf("Le restan %d horas para el próximo mes. %n",horasPendientesProximoMes);
         
               
     }
