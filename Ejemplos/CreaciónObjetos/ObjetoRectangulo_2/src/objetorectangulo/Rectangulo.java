@@ -12,7 +12,16 @@ public class Rectangulo {
     //Atributos=Variables Globales =Propiedades  del objeto
     private int base;
     private float altura;
+    
+    
+    public Rectangulo() {
+    }
 
+    public Rectangulo(int base, float altura) {
+        this.base = base;
+        this.altura = altura;
+    }
+    
     public float getAltura() {
         return altura;
     }
@@ -29,13 +38,7 @@ public class Rectangulo {
         this.base = base;
     }
 
-    public Rectangulo() {
-    }
 
-    public Rectangulo(int base, float altura) {
-        this.base = base;
-        this.altura = altura;
-    }
 
     public float calculo() {
         float area = this.base * this.altura;
