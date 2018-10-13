@@ -11,11 +11,10 @@ import java.io.InputStreamReader;
  */
 public class Toxicidad {
 
-
     public static void main(String[] args) throws IOException{
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         Producto producto = obterProducto(lee);
-        System.out.printf(producto.getTipo());
+        System.out.println(producto.getTipo());
     }
     
     public static Producto obterProducto (BufferedReader lee) throws IOException{

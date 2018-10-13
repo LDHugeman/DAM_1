@@ -8,7 +8,7 @@ package toxicidad;
 public class Producto {
     private String nombre;
     private byte grado;
-    private String tipo;
+    private String tipo = "Error en toxicidad.";
     
     public Producto (String nombreArticulo, byte gradoDeToxicidad){
         this.nombre = nombreArticulo;
