@@ -62,13 +62,13 @@ public class NumeroMayorYMenor {
     
     private int obterNumeroMayor(){
         if(numero1>numero2 && numero1>numero3){
-            numeroMayor = numeroMayor + numero1;
+            numeroMayor = numero1;
         }
         if(numero2>numero1 && numero2>numero3){
-            numeroMayor = numeroMayor + numero2;
+            numeroMayor = numero2;
         }
         if(numero3>numero1 && numero3>numero2){
-            numeroMayor = numeroMayor + numero3;
+            numeroMayor = numero3;
         }
         return numeroMayor;
     } 
@@ -76,13 +76,13 @@ public class NumeroMayorYMenor {
     
     private int obterNumeroMenor(){
         if(numero1<numero2 && numero1<numero3){
-            numeroMenor = numeroMenor + numero1;
+            numeroMenor = numero1;
         }
         if(numero2<numero1 && numero2<numero3){
-            numeroMenor = numeroMenor + numero2;
+            numeroMenor = numero2;
         }
         if(numero3<numero1 && numero3<numero2){
-            numeroMenor = numeroMenor + numero2;
+            numeroMenor = numero2;
         }
         return numeroMenor;
     } 
