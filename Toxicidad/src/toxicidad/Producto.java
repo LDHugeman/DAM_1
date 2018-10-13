@@ -7,13 +7,12 @@ package toxicidad;
  */
 public class Producto {
     private String nombre;
-    private String tipo;
     private byte grado;
+    private String tipo;
     
-    public Producto (String nombreArticulo, byte gradoDeToxicidad, String tipoDeToxicidad){
+    public Producto (String nombreArticulo, byte gradoDeToxicidad){
         this.nombre = nombreArticulo;
         this.grado = gradoDeToxicidad;
-        this.tipo = tipoDeToxicidad;
     }
 
     public String getNombre() {
@@ -25,6 +24,7 @@ public class Producto {
     }
 
     public String getTipo() {
+        asignarTipo();
         return tipo;
     }
 
@@ -41,7 +41,18 @@ public class Producto {
     }
     
     private void asignarTipo(){
-        if(grado>=)
+        
+        if(grado>=0 && grado<=10){
+            tipo = "No tóxico";
+        }else if(grado==11){
+            tipo = "Baja toxicidad";
+        }else if(grado==12){
+            tipo = "Media toxicidad";
+        }else if(grado==13){
+            tipo = "Alta toxicidad";
+        }else if(grado>13){
+            tipo = "Altamente peligroso";
+        }
     }
     
     
