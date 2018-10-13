@@ -50,6 +50,6 @@ public class Articulo {
         }else if (ventasAnuales>1000) {
             tipo = "Artículo de primera necesidad";
         }
-            
+           
     }
 }
