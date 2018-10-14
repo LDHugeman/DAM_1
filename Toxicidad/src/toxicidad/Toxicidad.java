@@ -22,7 +22,7 @@ public class Toxicidad {
         String nombre = lee.readLine();
         System.out.printf("Grado de toxicidad: ");
         Byte grado = Byte.parseByte(lee.readLine());
-        
+
         return new Producto(nombre, grado);
     }
 }
