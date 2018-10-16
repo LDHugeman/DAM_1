@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Primeirodiagrama">
+  <ClassDiagramComponents>
+    <Class name="Alumno" package="" visibility="public" xPosition="74.0" yPosition="168.0">
+      <Fields>
+        <Field name="nombre" type="Object" visibility="private"/>
+        <Field name="direccion" type="Object" visibility="private"/>
+        <Field name="dni" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="estarAsignado" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Profesor" package="" visibility="public" xPosition="591.0" yPosition="177.0">
+      <Fields>
+        <Field name="dni" type="Object" visibility="private"/>
+        <Field name="nombre" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="impartir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Aula" package="" visibility="public" xPosition="347.0" yPosition="497.0">
+      <Fields>
+        <Field name="nombre" type="Object" visibility="private"/>
+        <Field name="codigo" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="serAdministrado" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Teléfono" package="" visibility="public" xPosition="57.0" yPosition="623.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="serAdministrado" source="Aula" target="Profesor" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="estaAsignado" source="Alumno" target="Aula" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="imparte" source="Profesor" target="Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="tener" source="Aula" target="Teléfono" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="estaAsignado" source="Alumno" target="Profesor" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="terAsignado" source="Aula" target="Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="serAdministrador" source="Profesor" target="Aula" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
