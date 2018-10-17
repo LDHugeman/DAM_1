@@ -9,54 +9,39 @@ public class Persona {
     private byte edad;
     private String estudios;
     private byte nota;
-    private String acceso;
-    private String bachillerato;
-    private String cicloSuperior;
+    private boolean acceso;
     
     public Persona (byte edad, String estudios, byte nota){
         this.edad = edad;
         this.estudios = estudios;
         this.nota = nota;
     }
-
-    public byte getEdad() {
-        return edad;
+    
+    public static boolean eMaiorDeIdade(byte edad){
+        return edad>=18; //Isto retorna true ou false en función de edad
     }
-
-    public void setEdad(byte edad) {
-        this.edad = edad;
+    
+    public static boolean tenBachillerOuCiclo(String estudios){
+        /*Nun compareToIgnoreCase retornase un int que nos di 
+        se os strings son iguais, maiores ou menores según a tabla ASCII.
+        Neste caso quero comprobar se son iguais.
+        */
+        return estudios.compareToIgnoreCase("bachillerato")==0 || estudios.compareToIgnoreCase("ciclo superior")==0; 
+           
     }
-
-    public String getEstudios() {
-        return estudios;
-    }
-
-    public void setEstudios(String estudios) {
-        this.estudios = estudios;
-    }
-
-    public byte getNota() {
-        return nota;
-    }
-
-    public void setNota(byte nota) {
-        this.nota = nota;
-    }
-
-    public String getAcceso() {
+    
+    private boolean tenNotaApta(){
+        if(nota>=7){
+            acceso = true;
+        }else{
+            System.err.println("No tiene una nota apta.");
+            acceso = false;
+        }
         return acceso;
     }
 
-    public void setAcceso(String acceso) {
-        this.acceso = acceso;
-    }
-    
-    private void averiguarAcceso(){
-        if(edad>=18){
-        }else{
-            acceso = "No puede acceder al puesto por ser menor de edad";
-        }else if(estudios = "Bachillerato" || estudios = "Ciclo Superior" ){
-                
-                }
-    }
+    public boolean tenAcceso() {
+        
+       return tenNotaApta();
+    }   
 }
