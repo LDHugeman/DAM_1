@@ -24,6 +24,16 @@ public class ToxicidadSwitch {
     public static Producto obterProducto(BufferedReader lee)throws IOException{
         System.out.printf("Nombre del producto: ");
         String nombre = lee.readLine();
+        String tipo = obterTipo(lee);
+        if (tipo != null){
+            return new Producto(nombre, tipo);
+        } else {
+            return null;
+        }
+        
+    }
+    
+    public static String obterTipo(BufferedReader lee) throws IOException{
         String tipo;
         switch(Menu.mostrarMenuToxicidad(lee)){
             case 1:
@@ -45,6 +55,6 @@ public class ToxicidadSwitch {
                 System.err.println("Esa opción non existe.");
                     return null;
         }
-        return new Producto(nombre, tipo);
+        return tipo;
     }
 }
