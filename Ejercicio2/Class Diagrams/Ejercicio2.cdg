@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio2">
+  <ClassDiagramComponents>
+    <Class name="Local" package="" visibility="public" xPosition="621.0" yPosition="289.0">
+      <Fields>
+        <Field name="num_local" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Socio" package="" visibility="public" xPosition="410.0" yPosition="289.0">
+      <Fields>
+        <Field name="num_socio" type="Object" visibility="private"/>
+        <Field name="num_tarjeta" type="Object" visibility="private"/>
+        <Field name="clave" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="alquilar" returnType="void" visibility="public"/>
+        <Method name="devolver" returnType="void" visibility="public"/>
+        <Method name="validar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Película" package="" visibility="public" xPosition="93.0" yPosition="289.0">
+      <Fields>
+        <Field name="codigo" type="Object" visibility="private"/>
+        <Field name="actor" type="Object" visibility="private"/>
+        <Field name="director" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="VHS" package="" visibility="public" xPosition="17.0" yPosition="624.0">
+      <Fields>
+        <Field name="precio" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="DVD" package="" visibility="public" xPosition="204.0" yPosition="624.0">
+      <Fields>
+        <Field name="num_capitulos" type="Object" visibility="private"/>
+        <Field name="idioma" type="Object" visibility="private"/>
+        <Field name="precio" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Tarjeta" package="" visibility="public" xPosition="396.0" yPosition="563.0">
+      <Fields>
+        <Field name="tipo" type="Object" visibility="private"/>
+        <Field name="saldo" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Identificarse" source="Socio" target="Tarjeta" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="alquilar" source="Socio" target="Película" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="DVD" target="Película"/>
+    <IsRelation name="is" source="VHS" target="Película"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
