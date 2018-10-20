@@ -14,9 +14,12 @@ public class Introducir {
         if (tipoInmueble != null) {
             System.out.printf("Precio de venta: ");
             double precio = Double.parseDouble(lee.readLine());
-            //boolean funcionario = saberSiEFuncionario(lee);
-            //return new Factura(tipoInmueble, precio, funcionario);
-            return new Factura(tipoInmueble, precio, saberSiEFuncionario(lee)); 
+            //Por defecto funcionario é false, solo si se pregunta pode ser true ou false
+            boolean funcionario = false; 
+            if(tipoInmueble.equals("Pisos") || tipoInmueble.equals("Casas")){
+                funcionario = saberSiEFuncionario(lee);    
+            }
+            return new Factura(tipoInmueble, precio, funcionario);
         }
         return null;
     }
