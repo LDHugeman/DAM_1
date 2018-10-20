@@ -53,23 +53,30 @@ public class Factura {
     }
 
     private void asignarPorcentajeInteres() {
-        if (tipoInmueble.equals("Fincas") || tipoInmueble.equals("Solares")) {
-            porcentajeInteres = 11f;
-            mensualidades = 10 * 12;
-        } else if (tipoInmueble.equals("Pisos") || tipoInmueble.equals("Casas")) {
-            if (eFuncionario) {
-                porcentajeInteres = 7.5f;
-            } else {
-                porcentajeInteres = 10.5f;
-            }
-            if (precio <= 100000) {
-                mensualidades = 12 * 12;
-            } else {
-                mensualidades = 20 * 12;
-            }
-        } else if (tipoInmueble.equals("Locales comerciales")) {
-            porcentajeInteres = 10f;
-            mensualidades = 15 * 12;
+        switch (tipoInmueble) {
+            case "Fincas":
+            case "Solares":
+                porcentajeInteres = 11f;
+                mensualidades = 10 * 12;
+                break;
+            case "Pisos":
+            case "Casas":
+                if (eFuncionario) {
+                    porcentajeInteres = 7.5f;
+                } else {
+                    porcentajeInteres = 10.5f;
+                }   
+                if (precio <= 100000) {
+                    mensualidades = 12 * 12;
+                } else {
+                    mensualidades = 20 * 12;
+                }   break;
+            case "Locales comerciales":
+                porcentajeInteres = 10f;
+                mensualidades = 15 * 12;
+                break;
+            default:
+                break;
         }
     }
 
