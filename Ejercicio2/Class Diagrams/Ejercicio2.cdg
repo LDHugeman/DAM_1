@@ -2,14 +2,14 @@
 
 <ClassDiagram name="Ejercicio2">
   <ClassDiagramComponents>
-    <Class name="Local" package="" visibility="public" xPosition="621.0" yPosition="289.0">
+    <Class name="Local" package="" visibility="public" xPosition="1117.0" yPosition="76.0">
       <Fields>
         <Field name="num_local" type="Object" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Socio" package="" visibility="public" xPosition="410.0" yPosition="289.0">
+    <Class name="Socio" package="" visibility="public" xPosition="817.0" yPosition="279.0">
       <Fields>
         <Field name="num_socio" type="Object" visibility="private"/>
         <Field name="num_tarjeta" type="Object" visibility="private"/>
@@ -19,10 +19,9 @@
       <Methods>
         <Method name="alquilar" returnType="void" visibility="public"/>
         <Method name="devolver" returnType="void" visibility="public"/>
-        <Method name="validar" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Película" package="" visibility="public" xPosition="93.0" yPosition="289.0">
+    <Class name="Película" package="" visibility="public" xPosition="498.0" yPosition="298.0">
       <Fields>
         <Field name="codigo" type="Object" visibility="private"/>
         <Field name="actor" type="Object" visibility="private"/>
@@ -31,14 +30,14 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="VHS" package="" visibility="public" xPosition="17.0" yPosition="624.0">
+    <Class name="VHS" package="" visibility="public" xPosition="266.0" yPosition="317.0">
       <Fields>
         <Field name="precio" type="Object" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="DVD" package="" visibility="public" xPosition="204.0" yPosition="624.0">
+    <Class name="DVD" package="" visibility="public" xPosition="498.0" yPosition="516.0">
       <Fields>
         <Field name="num_capitulos" type="Object" visibility="private"/>
         <Field name="idioma" type="Object" visibility="private"/>
@@ -47,7 +46,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Tarjeta" package="" visibility="public" xPosition="396.0" yPosition="563.0">
+    <Class name="Tarjeta" package="" visibility="public" xPosition="817.0" yPosition="535.0">
       <Fields>
         <Field name="tipo" type="Object" visibility="private"/>
         <Field name="saldo" type="Object" visibility="private"/>
@@ -55,11 +54,38 @@
       <Constructors/>
       <Methods/>
     </Class>
+    <Class name="Maquina" package="" visibility="public" xPosition="1113.0" yPosition="279.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="leer" returnType="void" visibility="public"/>
+        <Method name="validar" returnType="void" visibility="public"/>
+        <Method name="retener" returnType="void" visibility="public"/>
+        <Method name="devolver" returnType="void" visibility="public"/>
+        <Method name="entreggar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Robot" package="" visibility="public" xPosition="498.0" yPosition="100.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="devolver" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="Identificarse" source="Socio" target="Tarjeta" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="expulsa" source="Robot" target="Película" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="VHS" target="Película"/>
+    <HasRelation name="entregaPelicula" source="Socio" target="Maquina" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="retener" source="Maquina" target="Tarjeta" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="devolver" source="Maquina" target="Tarjeta" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="alquilar" source="Socio" target="Película" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="DVD" target="Película"/>
-    <IsRelation name="is" source="VHS" target="Película"/>
+    <HasRelation name="ordena" source="Maquina" target="Robot" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="tener" source="Local" target="Maquina" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="acceder" source="Socio" target="Maquina" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="valida" source="Maquina" target="Socio" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="identificar" source="Tarjeta" target="Socio" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="recoje" source="Robot" target="Película" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
