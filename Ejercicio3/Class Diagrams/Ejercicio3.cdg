@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio3">
+  <ClassDiagramComponents>
+    <Class name="Comunidad" package="" visibility="public" xPosition="232.0" yPosition="174.0">
+      <Fields>
+        <Field name="nombre_comunidade" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Propietario" package="" visibility="public" xPosition="577.0" yPosition="174.0">
+      <Fields>
+        <Field name="datos_personales" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Registro" package="" visibility="public" xPosition="248.0" yPosition="437.0">
+      <Fields>
+        <Field name="num_registro" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cuotas" package="" visibility="public" xPosition="502.0" yPosition="428.0">
+      <Fields>
+        <Field name="fecha" type="Object" visibility="private"/>
+        <Field name="precio" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Recibo" package="" visibility="public" xPosition="766.0" yPosition="335.0">
+      <Fields>
+        <Field name="fecha" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="conten" source="Registro" target="Cuotas" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="entregar" source="Propietario" target="Recibo" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="gestiona" source="Comunidad" target="Registro" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="Comunidad" target="Propietario" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="pertenece" source="Propietario" target="Comunidad" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="é entregado" source="Recibo" target="Propietario" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
