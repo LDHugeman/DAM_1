@@ -6,7 +6,7 @@ import java.io.IOException;
  *
  * @author a18luisdvp
  */
-public class AgenciaViajesJerarquizada {
+public class AgenciaViajesSwitch {
 
     public static void main(String[] args) throws IOException {
         visualizar(Introducir.novaReserva());
