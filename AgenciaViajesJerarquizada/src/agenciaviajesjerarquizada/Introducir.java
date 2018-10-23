@@ -21,7 +21,11 @@ public class Introducir {
                 short estancia = Short.parseShort(lee.readLine());
                 if (estancia > 0) {
                     return new Reserva(tipoVivienda, numeroPersonas, estancia);
+                } else {
+                    System.err.printf("Número de días incorrecto. %n");
                 }
+            } else {
+                System.err.printf("Número de personas incorrecto. %n");
             }
         }
         return null;
