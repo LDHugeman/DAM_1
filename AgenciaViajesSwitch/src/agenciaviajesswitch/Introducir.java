@@ -1,4 +1,4 @@
-package agenciaviajesjerarquizada;
+package agenciaviajesswitch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
