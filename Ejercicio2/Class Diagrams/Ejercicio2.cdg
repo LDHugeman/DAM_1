@@ -55,9 +55,7 @@
     <Class name="Robot" package="" visibility="public" xPosition="498.0" yPosition="100.0">
       <Fields/>
       <Constructors/>
-      <Methods>
-        <Method name="devolver" returnType="void" visibility="public"/>
-      </Methods>
+      <Methods/>
     </Class>
     <Class name="Lector" package="" visibility="public" xPosition="1085.0" yPosition="535.0">
       <Fields/>
