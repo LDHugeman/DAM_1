@@ -11,27 +11,39 @@ import java.io.InputStreamReader;
 public class Introducir {
 
     public static Reserva novaReserva() throws IOException {
-       BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
-       String tipoVivienda = seleccionarVivienda(lee);
-       
+        BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
+        String tipoVivienda = seleccionarVivienda(lee);
+        if (tipoVivienda != null) {
+            System.out.printf("Número de personas del grupo: ");
+            short numeroPersonas = Short.parseShort(lee.readLine());
+            if(numeroPersonas>0){
+                System.out.printf("Número de días: ");
+                short estancia = Short.parseShort(lee.readLine());
+                if(estancia>0){
+                   return new Reserva(tipoVivienda, numeroPersonas, estancia);
+                }
+            }
+        }
+        return null;
+
     }
 
     private static void mostrarMenuVivienda() {
         System.out.printf("Seleccione el tipo de vivienda: %n"
-                + "Escriba A para Apartamento"
-                + "Escriba V para Vivienda");
+                + "Escriba A para Apartamento. %n"
+                + "Escriba V para Vivienda. %n");
     }
 
     private static String seleccionarVivienda(BufferedReader lee) throws IOException {
         mostrarMenuVivienda();
-        char opcionSeleccionada = lee.readLine().charAt(0);
+        char opcionSeleccionada = Character.toLowerCase(lee.readLine().charAt(0));
         switch (opcionSeleccionada) {
-            case 'A':
+            case 'a':
                 return "Apartamento";
-            case 'V':
+            case 'v':
                 return "Vivienda";
             default:
-                System.err.printf("Esa opción non existe.");
+                System.err.printf("Esa opción non é válida. %n");
                 return null;
         }
     }
