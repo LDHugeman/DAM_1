@@ -45,12 +45,12 @@ public class Reserva {
             precio = numeroPersonas * 25 * estancia;
         }
         
-        calcularDescuentoPrecio(); 
+        calcularPrecioConDescuento(); 
     }
     
-    private void calcularDescuentoPrecio(){
+    private void calcularPrecioConDescuento(){
         if(estancia>15){
-            precio = 10 * precio / 100;
+            precio = precio - (10 * precio / 100);            
         }
     }
 }

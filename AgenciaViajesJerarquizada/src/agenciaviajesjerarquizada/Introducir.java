@@ -16,11 +16,11 @@ public class Introducir {
         if (tipoVivienda != null) {
             System.out.printf("Número de personas del grupo: ");
             short numeroPersonas = Short.parseShort(lee.readLine());
-            if(numeroPersonas>0){
+            if (numeroPersonas > 0) {
                 System.out.printf("Número de días: ");
                 short estancia = Short.parseShort(lee.readLine());
-                if(estancia>0){
-                   return new Reserva(tipoVivienda, numeroPersonas, estancia);
+                if (estancia > 0) {
+                    return new Reserva(tipoVivienda, numeroPersonas, estancia);
                 }
             }
         }
@@ -37,14 +37,14 @@ public class Introducir {
     private static String seleccionarVivienda(BufferedReader lee) throws IOException {
         mostrarMenuVivienda();
         char opcionSeleccionada = Character.toLowerCase(lee.readLine().charAt(0));
-        switch (opcionSeleccionada) {
-            case 'a':
-                return "Apartamento";
-            case 'v':
-                return "Vivienda";
-            default:
-                System.err.printf("Esa opción non é válida. %n");
-                return null;
+        if (opcionSeleccionada == 'a') {
+            return "Apartamento";
+        } else if (opcionSeleccionada == 'v') {
+            return "Vivienda";
         }
+
+        System.err.println("Esa opción non é válida.");
+        return null;
     }
+
 }
