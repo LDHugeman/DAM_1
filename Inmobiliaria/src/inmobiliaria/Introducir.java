@@ -19,8 +19,9 @@ public class Introducir {
             if(tipoInmueble.equals("Pisos") || tipoInmueble.equals("Casas")){
                 funcionario = saberSiEFuncionario(lee);    
             }
-            Factura factura = new Factura(tipoInmueble, precio, funcionario); 
-            return factura;
+            //Factura factura = new Factura(tipoInmueble, precio, funcionario); 
+            return new Factura(tipoInmueble, precio, funcionario);
+            
         }
         return null;
     }
