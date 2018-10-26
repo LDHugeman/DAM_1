@@ -38,11 +38,16 @@ public class NumerosDivisibles {
     }
     
     public static void mostrarDivisible(int divisible, int divisor) {
-        if (divisible == divisor) {
+        // Miramos se e o primeiro elemento que escribimos
+        if (ePrimeiroElemento(divisible, divisor)) {
             System.out.printf("%d", divisible);
         } else {
             System.out.printf(" - %d", divisible);
         }
+    }
+    
+    public static boolean ePrimeiroElemento(int divisible, int divisor){
+        return divisible == divisor
     }
     
 }
