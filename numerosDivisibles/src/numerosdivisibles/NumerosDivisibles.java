@@ -38,7 +38,6 @@ public class NumerosDivisibles {
     }
     
     public static void mostrarDivisible(int divisible, int divisor) {
-        // Miramos se e o primeiro elemento que escribimos
         if (ePrimeiroElemento(divisible, divisor)) {
             System.out.printf("%d", divisible);
         } else {
