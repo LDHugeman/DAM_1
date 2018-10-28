@@ -29,7 +29,7 @@ public class EmpleadoMejorPagado {
                 nombreMayor = nombre;
             }
         }
-        System.out.printf("El empleado %s", nombreMayor
-                + " es el que tiene el mayor sueldo: %.2f", SueldoMayor);
+        System.out.printf("El empleado %s es el que tiene el mayor sueldo: %.2f %n", nombreMayor,SueldoMayor);
+
     }
 }
