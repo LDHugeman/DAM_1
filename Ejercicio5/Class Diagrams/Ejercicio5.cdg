@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio6">
+  <ClassDiagramComponents>
+    <Class name="Profesor" package="" visibility="public" xPosition="24.0" yPosition="359.0">
+      <Fields>
+        <Field name="nombre_usuario" type="Object" visibility="private"/>
+        <Field name="contrasinal" type="Object" visibility="private"/>
+        <Field name="NIF" type="Object" visibility="private"/>
+        <Field name="nombre" type="Object" visibility="private"/>
+        <Field name="Apellidos" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Acta" package="" visibility="public" xPosition="201.0" yPosition="367.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="BorrarActa" returnType="void" visibility="public"/>
+        <Method name="VisualizarEstadistica" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Director" package="" visibility="public" xPosition="43.0" yPosition="38.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Alumno" package="" visibility="public" xPosition="445.0" yPosition="433.0">
+      <Fields>
+        <Field name="NIF" type="Object" visibility="private"/>
+        <Field name="Nombre" type="Object" visibility="private"/>
+        <Field name="Apellidos" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularNotaAlumno" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Alumno libre" package="" visibility="public" xPosition="301.0" yPosition="735.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularNotaAlumno" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Alumno oficial" package="" visibility="public" xPosition="539.0" yPosition="735.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularNotaAlumno" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Asignatura" package="" visibility="public" xPosition="329.0" yPosition="11.0">
+      <Fields>
+        <Field name="titulacion" type="Object" visibility="private"/>
+        <Field name="curso" type="Object" visibility="private"/>
+        <Field name="denominacion" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Nota" package="" visibility="public" xPosition="131.0" yPosition="652.0">
+      <Fields>
+        <Field name="examen" type="Object" visibility="private"/>
+        <Field name="nota_practicas" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Dar de alta o baja" source="Director" target="Profesor" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Dar de alta o baja" source="Director" target="Asignatura" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="imparte" source="Profesor" target="Asignatura" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Alumno oficial" target="Alumno"/>
+    <IsRelation name="is" source="Alumno libre" target="Alumno"/>
+    <HasRelation name="tiene" source="Asignatura" target="Acta" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="tiene" source="Alumno" target="Nota" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="tiene" source="Alumno" target="Asignatura" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="tiene" source="Nota" target="Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Cubrir" source="Profesor" target="Acta" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="ten" source="Acta" target="Nota" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="dar de alta o baja" source="Director" target="Alumno" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
