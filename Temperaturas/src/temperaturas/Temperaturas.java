@@ -35,6 +35,7 @@ public class Temperaturas {
                 case 2:
                     if (datosCargados) {
                         Visualizar.visualizarDiasSuperiorMedia(Buscar.obterDiasSuperiorMedia(diasSemana, temperaturas, temperaturaMedia));
+                        Visualizar.visualizarTemperaturaMedia(Introducir.obterTemperaturaMedia(temperaturas));
                     }else{
                         System.err.println("No hay datos introducidos.");
                     }
