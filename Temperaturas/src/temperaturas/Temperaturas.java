@@ -9,11 +9,14 @@ import java.io.InputStreamReader;
  * @author a18luisdvp
  */
 public class Temperaturas {
+    
+    
 
     public static void main(String[] args) throws IOException {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
+        int temperaturaMedia = 0;
         byte[] temperaturas = new byte[7];
-        final String[] diasSemana = new String[] {
+        final String[] diasSemana = new String[]{
             "Lunes",
             "Martes",
             "Miércoles",
@@ -27,11 +30,19 @@ public class Temperaturas {
             opcionSeleccionada = Menu.seleccionarOpcion();
             switch (opcionSeleccionada) {
                 case 1:
-                    Introducir.cargarTemperaturas(temperaturas, diasSemana, lee);
+                    temperaturaMedia = Introducir.cargarTemperaturas(temperaturas, diasSemana, lee);
                     break;
                 case 2:
-                    Buscar.obterDiasSuperiorMedia(args, temperaturas, opcionSeleccionada);
+                    Visualizar.visualizarDiasSuperiorMedia(Buscar.obterDiasSuperiorMedia(diasSemana, temperaturas, temperaturaMedia));
                     break;
+                case 3:
+                    Visualizar.visualizarTemperaturasDias(temperaturas, diasSemana);
+                    Visualizar.visualizarDiasSuperiorMedia(Buscar.obterDiasSuperiorMedia(diasSemana, temperaturas, temperaturaMedia));
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.err.println("Esa opción no existe");
             }
         } while (opcionSeleccionada != 4);
 

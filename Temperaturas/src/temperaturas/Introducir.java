@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Introducir {
 
     private static byte obterTemperatura(String dia, BufferedReader lee) throws IOException{        
-        System.out.printf("¿Qué temperatura hizo el " + dia + "?");
+        System.out.printf("¿Qué temperatura hizo el " + dia + "? 1");
         return Byte.parseByte(lee.readLine());         
     }
     
