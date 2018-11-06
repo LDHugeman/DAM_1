@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio7">
+  <ClassDiagramComponents>
+    <Class name="Surcursal" package="" visibility="public" xPosition="328.0" yPosition="233.0">
+      <Fields>
+        <Field name="num_sucursal" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cliente" package="" visibility="public" xPosition="357.0" yPosition="381.0">
+      <Fields>
+        <Field name="codigo" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cliente empresa" package="" visibility="public" xPosition="376.0" yPosition="553.0">
+      <Fields>
+        <Field name="CIF" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cliente particular" package="" visibility="public" xPosition="615.0" yPosition="553.0">
+      <Fields>
+        <Field name="NIF" type="Object" visibility="private"/>
+        <Field name="titulo" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cliente estandar" package="" visibility="public" xPosition="316.0" yPosition="697.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="DarseDeAlta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cliente especial" package="" visibility="public" xPosition="534.0" yPosition="697.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="DarseDeAlta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cuenta" package="" visibility="public" xPosition="661.0" yPosition="371.0">
+      <Fields>
+        <Field name="num_cuenta" type="Object" visibility="private"/>
+        <Field name="saldo" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="retirar" returnType="void" visibility="public"/>
+        <Method name="consultar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Cliente empresa" target="Cliente"/>
+    <HasRelation name="é asociada" source="Cuenta" target="Cliente" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Cliente particular" target="Cliente"/>
+    <IsRelation name="is" source="Cliente especial" target="Cliente empresa"/>
+    <IsRelation name="is" source="Cliente estandar" target="Cliente empresa"/>
+    <HasRelation name="tiene asociada" source="Cliente" target="Cuenta" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <HasRelation name="tiene" source="Surcursal" target="Cliente" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
