@@ -27,7 +27,7 @@ public class Visualizar {
     ) {
         System.out.println(ANSI_BLUE + "Notas iniciales: " + ANSI_RESET);
         verAlumnosConNotas(alumnos, notas);
-        if (notasAprobados != null) {
+        if (notasAprobados != null || notasSuspensos !=null) {
             System.out.println(ANSI_BLUE + "Notas Aprobadas: " + ANSI_RESET);
             verAlumnosConNotas(alumnosAprobados, notasAprobados);
             System.out.println(ANSI_BLUE + "Notas Suspensas: " + ANSI_RESET);
@@ -38,9 +38,8 @@ public class Visualizar {
         if (notasFinales != null) {
             System.out.println(ANSI_BLUE + "Notas finales: " + ANSI_RESET);
             verAlumnosConNotas(alumnos, notasFinales);
-        }else{
+        } else {
             System.err.printf("No se han subido las notas.%n");
         }
-
     }
 }

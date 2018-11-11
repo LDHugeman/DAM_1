@@ -31,7 +31,7 @@ public class Modificar {
     }
     
     private static boolean estanMetadeAprobados(float [] notas){
-        return Separar.obterNumeroAprobados(notas) >= 3;
+        return Separar.obterNumeroAprobados(notas) >= notas.length/2;
     }
     
 }

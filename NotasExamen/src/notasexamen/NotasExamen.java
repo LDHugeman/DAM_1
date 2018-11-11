@@ -34,14 +34,15 @@ public class NotasExamen {
                     if(datosCargados){                       
                         Separar.cargarAlumnosNotasAprobadas(alumnos, notas, alumnosAprobados, notasAprobados);
                         Separar.cargarAlumnosNotasSuspensas(alumnos, notas, alumnosSuspensos, notasSuspensos);   
-                        System.out.printf("Notas separadas.");
+                        System.out.printf("NOTAS SEPARADAS.");
                     }else{
                         System.err.printf("No hay datos introducidos.%n");
                     }
                     break;
                 case 3:
                     if(datosCargados){
-                        notasFinales = Modificar.subirNotasSuspensas(notas);
+                        Modificar.subirNotasSuspensas(notas);
+                        System.out.printf("NOTAS SUBIDAS.");
                     }else{
                         System.err.printf("No hay datos introducidos.%n");
                     }                 
