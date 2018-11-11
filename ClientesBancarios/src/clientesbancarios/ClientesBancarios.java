@@ -25,6 +25,11 @@ public class ClientesBancarios {
             switch (opcionSeleccionada) {
                 case 1:
                     clientes = Introducir.obterClientes(lee);
+                    //Poño os datos a null para que se reseteen os valores en caso de que queira introducir novos.
+                    clientesSaldoPositivo = null;   
+                    clientesSaldoPositivo = null;
+                    clientesSaldoNulo = null;
+                    datosSeparados = false;
                     datosCargados = true;
                     break;
                 case 2:
@@ -32,6 +37,7 @@ public class ClientesBancarios {
                         clientesSaldoPositivo = Separar.obterClientesSaldoPositivo(clientes);
                         clientesSaldoNegativo = Separar.obterClientesSaldoNegativo(clientes);
                         clientesSaldoNulo = Separar.obterClientesSaldoNulo(clientes);
+                        System.out.printf("CLIENTES DIVIDIDOS.%n");
                         datosSeparados = true;
                     } else {
                         System.err.printf("No hay datos introducidos.%n");
@@ -42,6 +48,7 @@ public class ClientesBancarios {
                         clientesSaldoPositivo = Clasificar.obterOrdenadoNombreDescendenteBurbuja(clientesSaldoPositivo);
                         clientesSaldoNulo = Clasificar.obterOrdenadoNombreDescendenteBurbuja(clientesSaldoNulo);
                         clientesSaldoNegativo = Clasificar.obterOrdenadoNombreDescendenteIntercambio(clientesSaldoNegativo);
+                        System.out.printf("CLIENTES ORDENADOS.%n");
                     } else {
                         System.err.printf("No hay datos separados o introducidos.%n");
                     }
@@ -59,6 +66,5 @@ public class ClientesBancarios {
                     System.err.printf("Esa opción non existe.%n");
             }
         } while (opcionSeleccionada != 5);
-    }
-
+    }   
 }
