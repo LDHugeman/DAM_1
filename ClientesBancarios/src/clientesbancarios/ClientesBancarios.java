@@ -37,7 +37,7 @@ public class ClientesBancarios {
                         clientesSaldoPositivo = Separar.obterClientesSaldoPositivo(clientes);
                         clientesSaldoNegativo = Separar.obterClientesSaldoNegativo(clientes);
                         clientesSaldoNulo = Separar.obterClientesSaldoNulo(clientes);
-                        System.out.printf("CLIENTES DIVIDIDOS.%n");
+                        System.out.printf("CLIENTES SEPARADOS.%n");
                         datosSeparados = true;
                     } else {
                         System.err.printf("No hay datos introducidos.%n");
