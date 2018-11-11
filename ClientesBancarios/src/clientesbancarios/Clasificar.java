@@ -9,8 +9,8 @@ public class Clasificar {
     public static Cliente[] obterOrdenadoNombreDescendenteBurbuja(Cliente[] clientes) {
         Cliente aux;
         for (int i = 0; i < clientes.length - 1; i++) {
-            for (int j = 0; i < clientes.length - 1; i++) {
-                if (clientes[j].getNombre().compareToIgnoreCase(clientes[j + 1].getNombre()) < 0) {
+            for (int j = 0; j < clientes.length - 1; j++) {
+                if (clientes[j].getNombre().compareToIgnoreCase(clientes[j + 1].getNombre()) > 0) {
                     aux = clientes[j];
                     clientes[j] = clientes[j + 1];
                     clientes[j + 1] = aux;
