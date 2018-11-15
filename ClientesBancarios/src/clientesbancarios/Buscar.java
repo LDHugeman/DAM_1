@@ -7,26 +7,35 @@ package clientesbancarios;
 public class Buscar {
 
     public static Cliente obterClientePorNombre(Cliente[] clientesSinOrdenar, String nombreBusqueda) {
-        Cliente[] clientes = Clasificar.obterOrdenadoSalarioDescendenteIntercambio(clientesSinOrdenar);
-        int i = 0;
-        int puntoMedio = 0;
-        int numeroElementos = clientes.length - 1;
-
-        while (i < numeroElementos) {
-            puntoMedio = (int) (i + numeroElementos) / 2;
-            if (nombreBusqueda.equalsIgnoreCase(clientes[puntoMedio].getNombre())) {
-                i = puntoMedio;
-                numeroElementos = puntoMedio;
-            } else if (nombreBusqueda.compareToIgnoreCase(clientes[puntoMedio].getNombre()) < 0) {
-                numeroElementos = puntoMedio - 1;
+        Cliente[] clientes = Clasificar.obterOrdenadoNombreDescendenteIntercambio(clientesSinOrdenar);
+        Cliente clienteEncontrado;
+        int posicionEncontrada = busquedaDicotómicaNombre(clientes, nombreBusqueda);
+        if (posicionEncontrada == 0) {
+            if (clientes[posicionEncontrada].getNombre().equalsIgnoreCase(nombreBusqueda)) {
+                clienteEncontrado = clientes[posicionEncontrada];
             } else {
-                i = puntoMedio + 1;
+                clienteEncontrado = null;
+            }
+        } else {
+            clienteEncontrado = clientes[posicionEncontrada];
+        }
+        return clienteEncontrado;
+    }
+
+    public static int busquedaDicotómicaNombre(Cliente[] clientes, String nombreBusqueda) {
+        int low = 0;
+        int puntoMedio;
+        int high = clientes.length - 1;
+        while (low <= high) {
+            puntoMedio = (low + high) / 2;
+            if (clientes[puntoMedio].getNombre().compareToIgnoreCase(nombreBusqueda) > 0) {
+                low = puntoMedio + 1;
+            } else if (clientes[puntoMedio].getNombre().compareToIgnoreCase(nombreBusqueda) < 0) {
+                high = puntoMedio - 1;
+            } else {
+                return puntoMedio;
             }
         }
-        if (nombreBusqueda.equalsIgnoreCase(clientes[i].getNombre())) {
-            return clientes[i];
-        } else {
-            return null;
-        }
+        return 0;
     }
 }
