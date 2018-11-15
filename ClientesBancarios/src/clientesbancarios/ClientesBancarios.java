@@ -60,7 +60,8 @@ public class ClientesBancarios {
                         resultadoBusqueda = Buscar.obterClientePorNombre(clientes, nombreBusqueda);
                         if (resultadoBusqueda != null) {
                             Visualizar.visualizarCliente(resultadoBusqueda);
-                        } 
+                        }
+                        
                         else {
                             System.err.printf("No se ha encontrado el cliente %s %n", nombreBusqueda);
                         }
