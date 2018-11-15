@@ -14,7 +14,6 @@ public class Buscar {
 
         while (i < numeroElementos) {
             puntoMedio = (int) (i + numeroElementos) / 2;
-            System.out.println(puntoMedio);
             if (nombreBusqueda.equalsIgnoreCase(clientes[puntoMedio].getNombre())) {
                 i = puntoMedio;
                 numeroElementos = puntoMedio;
