@@ -33,4 +33,9 @@ public class Introducir {
         System.out.printf("Saldo de %s: ", nombreCliente);
         return Float.parseFloat(lee.readLine());
     }
+    
+    public static String obterNombreBusqueda(BufferedReader lee)throws IOException{
+        System.out.printf("Nombre del cliente: ");
+        return lee.readLine();
+    }
 }

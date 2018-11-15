@@ -19,6 +19,7 @@ public class ClientesBancarios {
         byte opcionSeleccionada = 0;
         boolean datosCargados = false;
         boolean datosSeparados = false;
+        Cliente resultadoBusqueda;
         do {
 
             opcionSeleccionada = Menu.seleccionarOpcion(lee);
@@ -26,7 +27,7 @@ public class ClientesBancarios {
                 case 1:
                     clientes = Introducir.obterClientes(lee);
                     //Poño os datos a null para que se reseteen os valores en caso de que queira introducir novos.
-                    clientesSaldoPositivo = null;   
+                    clientesSaldoPositivo = null;
                     clientesSaldoPositivo = null;
                     clientesSaldoNulo = null;
                     datosSeparados = false;
@@ -55,16 +56,28 @@ public class ClientesBancarios {
                     break;
                 case 4:
                     if (datosCargados) {
+                        String nombreBusqueda = Introducir.obterNombreBusqueda(lee);
+                        resultadoBusqueda = Buscar.obterClientePorNombre(clientes, nombreBusqueda);
+                        if (resultadoBusqueda != null) {
+                            Visualizar.visualizarCliente(resultadoBusqueda);
+                        } else {
+                            System.err.printf("No se ha encontrado el cliente: %s %n", nombreBusqueda);
+                        }
+                    }
+
+                    break;
+                case 5:
+                    if (datosCargados) {
                         Visualizar.verTodo(clientes, clientesSaldoPositivo, clientesSaldoNegativo, clientesSaldoNulo);
                     } else {
                         System.err.printf("No hay datos introducidos.%n");
                     }
                     break;
-                case 5:
+                case 6:
                     break;
                 default:
                     System.err.printf("Esa opción non existe.%n");
             }
         } while (opcionSeleccionada != 5);
-    }   
+    }
 }

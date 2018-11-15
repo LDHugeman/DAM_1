@@ -20,8 +20,9 @@ public class Menu {
                 + "1. Introducir clientes.%n"
                 + "2. Obtener clientes con saldo positivo, números rojos y saldo nulo.%n"
                 + "3. Clasificar.%n"
-                + "4. Visualizar.%n"
-                + "5. Salir.%n"
+                + "4. Buscar. %n"
+                + "5. Visualizar.%n"              
+                + "6. Salir.%n"
                 + "Seleccione una opción: ");
     }
 }

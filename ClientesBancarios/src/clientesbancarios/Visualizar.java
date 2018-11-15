@@ -33,7 +33,11 @@ public class Visualizar {
 
     private static void visualizarClientes(Cliente[] clientes) {
         for (int i = 0; i < clientes.length; i++) {
-            System.out.printf("Nombre: %s   Saldo: %.2f %n", clientes[i].getNombre(), clientes[i].getSaldo());
+            visualizarCliente(clientes[i]);
         }
+    }
+    
+    public static void visualizarCliente(Cliente cliente){
+        System.out.printf("Nombre: %s   Saldo: %.2f %n", cliente.getNombre(), cliente.getSaldo());
     }
 }
