@@ -65,6 +65,8 @@ public class ClientesBancarios {
                         else {
                             System.err.printf("No se ha encontrado el cliente %s %n", nombreBusqueda);
                         }
+                    } else {
+                        System.err.printf("No hay datos introducidos.%n");
                     }
 
                     break;
