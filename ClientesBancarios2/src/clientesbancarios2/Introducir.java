@@ -15,22 +15,20 @@ public class Introducir {
     }
 
     private static float obterSaldoCliente(BufferedReader lee, String nombreCliente) throws IOException {
-        System.out.printf("Saldo de: %s", nombreCliente);
+        System.out.printf("Saldo de %s: ", nombreCliente);
         return Float.parseFloat(lee.readLine());
     }
-
-    public static String[] obterNombresClientes(BufferedReader lee, String[] clientes) throws IOException {
-        for (int i = 0; i < clientes.length; i++) {
-            clientes[i] = obterNombreCliente(lee);
-        }
-        return clientes;
+    
+    public static String obterNombreBusqueda(BufferedReader lee)throws IOException{
+        System.out.printf("Nombre del cliente: ");
+        return lee.readLine();
     }
-
-    public static float[] obterSaldosClientes(BufferedReader lee, float[] saldos)throws IOException{
-        for(int i=0; i<saldos.length; i++){
+    
+    public static void obterClientes(BufferedReader lee, String[] nombreClientes, float[]saldos)throws IOException{
+        for(int i=0; i<nombreClientes.length;i++) {
             String nombreCliente = obterNombreCliente(lee);
-            saldos[i] = obterSaldoCliente(lee, nombreCliente);
+            nombreClientes[i] = nombreCliente;
+            saldos[i]= obterSaldoCliente(lee, nombreCliente);
         }
-        return saldos;
     }
 }
