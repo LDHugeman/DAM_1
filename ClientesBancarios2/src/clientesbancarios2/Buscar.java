@@ -11,12 +11,12 @@ public class Buscar {
         int posicionEncontrada = busquedaDicotomicaNombre(nombreClientes, nombreBusqueda);
         if (posicionEncontrada == 0) {
             if (nombreClientes[posicionEncontrada].equalsIgnoreCase(nombreBusqueda)) {
-                System.out.printf(nombreClientes[posicionEncontrada]);
+                System.out.printf("Nombre: %s Saldo: %.2f %n",nombreClientes[posicionEncontrada], saldos[posicionEncontrada]);
             } else {
                 System.err.printf("No se ha encontrado al cliente %s %n", nombreBusqueda);
             }
         } else {
-            System.out.printf(nombreClientes[posicionEncontrada]);
+            System.out.printf("Nombre: %s Saldo: %.2f %n",nombreClientes[posicionEncontrada], saldos[posicionEncontrada]);
         }
     }
 
