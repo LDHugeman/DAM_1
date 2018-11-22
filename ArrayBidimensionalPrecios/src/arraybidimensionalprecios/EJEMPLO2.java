@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package arraybidimensionalprecios;
 
 /**
@@ -20,5 +16,5 @@ public class EJEMPLO2 {
             }
             sc[i] = ac / precios.length;
         }
-    }
+    } 
 }

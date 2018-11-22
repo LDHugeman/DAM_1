@@ -2,7 +2,6 @@
 package arraybidimensionalprecios;
 
 import java.io.BufferedReader;
-import java.io.IOError;
 import java.io.IOException;
 
 /**
@@ -18,6 +17,9 @@ public class Menu {
     
     public static void mostrarMenu(){
         System.out.printf("------------------ Menu ------------------ %n"
-                + "1. Introducir %n");
+                + "1. Introducir %n"
+                + "2. Obtener media de precios %n"
+                + "5. Visualizar %n"
+                + "Seleccione una opción: ");
     }
 }
