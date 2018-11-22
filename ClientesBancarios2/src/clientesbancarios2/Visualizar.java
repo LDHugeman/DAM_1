@@ -34,9 +34,9 @@ public class Visualizar {
 
     private static void visualizarClientesYSaldos(String[] nombreClientes, float[] saldos) {
         for (int i = 0; i < nombreClientes.length; i++) {
-           /* if (nombreClientes[i] != null) { */
+            if (nombreClientes[i] != null) {
                 visualizarCliente(nombreClientes[i], saldos[i]);
-          /*  }*/
+            }
         }
     }
 

@@ -7,7 +7,7 @@ package clientesbancarios2;
 public class Buscar {
 
     public static void imprimirClienteEncontrado(String[] nombreClientes, float[] saldos, String nombreBusqueda) {
-        Clasificar.obterOrdenadoNombreDescendenteBurbuja(nombreClientes, saldos);
+        Clasificar.ordenadarClientesNombreDescendenteBurbuja(nombreClientes, saldos);
         int posicionEncontrada = busquedaDicotomicaNombre(nombreClientes, nombreBusqueda);
         if (posicionEncontrada == 0) {
             if (nombreClientes[posicionEncontrada].equalsIgnoreCase(nombreBusqueda)) {

@@ -33,9 +33,9 @@ public class ClientesBancarios2 {
                     break;
                 case 2:
                     if (datosCargados) {
-                        Separar.obterClientesSaldoPositivo(nombreClientes, saldos, nombreClientesSaldoPositivo, saldosPositivos);
-                        Separar.obterClientesSaldoNegativo(nombreClientes, saldos, nombreClientesSaldoNegativo, saldosNegativos);
-                        Separar.obterClientesSaldoNulo(nombreClientes, saldos, nombreClientesSaldoNulo, saldosNulos);
+                        Separar.asignarClientesSaldoPositivo(nombreClientes, saldos, nombreClientesSaldoPositivo, saldosPositivos);
+                        Separar.asignarClientesSaldoNegativo(nombreClientes, saldos, nombreClientesSaldoNegativo, saldosNegativos);
+                        Separar.asignarClientesSaldoNulo(nombreClientes, saldos, nombreClientesSaldoNulo, saldosNulos);
                         System.out.printf("CLIENTES SEPARADOS.%n");
                         datosSeparados = true;
                     } else {
@@ -44,9 +44,9 @@ public class ClientesBancarios2 {
                     break;
                 case 3:
                     if (datosSeparados) {
-                        Clasificar.obterOrdenadoNombreDescendenteBurbuja(nombreClientesSaldoPositivo, saldosPositivos);
-                        Clasificar.obterOrdenadoNombreDescendenteBurbuja(nombreClientesSaldoNulo, saldosNulos);
-                        Clasificar.obterOrdenadoNombreAscendenteIntercambio(nombreClientesSaldoNegativo, saldosNegativos);
+                        Clasificar.ordenadarClientesNombreDescendenteBurbuja(nombreClientesSaldoPositivo, saldosPositivos);
+                        Clasificar.ordenadarClientesNombreDescendenteBurbuja(nombreClientesSaldoNulo, saldosNulos);
+                        Clasificar.ordenadarClientesNombreAscendenteIntercambio(nombreClientesSaldoNegativo, saldosNegativos);
                         System.out.printf("CLIENTES ORDENADOS.%n");
                     } else {
                         System.err.printf("No hay datos separados o introducidos.%n");

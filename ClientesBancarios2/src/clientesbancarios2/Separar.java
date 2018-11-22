@@ -6,7 +6,7 @@ package clientesbancarios2;
  */
 public class Separar {
 
-    public static void obterClientesSaldoPositivo(
+    public static void asignarClientesSaldoPositivo(
             String[] nombreClientes,
             float[] saldos,
             String[] nombreClientesSaldoPositivo,
@@ -21,7 +21,7 @@ public class Separar {
         }
     }
     
-    public static void obterClientesSaldoNegativo(
+    public static void asignarClientesSaldoNegativo(
             String[] nombreClientes,
             float[] saldos,
             String[] nombreClientesSaldoNegativo,
@@ -36,7 +36,7 @@ public class Separar {
         }
     }
     
-    public static void obterClientesSaldoNulo(
+    public static void asignarClientesSaldoNulo(
             String[] nombreClientes,
             float[] saldos,
             String[] nombreClientesSaldoNulo,
@@ -50,24 +50,5 @@ public class Separar {
             }
         }
     }  
-
-    private static int obterNumeroClientesPositivos(float[] saldos) {
-        int clientesPositivos = 0;
-        for (int i = 0; i < saldos.length; i++) {
-            if (saldos[i] > 0) {
-                clientesPositivos++;
-            }
-        }
-        return clientesPositivos;
-    }
-
-    private static int obterNumeroClientesNulos(float[] saldos) {
-        int clientesNulos = 0;
-        for (int i = 0; i < saldos.length; i++) {
-            if (saldos[i] == 0) {
-                clientesNulos++;
-            }
-        }
-        return clientesNulos;
-    }
+    
 }
