@@ -41,14 +41,19 @@ public class ArrayBidimensionalPrecios {
                     break;
                 case 5:
                     if(datosCargados){
+                        System.out.printf("Datos introducidos: %n");
                         Visualizar.verPreciosDeProductosEnCiudades(precios, productos, ciudades);
                     } else {
                         System.err.println("No hay datos introducidos. %n");
                     }
                     if(mediaCalculada){
-                        Visualizar.verPreciosMediosFila(precios, preciosMediosFila, productos, ciudades);
-                        Visualizar.verPreciosMediosColumna(precios, preciosMediosColumna, productos, ciudades);
+                        System.out.printf("Precio medio por producto: %n");
+                        Visualizar.verPreciosMediosFila(preciosMediosFila, productos);
+                        System.out.printf("Precio medio por ciudad: %n");
+                        Visualizar.verPreciosMediosColumna(preciosMediosColumna, ciudades);
                     }
+                    break;
+                case 6:
                     break;
                 default:
                     System.err.printf("Esa opción no existe.");

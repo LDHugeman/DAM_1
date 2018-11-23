@@ -20,6 +20,7 @@ public class Menu {
                 + "1. Introducir %n"
                 + "2. Obtener media de precios %n"
                 + "5. Visualizar %n"
+                + "6. Salir %n"
                 + "Seleccione una opción: ");
     }
 }
