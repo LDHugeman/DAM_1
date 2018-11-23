@@ -11,13 +11,19 @@ package arraybidimensionalprecios;
  */
 public class EJEMPLO {
 
-    public static void sumarFilas(float[][] precios, float[] pm) {
+    public static void sumarFilasColumnas(float[][] precios, float[] pm, float[] sc) {
         for (int i = 0; i < precios.length; i++) {
             float sf = 0;
             for (int j = 0; j < precios[i].length; j++) {
-                sf += precios[i][j]; //sf= sf+ precios[i][j];
+                sf += precios[i][j];
+                sc[j] = sc[j] + precios[i][j];
             }
-            pm[i]=sf/precios[i].length; 
+            pm[i] = sf / precios[i].length;
         }
-    } 
+        for (int i = 0; i < precios[0].length; i++) {
+            sc[i] = sc[i] / precios.length;
+
+            Visualizar.visual(pm, sc);
+        }
+    }
 }

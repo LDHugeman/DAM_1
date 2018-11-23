@@ -35,7 +35,7 @@ public class ArrayBidimensionalPrecios {
                         Calcular.obterPrecioMedioPorColumna(precios, preciosMediosColumna);
                         mediaCalculada = true;
                     } else {
-                        System.err.println("No hay datos introducidos. %n");
+                        System.err.printf("No hay datos introducidos. %n");
                     }
                     System.out.printf("MEDIAS OBTENIDAS %n");
                     break;
@@ -44,19 +44,21 @@ public class ArrayBidimensionalPrecios {
                         System.out.printf("Datos introducidos: %n");
                         Visualizar.verPreciosDeProductosEnCiudades(precios, productos, ciudades);
                     } else {
-                        System.err.println("No hay datos introducidos. %n");
+                        System.err.printf("No hay datos introducidos. %n");
                     }
                     if(mediaCalculada){
                         System.out.printf("Precio medio por producto: %n");
                         Visualizar.verPreciosMediosFila(preciosMediosFila, productos);
                         System.out.printf("Precio medio por ciudad: %n");
                         Visualizar.verPreciosMediosColumna(preciosMediosColumna, ciudades);
+                    }else {
+                        System.err.printf("No se ha calculado la media. %n");
                     }
                     break;
                 case 6:
                     break;
                 default:
-                    System.err.printf("Esa opción no existe.");
+                    System.err.printf("Esa opción no existe. %n");
             }
         } while (opcionSeleccionada != 6);
     }
