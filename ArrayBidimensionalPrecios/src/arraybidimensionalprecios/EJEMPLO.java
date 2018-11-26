@@ -11,7 +11,7 @@ package arraybidimensionalprecios;
  */
 public class EJEMPLO {
 
-    public static void sumarFilasColumnas(float[][] precios, float[] pm, float[] sc) {
+ /*   public static void sumarFilasColumnas(float[][] precios, float[] pm, float[] sc) {
         for (int i = 0; i < precios.length; i++) {
             float sf = 0;
             for (int j = 0; j < precios[i].length; j++) {
@@ -25,5 +25,5 @@ public class EJEMPLO {
 
             Visualizar.visual(pm, sc);
         }
-    }
+    }*/
 }

@@ -17,6 +17,8 @@ public class ArrayBidimensionalPrecios {
         String[] productos = new String[3];
         float[] preciosMediosFila = new float[precios.length]; //Podría ser 3
         float[] preciosMediosColumna = new float[ciudades.length]; //Podría ser 2
+        float [] copiaPreciosMediosFila; 
+        String [] copiaProductos;
         byte opcionSeleccionada;
         boolean datosCargados = false;
         boolean mediaCalculada = false;

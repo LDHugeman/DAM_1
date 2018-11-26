@@ -10,7 +10,7 @@ package arraybidimensionalprecios;
  * @author a18luisdvp
  */
 public class EJEMPLOORDENAR {
-    public static void ordenar(String [] Cprod, float []Cpm){
+    public static void ordenar(String [] Cprod, float []Cpm){ //precio medio fila/productos
         String auxNombre="";
         float aux=0;
         for(int i=0;i<Cpm.length-1;i++){
