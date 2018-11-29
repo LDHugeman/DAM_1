@@ -12,7 +12,7 @@ public class Buscar {
         String pais = null;
         for (int i = 0; i < nombres.length; i++) {
             for (int j = 0; j < nombres[i].length; j++) {
-                if (nombreBusqueda.equals(nombres[i][j])) {
+                if (nombreBusqueda.equalsIgnoreCase(nombres[i][j])) {
                     nombre = nombres[i][j];
                     altura = alturas[i][j];
                     pais = paises[i];
