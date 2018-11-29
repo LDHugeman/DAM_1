@@ -62,6 +62,8 @@ public class AlturasJugadores {
                         Visualizar.errorDatosSinCargar();
                     }
                     break;
+                case 6:
+                    break;
                 default:
                     System.err.println("No existe esa opción");
             }

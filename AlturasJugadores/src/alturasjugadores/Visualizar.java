@@ -18,7 +18,7 @@ public class Visualizar {
     }
 
     public static void verAlturaMediaJugadores(float altura) {
-        System.out.printf("La altura media de todos los jugadores es: %.2f%nm", altura);
+        System.out.printf("La altura media de todos los jugadores es: %.2fm%n", altura);
     }
     
     public static void verAlturaMaximaJugadores(String nombreMaximo, String paisMaximo, float alturaMaxima){

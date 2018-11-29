@@ -16,7 +16,7 @@ public class Menu {
         
     }
     private static void mostrarMenu(){
-        System.out.printf("---------- Menú ----------%n"
+        System.out.printf("-------------------- Menú --------------------%n"
                 + "1. Introducir%n"
                 + "2. Altura media de cada selección%n"
                 + "3. Altura media de todos los jugadores%n"
