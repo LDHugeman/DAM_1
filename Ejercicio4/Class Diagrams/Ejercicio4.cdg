@@ -3,7 +3,9 @@
 <ClassDiagram name="Ejercicio4">
   <ClassDiagramComponents>
     <Class name="Residuo" package="" visibility="public" xPosition="73.0" yPosition="155.0">
-      <Fields/>
+      <Fields>
+        <Field name="eclaseabstracta" type="Object" visibility="private"/>
+      </Fields>
       <Constructors/>
       <Methods>
         <Method name="reciclar" returnType="void" visibility="public"/>
@@ -46,7 +48,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Operador" package="" visibility="public" xPosition="647.0" yPosition="270.0">
+    <Class name="Operador" package="" visibility="public" xPosition="608.0" yPosition="257.0">
       <Fields>
         <Field name="telefono" type="Object" visibility="private"/>
       </Fields>
@@ -55,10 +57,10 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="Papel" target="Residuo"/>
-    <IsRelation name="is" source="Plástico" target="Residuo"/>
     <HasRelation name="tiene" source="Usuario" target="Recibo" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Papel" target="Residuo"/>
     <HasRelation name="devolve" source="Usuario" target="Residuo" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Plástico" target="Residuo"/>
     <IsRelation name="is" source="Lata" target="Residuo"/>
   </ClassDiagramRelations>
 </ClassDiagram>
