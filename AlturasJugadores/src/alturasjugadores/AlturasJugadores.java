@@ -17,8 +17,7 @@ public class AlturasJugadores {
         String[] paises = new String[4];
         float[] alturasMediasPaises = new float[4];
         byte opcionSeleccionada;
-        float alturaMediaJugadores;
-        float alturaMaxima=0;
+        float alturaMediaJugadores;     
         boolean estanDatosCargados = false;
 
         do {
