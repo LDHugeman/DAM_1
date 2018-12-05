@@ -23,6 +23,7 @@ public class Buscar {
     public static int busquedaDicotomicaNombre(String[] nombreClientes, String nombreBusqueda) {
         int low = 0;
         int puntoMedio;
+        //High ten que ser a ultima posicion dispoñible do array
         int high = nombreClientes.length - 1;
         while (low <= high) {
             puntoMedio = (low + high) / 2;
