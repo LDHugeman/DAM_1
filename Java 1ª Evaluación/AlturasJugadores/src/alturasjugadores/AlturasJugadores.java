@@ -18,8 +18,7 @@ public class AlturasJugadores {
         float[] alturasMediasPaises = new float[4];
         byte opcionSeleccionada;
         float alturaMediaJugadores;     
-        boolean estanDatosCargados = false;
-        Calcular.probar(alturas);
+        boolean estanDatosCargados = false;        
        do {
 
             opcionSeleccionada = Menu.seleccionarOpcion(lee);
