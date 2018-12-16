@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio6">
+  <ClassDiagramComponents>
+    <Class name="Unidad" package="" visibility="public" xPosition="361.0" yPosition="142.0">
+      <Fields>
+        <Field name="descripcion" type="Object" visibility="private"/>
+        <Field name="tamano_total" type="Object" visibility="private"/>
+        <Field name="espacio_libre" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="abrir" returnType="void" visibility="public"/>
+        <Method name="explorar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Unidad local" package="" visibility="public" xPosition="454.0" yPosition="568.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="compartir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Unidad extraible" package="" visibility="public" xPosition="257.0" yPosition="569.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="expulsar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Unidad de red" package="" visibility="public" xPosition="56.0" yPosition="568.0">
+      <Fields>
+        <Field name="direccion_red" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="conectar" returnType="void" visibility="public"/>
+        <Method name="desconectar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Carpeta" package="" visibility="public" xPosition="655.0" yPosition="433.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="explorar" returnType="void" visibility="public"/>
+        <Method name="abrir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Archivo" package="" visibility="public" xPosition="892.0" yPosition="433.0">
+      <Fields>
+        <Field name="extension" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Elemento" package="" visibility="public" xPosition="734.0" yPosition="91.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TipoArvhivo" package="" visibility="public" xPosition="915.0" yPosition="691.0">
+      <Fields>
+        <Field name="programa" type="Object" visibility="private"/>
+        <Field name="descripcion" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Unidad extraible" target="Unidad"/>
+    <HasRelation name="contiene" source="Unidad" target="Elemento" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <IsRelation name="is" source="Archivo" target="Elemento"/>
+    <HasRelation name="está asociado" source="Archivo" target="TipoArvhivo" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+    <HasRelation name="contiene" source="Carpeta" target="Elemento" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <IsRelation name="is" source="Unidad de red" target="Unidad"/>
+    <HasRelation name="é asociado" source="TipoArvhivo" target="Archivo" type="Default" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+    <IsRelation name="is" source="Carpeta" target="Elemento"/>
+    <IsRelation name="is" source="Unidad local" target="Unidad"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Ejercicio1">
+  <ClassDiagramComponents>
+    <Class name="Ballena" package="" visibility="public" xPosition="19.0" yPosition="275.0">
+      <Fields>
+        <Field name="nombre" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Perro " package="" visibility="public" xPosition="662.0" yPosition="275.0">
+      <Fields>
+        <Field name="nombre" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Loro" package="" visibility="public" xPosition="242.0" yPosition="275.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="dicir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Animal" package="" visibility="public" xPosition="400.0" yPosition="32.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Pingüino" package="" visibility="public" xPosition="441.0" yPosition="275.0">
+      <Fields>
+        <Field name="nombre" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Perro fiero" package="" visibility="public" xPosition="795.0" yPosition="484.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="dicir" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Perro manso" package="" visibility="public" xPosition="579.0" yPosition="484.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="dicirr" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Pingüino" target="Animal"/>
+    <IsRelation name="is" source="Loro" target="Animal"/>
+    <IsRelation name="is" source="Ballena" target="Animal"/>
+    <IsRelation name="is" source="Perro manso" target="Perro "/>
+    <IsRelation name="is" source="Perro " target="Animal"/>
+    <IsRelation name="is" source="Perro fiero" target="Perro "/>
+  </ClassDiagramRelations>
+</ClassDiagram>
