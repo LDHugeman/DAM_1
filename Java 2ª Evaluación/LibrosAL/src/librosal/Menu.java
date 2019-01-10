@@ -22,6 +22,7 @@ public class Menu {
                 + "4. Modificar precio de un libro %n"
                 + "5. Ordenar libros %n"
                 + "6. Visualizar libros ordenados %n"
+                + "7. Salir %n"
                 + "Seleccione una opción: ");
     }
 }

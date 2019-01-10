@@ -31,8 +31,8 @@ public class LibrosAL {
                 case 3:
                     isbnBusqueda = Introducir.obtenerIsbnBusqueda(lee);
                     posicionIsbnEncontrada = Buscar.buscarLibroPorIsbn(libro, isbnBusqueda);
-                    Borrar.BorrarLibroPorIsbn(libro, posicionIsbnEncontrada);         
                     System.out.printf("Libro %s borrado. %n", libro.get(posicionIsbnEncontrada).getNombre());
+                    Borrar.borrarLibroPorIsbn(libro, posicionIsbnEncontrada);             
                     break;
                 case 4:
                     libroBusqueda = Introducir.obternerLibroBusqueda(lee);
