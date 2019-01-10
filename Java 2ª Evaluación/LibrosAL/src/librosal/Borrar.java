@@ -8,11 +8,11 @@ import java.util.*;
  */
 public class Borrar {
     
-    public static void BorrarLibroPorIsbn(ArrayList<Libro> libro, int posicionIsbnEncontrada){
+    public static void BorrarLibroPorIsbn(ArrayList<Libro> libros, int posicionIsbnEncontrada){
         if(posicionIsbnEncontrada < 0){
             System.err.printf("Isbn inexistente %n");
         } else {
-            libro.remove(posicionIsbnEncontrada);
+            libros.remove(posicionIsbnEncontrada);
         }
     }
 }
