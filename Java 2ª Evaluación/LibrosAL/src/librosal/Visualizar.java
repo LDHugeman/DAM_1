@@ -8,13 +8,13 @@ import java.util.*;
  */
 public class Visualizar {
     
-    public static void verLibrosOrdenAscendenteNombre (ArrayList<Libro> libro){
-      Ordenar.ordenarPorIntercambioAscendenteNombre(libro);
-      Iterator it = libro.iterator();
+    public static void verLibrosOrdenAscendenteNombre (ArrayList<Libro> libros){
+      Ordenar.ordenarPorIntercambioAscendenteNombre(libros);
+      Iterator it = libros.iterator();
         System.out.printf("--- Listado de libros --- %n");
       while (it.hasNext()){
-          Libro libro2 = (Libro)it.next();
-          System.out.printf("Libro: %s Precio: %.2f€ Isbn: %s %n",libro2.getNombre(), libro2.getPrecio(), libro2.getIsbn());
+          Libro libro = (Libro)it.next();
+          System.out.printf("Libro: %s Precio: %.2f€ Isbn: %s %n",libro.getNombre(), libro.getPrecio(), libro.getIsbn());
       }
     }   
 }
