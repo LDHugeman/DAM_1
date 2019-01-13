@@ -10,11 +10,9 @@ public class Visualizar {
     
     public static void verLibrosOrdenAscendenteNombre (ArrayList<Libro> libro){
       Ordenar.ordenarPorIntercambioAscendenteNombre(libro);
-      Iterator it = libro.iterator();
-        System.out.printf("--- Listado de libros --- %n");
-      while (it.hasNext()){
-          Libro libro2 = (Libro)it.next();
-          System.out.printf("Libro: %s Precio: %.2f€ Isbn: %s %n",libro2.getNombre(), libro2.getPrecio(), libro2.getIsbn());
+      System.out.printf("--- Listado de libros --- %n");
+      for(Libro libro : libros){
+        System.out.printf("Libro: %s Precio: %.2f€ Isbn: %s %n",libro.getNombre(), libro.getPrecio(), libro.getIsbn());
       }
     }   
 }
