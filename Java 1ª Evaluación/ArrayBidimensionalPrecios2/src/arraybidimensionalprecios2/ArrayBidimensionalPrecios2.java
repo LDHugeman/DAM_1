@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class ArrayBidimensionalPrecios2 {
 
-    public static void main(String[] args) throws IOException{      
+    public static void main(String[] args) throws IOException{
         BufferedReader lee = new BufferedReader (new InputStreamReader(System.in));
         float [][] precios = new float [3][];
         String [] productos = new String [3];
@@ -41,6 +41,7 @@ public class ArrayBidimensionalPrecios2 {
                 case 5:
                     String productoBusqueda = Introducir.obtenerProductoBusqueda(lee);
                     Buscar.buscarProductoPorNombre(copiaProductos, productoBusqueda, copiaPreciosMediosProducto);
+                   // Buscar.imprimirResultadoBusqueda(copiaProductos, productoBusqueda, copiaPreciosMediosProducto);
                     break;
                 case 6:
                     break;
