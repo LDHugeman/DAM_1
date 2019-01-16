@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class CuentaPlazo extends Cuenta{
     private float intereses;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class Cuenta {
     private String numero;

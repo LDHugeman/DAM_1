@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class CuentaCorriente extends Cuenta{
     double saldoActual;

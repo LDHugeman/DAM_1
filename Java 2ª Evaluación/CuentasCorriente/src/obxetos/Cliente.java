@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class Cliente {
     private String dni;
