@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class Visualizar {
 

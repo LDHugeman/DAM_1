@@ -16,7 +16,7 @@ import obxetos.CuentaPlazo;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class Crear {
     public static CuentaCorriente nuevaCuentaCorriente(BufferedReader lee, ArrayList<Cliente>nuevosClientes) throws IOException{

@@ -10,7 +10,7 @@ import obxetos.Cuenta;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class Consultar {
     public static boolean existeCuenta(String numeroCuenta, ArrayList<Cuenta> cuentas){

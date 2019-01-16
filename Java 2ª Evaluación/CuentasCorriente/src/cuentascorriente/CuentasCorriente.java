@@ -14,7 +14,7 @@ import obxetos.Cuenta;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class CuentasCorriente {
 

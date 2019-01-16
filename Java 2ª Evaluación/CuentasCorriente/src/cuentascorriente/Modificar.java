@@ -7,7 +7,7 @@ package cuentascorriente;
 
 /**
  *
- * @author macbookair
+ * @author Luis David
  */
 public class Modificar {
     
