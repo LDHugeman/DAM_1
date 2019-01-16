@@ -6,55 +6,64 @@ package arraybidimensionalprecios2;
  */
 public class Buscar {
 
-    public static void buscarProductoPorNombre(String[] copiaProductos, String productoBusqueda, float [] copiaPreciosMediosProducto) {
+    public static void buscarProductoPorNombre(String[] copiaProductos, String productoBusqueda, float[] copiaPreciosMediosProducto) {
+        Ordenar.ordenarPorBurbujaAscendente(copiaProductos, copiaPreciosMediosProducto);
         int low = 0;
         int high = copiaProductos.length - 1;
-        int puntoMedio =0;
-        while (low<high) {
-            puntoMedio= (int)(low+high)/2;
-            if(productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio])==0){
-                low=puntoMedio;
-                high=puntoMedio;
-            }else if(productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio])<0){
-                high = puntoMedio -1;
-            }else{
+        int puntoMedio = 0;
+        while (low < high) {
+            puntoMedio = (int) (low + high) / 2;
+            if (productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio]) == 0) {
+                low = puntoMedio;
+                high = puntoMedio;
+            } else if (productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio]) < 0) {
+                high = puntoMedio - 1;
+            } else {
                 low = puntoMedio + 1;
             }
         }
-        if(productoBusqueda.compareToIgnoreCase(copiaProductos[low])==0){
-            System.out.printf("El precio medio del producto %s es %.2f %n",copiaProductos[low],copiaPreciosMediosProducto[low]);
-        }else {
+        if (productoBusqueda.compareToIgnoreCase(copiaProductos[low]) == 0) {
+            System.out.printf("El precio medio del producto %s es %.2f %n", copiaProductos[low], copiaPreciosMediosProducto[low]);
+        } else {
             System.out.printf("No se ha encontrado el producto %s %n", productoBusqueda);
-            
+
         }
     }
-    
-   /* public static int buscarProductoPorNombre(String[] copiaProductos, String productoBusqueda) {
+
+    /*Búsqueda discotómica retornando la posición*/
+    private static int buscarProductoPorNombre(String[] copiaProductos, String productoBusqueda) {
         int low = 0;
         int high = copiaProductos.length - 1;
-        int puntoMedio =0;
-        while (low<high) {
-            puntoMedio= (int)(low+high)/2;
-            if(productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio])==0){
-                low=puntoMedio;
-                high=puntoMedio;
-            }else if(productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio])<0){
-                high = puntoMedio -1;
-            }else{
+        int puntoMedio = 0;
+        while (low < high) {
+            puntoMedio = (int) (low + high) / 2;
+            if (productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio]) == 0) {
+                low = puntoMedio;
+                high = puntoMedio;
+            } else if (productoBusqueda.compareToIgnoreCase(copiaProductos[puntoMedio]) < 0) {
+                high = puntoMedio - 1;
+            } else {
                 low = puntoMedio + 1;
             }
         }
-        if(productoBusqueda.compareToIgnoreCase(copiaProductos[low])==0){
+        if (productoBusqueda.compareToIgnoreCase(copiaProductos[low]) == 0) {
             return low;
-        }else {
-            return 0;            
+        } else {
+            return 0;
         }
     }
-    
-    public static void imprimirResultadoBusqueda(String[] copiaProductos, String productoBusqueda, float [] copiaPreciosMediosProducto){
+
+    public static void imprimirResultadoBusqueda(String[] copiaProductos, String productoBusqueda, float[] copiaPreciosMediosProducto) {
+        Ordenar.ordenarPorBurbujaAscendente(copiaProductos, copiaPreciosMediosProducto);
         int posicionEncontrada = buscarProductoPorNombre(copiaProductos, productoBusqueda);
-        if(posicionEncontrada==0){
-            if()
+        if (posicionEncontrada == 0) {
+            if (productoBusqueda.equals(copiaProductos[posicionEncontrada])) {
+                System.out.printf("El precio medio del producto %s es %.2f %n", copiaProductos[posicionEncontrada], copiaPreciosMediosProducto[posicionEncontrada]);
+            } else {
+                System.err.printf("No se ha encontrado el producto %s %n", productoBusqueda);
+            }
+        } else {
+            System.out.printf("El precio medio del producto %s es %.2f %n", copiaProductos[posicionEncontrada], copiaPreciosMediosProducto[posicionEncontrada]);
         }
-    }*/
+    }
 }
