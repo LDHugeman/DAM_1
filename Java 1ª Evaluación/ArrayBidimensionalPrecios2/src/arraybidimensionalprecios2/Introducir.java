@@ -44,8 +44,8 @@ public class Introducir {
     
     public static float [][] obtenerPrecios (float[][] precios, String[]productos, String []ciudades, BufferedReader lee)throws IOException{
         for(int i=0; i<precios.length;i++){
-            precios[i]= new float [ciudades.length];
-            for(int j=0; j<ciudades.length; j++){
+            precios[i]= new float [ciudades.length]; // Esto non sería necesario*
+            for(int j=0; j<ciudades.length; j++){    //Igual que precios[i].length*
                 precios[i][j] = obtenerPrecio(productos[i], ciudades[j], lee);
             }
         }
