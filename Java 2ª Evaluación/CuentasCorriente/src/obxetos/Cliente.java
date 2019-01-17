@@ -23,4 +23,22 @@ public class Cliente {
         this.nombre = nombre;
         cuentas = new ArrayList<>();
     }
+    
+    public String getDNI(){
+        return dni;
+    }
+    
+    public ArrayList<Cuenta> getCuentas(){
+        return cuentas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+    
+    
 }

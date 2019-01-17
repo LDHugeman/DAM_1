@@ -52,7 +52,12 @@ public class Menu {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = selecionarOpcionMenuAltas(lee);
-            
+            switch (opcionSeleccionada) {
+                case 1:
+                    Bajas.eliminarClienteDeCuenta(Crear.pedirDni(lee), Crear.pedirNumeroCuenta(lee), cuentas);
+                    break;
+            }
+
         } while (opcionSeleccionada != 0);
     }
 
@@ -60,9 +65,11 @@ public class Menu {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = selecionarOpcionMenuAltas(lee);
-            switch(opcionSeleccionada){
+            switch (opcionSeleccionada) {
                 case 1:
-                    
+                    System.out.println("Inserte nuevos intereses");
+                    float nuevosIntereses = Float.parseFloat(lee.readLine());
+                    Modificar.modificarIntereses(Crear.pedirDni(lee), Crear.pedirNumeroCuenta(lee), nuevosIntereses, cuentas);
                     break;
             }
         } while (opcionSeleccionada != 0);

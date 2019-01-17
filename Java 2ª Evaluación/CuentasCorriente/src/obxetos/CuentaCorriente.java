@@ -19,4 +19,8 @@ public class CuentaCorriente extends Cuenta{
         super(numero, sucursal, clientes);
         this.saldoActual = saldoActual;
     }
+
+    public double getSaldoActual() {
+        return saldoActual;
+    }
 }

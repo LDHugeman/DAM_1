@@ -28,8 +28,7 @@ public class Crear {
     }
     
     public static Cliente nuevoCliente(BufferedReader lee, ArrayList<Cliente> clientes) throws IOException{
-        System.out.println("Inserte o dni do cliente");
-        String dni = lee.readLine();
+        String dni = pedirDni(lee);
         System.out.println("Inserte o nome do cliente");
         String nombre = lee.readLine();
         System.out.println("Inserte direccion do cliente");
@@ -58,6 +57,11 @@ public class Crear {
     
     public static String pedirSucursal(BufferedReader lee) throws IOException{
         System.out.println("Inserte sucursal");
+        return lee.readLine();
+    }
+    
+    public static String pedirDni(BufferedReader lee)throws IOException{
+        System.out.println("Inserte o dni do cliente");
         return lee.readLine();
     }
     

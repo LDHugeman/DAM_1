@@ -5,10 +5,7 @@
  */
 package obxetos;
 
-import cuentascorriente.Crear;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -24,10 +21,36 @@ public class Cuenta {
         this.numero = numero;
         this.sucursal = sucursal;
         this.clientes = clientes;
+        asociarCuentaEnClientes(clientes);
     }
     
     public String getNumero(){
         return numero;
     }
+    
+    public ArrayList<Cliente> getClientes(){
+        return clientes;
+    }
+    
+    private void asociarCuentaEnClientes(ArrayList<Cliente>clientes){
+        for(Cliente cliente : clientes){
+            cliente.getCuentas().add(this);
+        }
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+    
+    public void eliminarCliente(String dni){
+        for(Cliente cliente : clientes){
+            if(cliente.getDNI().equals(dni)){
+                clientes.remove(cliente);
+            }
+        }
+    }
+
+    
+    
     
 }

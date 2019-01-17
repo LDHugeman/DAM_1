@@ -23,4 +23,20 @@ public class CuentaPlazo extends Cuenta{
         this.fechaVencimiento = fechaVencimiento;
         this.depositoPlazo = depositoPlazo;
     }
+
+    public float getIntereses() {
+        return intereses;
+    }
+
+    public String getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public long getDepositoPlazo() {
+        return depositoPlazo;
+    }
+    
+    public void setIntereses(float intereses){
+        this.intereses = intereses;
+    }
 }

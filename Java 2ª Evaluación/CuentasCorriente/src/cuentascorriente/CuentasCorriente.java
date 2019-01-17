@@ -33,14 +33,17 @@ public class CuentasCorriente {
                     Menu.menuAltas(lee, clientes, cuentas);
                     break;
                 case 2:
-
+                    Menu.menuModificacions(lee, clientes, cuentas);
                     break;
                 case 3:
-
+                    Menu.menuBaixas(lee, clientes, cuentas);
+                    break;
+                case 4:
+                    Menu.menuVisualizar(lee, clientes, cuentas);
                     break;
             }
         } while (opcionSeleccionada != 0);
 
     }
-    
+
 }

@@ -14,13 +14,12 @@ import obxetos.Cuenta;
  */
 public class Consultar {
     public static boolean existeCuenta(String numeroCuenta, ArrayList<Cuenta> cuentas){
-        boolean existe = false;
         for (Cuenta cuenta : cuentas){
-            if (cuenta.getNumero() == numeroCuenta){
-                existe = true;
+            if (cuenta.getNumero().equals(numeroCuenta)){
+                return true;
             }
         }
-        return existe;
+        return false;
     }
     
     public static Cuenta encontrarCuenta(String numeroCuenta, ArrayList<Cuenta> cuentas){
