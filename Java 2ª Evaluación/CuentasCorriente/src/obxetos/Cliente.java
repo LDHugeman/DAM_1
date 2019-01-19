@@ -15,21 +15,15 @@ public class Cliente {
     private String dni;
     private String nombre;
     private String direccion;
-    private ArrayList<Cuenta> cuentas;
     
     public Cliente(String dni, String nombre, String direccion){
         this.dni = dni;
         this.direccion = direccion;
         this.nombre = nombre;
-        cuentas = new ArrayList<>();
     }
     
     public String getDNI(){
         return dni;
-    }
-    
-    public ArrayList<Cuenta> getCuentas(){
-        return cuentas;
     }
 
     public String getNombre() {

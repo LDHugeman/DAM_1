@@ -17,11 +17,11 @@ public class Cuenta {
     private String sucursal;
     private ArrayList<Cliente> clientes;
     
-    public Cuenta(String numero, String sucursal, ArrayList<Cliente> clientes) throws IOException{
+    public Cuenta(String numero, String sucursal, Cliente primerCliente) throws IOException{
         this.numero = numero;
         this.sucursal = sucursal;
-        this.clientes = clientes;
-        asociarCuentaEnClientes(clientes);
+        this.clientes = new ArrayList<>();
+        clientes.add(primerCliente);
     }
     
     public String getNumero(){
@@ -30,12 +30,6 @@ public class Cuenta {
     
     public ArrayList<Cliente> getClientes(){
         return clientes;
-    }
-    
-    private void asociarCuentaEnClientes(ArrayList<Cliente>clientes){
-        for(Cliente cliente : clientes){
-            cliente.getCuentas().add(this);
-        }
     }
 
     public String getSucursal() {

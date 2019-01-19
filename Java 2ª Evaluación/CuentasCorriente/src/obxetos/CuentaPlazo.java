@@ -17,8 +17,8 @@ public class CuentaPlazo extends Cuenta{
     private String fechaVencimiento;
     private long depositoPlazo;
     
-    public CuentaPlazo(String numero, String sucursal, ArrayList<Cliente> clientes, float intereses, String fechaVencimiento, long depositoPlazo) throws IOException{
-        super(numero, sucursal, clientes);
+    public CuentaPlazo(String numero, String sucursal, Cliente primerCliente, float intereses, String fechaVencimiento, long depositoPlazo) throws IOException{
+        super(numero, sucursal, primerCliente);
         this.intereses = intereses;
         this.fechaVencimiento = fechaVencimiento;
         this.depositoPlazo = depositoPlazo;

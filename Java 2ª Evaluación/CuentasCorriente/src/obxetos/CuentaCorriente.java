@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class CuentaCorriente extends Cuenta{
     double saldoActual;
     
-    public CuentaCorriente(String numero, String sucursal, ArrayList<Cliente> clientes, double saldoActual) throws IOException{
-        super(numero, sucursal, clientes);
+    public CuentaCorriente(String numero, String sucursal, Cliente primerCliente, double saldoActual) throws IOException{
+        super(numero, sucursal, primerCliente);
         this.saldoActual = saldoActual;
     }
 

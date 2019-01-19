@@ -19,30 +19,14 @@ public class Menu {
 
     public static void menuAltas(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
-        ArrayList<Cliente> nuevosClientes;
         do {
             opcionSeleccionada = selecionarOpcionMenuAltas(lee);
             switch (opcionSeleccionada) {
                 case 1:
-                    System.out.println("Procederase a crear clientes para a conta");
-                    nuevosClientes = Crear.crearNovosClientes(lee, clientes);
-                    Cuenta cuentaCorrienteNueva = Crear.nuevaCuentaCorriente(lee, nuevosClientes);
-                    if (!Consultar.existeCuenta(cuentaCorrienteNueva.getNumero(), cuentas)) {
-                        cuentas.add(cuentaCorrienteNueva);
-                    } else {
-                        System.out.println("A conta que creou xa existia anteriormente e non se gardou");
-                    }
-
+                    Altas.altaCuentaCorriente(cuentas, clientes, lee);
                     break;
                 case 2:
-                    System.out.println("Procederase a crear clientes para a conta");
-                    nuevosClientes = Crear.crearNovosClientes(lee, clientes);
-                    Cuenta cuentePlazoNueva = Crear.nuevaCuentaPlazo(lee, nuevosClientes);
-                    if (!Consultar.existeCuenta(cuentePlazoNueva.getNumero(), cuentas)) {
-                        cuentas.add(cuentePlazoNueva);
-                    } else {
-                        System.out.println("A conta que creou xa existia anteriormente e non se gardou");
-                    }
+                    Altas.altaCuentaPlazo(cuentas, clientes, lee);
                     break;
             }
         } while (opcionSeleccionada != 0);

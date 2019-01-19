@@ -6,6 +6,7 @@
 package cuentascorriente;
 
 import java.util.ArrayList;
+import obxetos.Cliente;
 import obxetos.Cuenta;
 
 /**
@@ -14,12 +15,11 @@ import obxetos.Cuenta;
  */
 public class Consultar {
     public static boolean existeCuenta(String numeroCuenta, ArrayList<Cuenta> cuentas){
-        for (Cuenta cuenta : cuentas){
-            if (cuenta.getNumero().equals(numeroCuenta)){
-                return true;
-            }
-        }
-        return false;
+        return encontrarCuenta(numeroCuenta, cuentas) != null;
+    }
+    
+    public static boolean existeCliente(String dni, ArrayList<Cliente> clientes){
+        return encontrarCliente(clientes, dni) != null;
     }
     
     public static Cuenta encontrarCuenta(String numeroCuenta, ArrayList<Cuenta> cuentas){
@@ -31,4 +31,15 @@ public class Consultar {
         }
         return cuentaEncontrada;
     }
+    
+    public static Cliente encontrarCliente(ArrayList<Cliente>clientes, String dniBuscado){
+        Cliente clienteEncontrado = null;
+        for(Cliente cliente : clientes){
+            if(cliente.getDNI().equals(dniBuscado)){
+                clienteEncontrado = cliente;
+            }
+        }
+        return clienteEncontrado;
+    }
+  
 }
