@@ -9,7 +9,7 @@ public class ArrayBidimensionalPrecios2 {
 
     public static void main(String[] args) throws IOException{
         BufferedReader lee = new BufferedReader (new InputStreamReader(System.in));
-        float [][] precios = new float [3][];
+        float [][] precios = new float [3][]; //Habría que darlle dimension 2*
         String [] productos = new String [3];
         String [] copiaProductos = new String [3];
         String [] ciudades = new String [2];
@@ -34,8 +34,8 @@ public class ArrayBidimensionalPrecios2 {
                     Calcular.obtenerPrecioMedioPorProducto(precios, preciosMediosProducto, copiaPreciosMediosProducto);
                     Visualizar.verPrecioMedioPorProducto(productos, preciosMediosProducto);
                     break;
-                case 4:
-                    Ordenar.ordenarPorBurbujaAscendente(copiaProductos, copiaPreciosMediosProducto);
+                case 4:                   
+                    Ordenar.ordenarPorIntercambioAscendente(copiaProductos, copiaPreciosMediosProducto);
                     Visualizar.verProductosOrdenados(copiaProductos, copiaPreciosMediosProducto);
                     break;
                 case 5:

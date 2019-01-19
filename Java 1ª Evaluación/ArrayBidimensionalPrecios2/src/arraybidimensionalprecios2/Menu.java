@@ -9,7 +9,7 @@ public class Menu {
     
     public static byte seleccionarOpcion (BufferedReader lee)throws IOException{
         mostrarMenu();
-        return Byte.parseByte(lee.readLine());
+        return Byte.parseByte(lee.readLine());        
     }
     
     private static void mostrarMenu(){
