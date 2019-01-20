@@ -69,4 +69,27 @@ public class Consultar {
         return clientesAtopados;
     }
 
+    public static double obterSaldoDeCliente(String dni, ArrayList<Cuenta> cuentas) {
+        double saldo = 0;
+        for (Cuenta cuenta : cuentas) {
+            if (cuenta instanceof CuentaCorriente) {
+                for (Cliente cliente : cuenta.getClientes()) {
+                    if (cliente.getDNI().equals(dni)) {
+                        saldo += ((CuentaCorriente) cuenta).getSaldoActual();
+                    }
+                }
+            }
+
+        }
+        return saldo;
+    }
+    
+    public static double obterSaldoMedioDeClientes(ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas){
+        double saldoTotalClientes = 0;
+        for(Cliente cliente : clientes){
+            saldoTotalClientes += obterSaldoDeCliente(cliente.getDNI(), cuentas);
+        }
+        return saldoTotalClientes/ clientes.size();
+    }
+
 }

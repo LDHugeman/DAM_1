@@ -16,7 +16,7 @@ import obxetos.Cuenta;
  * @author Luis David
  */
 public class Menu {
-
+    
     public static void menuAltas(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
@@ -31,7 +31,7 @@ public class Menu {
             }
         } while (opcionSeleccionada != 0);
     }
-
+    
     public static void menuBaixas(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
@@ -41,10 +41,10 @@ public class Menu {
                     Bajas.eliminarClienteDeCuenta(Crear.pedirDni(lee), Crear.pedirNumeroCuenta(lee), cuentas);
                     break;
             }
-
+            
         } while (opcionSeleccionada != 0);
     }
-
+    
     public static void menuModificacions(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
@@ -61,23 +61,28 @@ public class Menu {
             }
         } while (opcionSeleccionada != 0);
     }
-
+    
     public static void menuVisualizar(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = selecionarOpcionMenuVisualizar(lee);
-            switch (opcionSeleccionada){
+            switch (opcionSeleccionada) {
                 case 1:
                     Visualizar.mostrarClientes(
                             Consultar.obterClientesContaMaiordeCantidade(cuentas, 200000));
                     break;
                 case 2:
-                    // Clientes en numeros vermellos
+                    Visualizar.mostrarClientes(
+                            Consultar.obterClientesNumerosVermellos(cuentas));
+                    break;
+                case 3:
+                    double saldoMedio = Consultar.obterSaldoMedioDeClientes(clientes, cuentas);
+                    System.out.println("O saldo medio dos clientes e: "+saldoMedio+" euros");
                     break;
             }
         } while (opcionSeleccionada != 0);
     }
-
+    
     public static byte selecionarOpcionMenuPrincipal(BufferedReader lee) throws IOException {
         System.out.println("------- MENU -------");
         System.out.println("1 - Altas");
@@ -88,7 +93,7 @@ public class Menu {
         System.out.println("Selecione a opcion");
         return Byte.parseByte(lee.readLine());
     }
-
+    
     private static byte selecionarOpcionMenuAltas(BufferedReader lee) throws IOException {
         System.out.println("------- ALTAS -------");
         System.out.println("1 - Conta Corrente");
@@ -97,7 +102,7 @@ public class Menu {
         System.out.println("Selecione a opcion");
         return Byte.parseByte(lee.readLine());
     }
-
+    
     private static byte selecionarOpcionMenuModificacions(BufferedReader lee) throws IOException {
         System.out.println("------- MODIFICACIONS -------");
         System.out.println("1 - Modificar interes de conta plazo");
@@ -105,7 +110,7 @@ public class Menu {
         System.out.println("Selecione a opcion");
         return Byte.parseByte(lee.readLine());
     }
-
+    
     private static byte selecionarOpcionMenuBaixas(BufferedReader lee) throws IOException {
         System.out.println("------- BAIXAS -------");
         System.out.println("1 - Conta Plazo");
@@ -113,7 +118,7 @@ public class Menu {
         System.out.println("Selecione a opcion");
         return Byte.parseByte(lee.readLine());
     }
-
+    
     private static byte selecionarOpcionMenuVisualizar(BufferedReader lee) throws IOException {
         System.out.println("------- VISUALIZAR -------");
         System.out.println("1 - Clientes con conta corrente > 200.000€");

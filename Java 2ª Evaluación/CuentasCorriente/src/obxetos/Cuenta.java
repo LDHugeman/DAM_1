@@ -40,6 +40,7 @@ public class Cuenta {
         for(Cliente cliente : clientes){
             if(cliente.getDNI().equals(dni)){
                 clientes.remove(cliente);
+                System.out.println("Eliminado cliente "+cliente.getDNI()+" de la cuenta "+this.getNumero());
             }
         }
     }
