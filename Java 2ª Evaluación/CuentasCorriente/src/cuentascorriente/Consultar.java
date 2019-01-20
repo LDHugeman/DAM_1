@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import obxetos.Cliente;
 import obxetos.Cuenta;
 import obxetos.CuentaCorriente;
-import obxetos.CuentaPlazo;
 
 /**
  *
