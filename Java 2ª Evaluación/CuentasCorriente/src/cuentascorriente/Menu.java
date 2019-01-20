@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import obxetos.Cliente;
 import obxetos.Cuenta;
+import obxetos.CuentaPlazo;
 
 /**
  *
@@ -51,12 +52,12 @@ public class Menu {
             opcionSeleccionada = selecionarOpcionMenuModificacions(lee);
             switch (opcionSeleccionada) {
                 case 1:
-                    System.out.println("Inserte nuevos intereses");
-                    float nuevosIntereses = Float.parseFloat(lee.readLine());
-                    Modificar.modificarIntereses(
-                            Crear.pedirDni(lee),
-                            Crear.pedirNumeroCuenta(lee),
-                            nuevosIntereses, cuentas);
+                    Cuenta cuentaModificada = Consultar.encontrarCuenta(Crear.pedirNumeroCuenta(lee), cuentas);
+                    if (cuentaModificada instanceof CuentaPlazo){
+                        Modificar.modificarIntereses((CuentaPlazo) cuentaModificada, lee);
+                    } else {
+                        System.out.println("La cuenta introducida no es una cuentaPlazo");
+                    }
                     break;
             }
         } while (opcionSeleccionada != 0);

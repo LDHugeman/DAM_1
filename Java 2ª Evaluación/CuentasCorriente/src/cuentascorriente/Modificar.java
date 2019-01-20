@@ -1,9 +1,8 @@
 
 package cuentascorriente;
 
-import java.util.ArrayList;
-import obxetos.Cliente;
-import obxetos.Cuenta;
+import java.io.BufferedReader;
+import java.io.IOException;
 import obxetos.CuentaPlazo;
 
 /**
@@ -12,18 +11,11 @@ import obxetos.CuentaPlazo;
  */
 public class Modificar {
 
-    public static void modificarIntereses(String dni, String numeroCuenta, float nuevosIntereses, ArrayList<Cuenta> cuentas) {
-        for (Cuenta cuenta : cuentas) {
-            if (cuenta.getNumero().equals(numeroCuenta)) {
-                if (cuenta instanceof CuentaPlazo) {
-                    for (Cliente cliente : cuenta.getClientes()) {
-                        if (cliente.getDNI().equals(dni)) {
-                            ((CuentaPlazo) cuenta).setIntereses(nuevosIntereses);
-                        }
-                    }
-                }
-
-            }
-        }
+    public static void modificarIntereses(CuentaPlazo cuenta, BufferedReader lee) throws IOException{
+        System.out.println("Los intereses actuales de la cuenta son: "+cuenta.getIntereses());
+        System.out.println("Inserte nuevo interes");
+        float nuevosIntereses = Float.parseFloat(lee.readLine());
+        cuenta.setIntereses(nuevosIntereses);
+        System.out.println("Los intereses de la cuenta "+cuenta.getNumero()+" acaban de ser modificados");
     }
 }

@@ -83,7 +83,7 @@ public class Consultar {
         }
         return saldo;
     }
-    
+
     public static double obterSaldoMedioDeClientes(ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas){
         double saldoTotalClientes = 0;
         for(Cliente cliente : clientes){
