@@ -55,6 +55,8 @@ public class Crear {
             if(Consultar.existeCuenta(nuevoNumero, cuentas)){
                 estaCuentaRepetida = true;
                 System.out.println("Ya existe una cuenta con ese numero");
+            }else {
+                estaCuentaRepetida = false;
             }
         } while (estaCuentaRepetida);
         return nuevoNumero;
@@ -68,6 +70,8 @@ public class Crear {
             if(Consultar.existeCliente(nuevoNumero, clientes)){
                 estaClienteRepetido = true;
                 System.out.println("Ya existe un cliente con ese dni");
+            } else {
+                estaClienteRepetido = false;
             }
         } while (estaClienteRepetido);
         return nuevoNumero;

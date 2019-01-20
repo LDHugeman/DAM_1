@@ -35,7 +35,7 @@ public class Menu {
     public static void menuBaixas(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
-            opcionSeleccionada = selecionarOpcionMenuAltas(lee);
+            opcionSeleccionada = selecionarOpcionMenuBaixas(lee);
             switch (opcionSeleccionada) {
                 case 1:
                     Bajas.eliminarClienteDeCuenta(Crear.pedirDni(lee), Crear.pedirNumeroCuenta(lee), cuentas);
@@ -48,12 +48,15 @@ public class Menu {
     public static void menuModificacions(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
-            opcionSeleccionada = selecionarOpcionMenuAltas(lee);
+            opcionSeleccionada = selecionarOpcionMenuModificacions(lee);
             switch (opcionSeleccionada) {
                 case 1:
                     System.out.println("Inserte nuevos intereses");
                     float nuevosIntereses = Float.parseFloat(lee.readLine());
-                    Modificar.modificarIntereses(Crear.pedirDni(lee), Crear.pedirNumeroCuenta(lee), nuevosIntereses, cuentas);
+                    Modificar.modificarIntereses(
+                            Crear.pedirDni(lee),
+                            Crear.pedirNumeroCuenta(lee),
+                            nuevosIntereses, cuentas);
                     break;
             }
         } while (opcionSeleccionada != 0);
@@ -62,8 +65,16 @@ public class Menu {
     public static void menuVisualizar(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
-            opcionSeleccionada = selecionarOpcionMenuAltas(lee);
-
+            opcionSeleccionada = selecionarOpcionMenuVisualizar(lee);
+            switch (opcionSeleccionada){
+                case 1:
+                    Visualizar.mostrarClientes(
+                            Consultar.obterClientesContaMaiordeCantidade(cuentas, 200000));
+                    break;
+                case 2:
+                    // Clientes en numeros vermellos
+                    break;
+            }
         } while (opcionSeleccionada != 0);
     }
 
