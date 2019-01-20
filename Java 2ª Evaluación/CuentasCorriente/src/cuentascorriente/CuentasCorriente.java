@@ -18,9 +18,6 @@ import obxetos.Cuenta;
  */
 public class CuentasCorriente {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) throws IOException {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<Cuenta> cuentas = new ArrayList<>();

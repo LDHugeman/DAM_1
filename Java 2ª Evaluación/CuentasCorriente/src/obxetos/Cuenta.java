@@ -39,8 +39,8 @@ public class Cuenta {
     public void eliminarCliente(String dni){
         for(Cliente cliente : clientes){
             if(cliente.getDNI().equals(dni)){
-                clientes.remove(cliente);
                 System.out.println("Eliminado cliente "+cliente.getDNI()+" de la cuenta "+this.getNumero());
+                clientes.remove(cliente);                
             }
         }
     }
