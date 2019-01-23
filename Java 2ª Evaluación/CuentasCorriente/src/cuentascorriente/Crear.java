@@ -3,11 +3,16 @@ package cuentascorriente;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import obxetos.Cliente;
 import obxetos.Cuenta;
 import obxetos.CuentaCorriente;
 import obxetos.CuentaPlazo;
+import obxetos.Movimiento;
 
 
 /**
@@ -32,12 +37,12 @@ public class Crear {
         return nuevoCliente;
     }
     
-    public static CuentaPlazo nuevaCuentaPlazo(String numeroCuenta, BufferedReader lee, Cliente primerCliente) throws IOException{
+    public static CuentaPlazo nuevaCuentaPlazo(String numeroCuenta, BufferedReader lee, Cliente primerCliente) throws IOException, ParseException{
         String sucursal = pedirSucursal(lee);
         System.out.println("Inserte intereses");
         float intereses = Float.parseFloat(lee.readLine());
-        System.out.println("Inserte fecha de vencemento");
-        String fechaVencimiento = lee.readLine();
+        System.out.println("Inserte fecha de vencemento");      
+        Date fechaVencimiento = obtenerFecha(lee.readLine());
         System.out.println("Inserte deposito plazo");
         long depositoPlazo = Long.parseLong(lee.readLine());
         return new CuentaPlazo(numeroCuenta, sucursal, primerCliente, intereses, fechaVencimiento, depositoPlazo);
@@ -103,5 +108,28 @@ public class Crear {
             }
         } while (opcion != 0);
         return novosClientes;
+    }
+    
+    public static Date obtenerFecha(String texto)throws ParseException{
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha =formatoFecha.parse(texto);
+        return fecha;
+    }
+    
+    public static Date obtenerHora(String texto)throws ParseException{
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("hh:mm");
+        Date hora =formatoFecha.parse(texto);
+        return hora;
+    }
+    
+    public static Movimiento crearMovimiento(String numeroCuenta, double saldoActual)throws IOException, ParseException{        
+        BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));     
+        System.out.printf("Fecha del movimiento: ");
+        Date fecha = obtenerFecha(lee.readLine());
+        System.out.printf("Hora del movimiento: ");
+        Date hora = obtenerHora(lee.readLine());
+        System.out.printf("Cantidad: ");
+        float cantidad = Float.parseFloat(lee.readLine());
+        return new Movimiento(numeroCuenta, fecha, hora, cantidad, saldoActual);
     }
 }

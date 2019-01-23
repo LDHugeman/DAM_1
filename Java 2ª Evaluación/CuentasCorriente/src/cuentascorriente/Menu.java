@@ -3,6 +3,7 @@ package cuentascorriente;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import obxetos.Cliente;
 import obxetos.Cuenta;
@@ -14,7 +15,7 @@ import obxetos.CuentaPlazo;
  */
 public class Menu {
     
-    public static void menuAltas(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
+    public static void menuAltas(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException, ParseException {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = selecionarOpcionMenuAltas(lee);
@@ -24,6 +25,9 @@ public class Menu {
                     break;
                 case 2:
                     Altas.altaCuentaPlazo(cuentas, clientes, lee);
+                    break;
+                case 3:
+                    Altas.altaMovimiento(lee, cuentas);
                     break;
             }
         } while (opcionSeleccionada != 0);
@@ -76,6 +80,9 @@ public class Menu {
                     double saldoMedio = Consultar.obterSaldoMedioDeClientes(clientes, cuentas);
                     System.out.println("O saldo medio dos clientes e: "+saldoMedio+" euros");
                     break;
+                case 4:
+                    Visualizar.mostrarCuentas(cuentas);
+                    break;
             }
         } while (opcionSeleccionada != 0);
     }
@@ -95,6 +102,7 @@ public class Menu {
         System.out.println("------- ALTAS -------");
         System.out.println("1 - Conta Corrente");
         System.out.println("2 - Conta Plazo");
+        System.out.println("3 - Nuevo Movimiento");
         System.out.println("0 - Atras");
         System.out.println("Selecione a opcion");
         return Byte.parseByte(lee.readLine());
@@ -121,6 +129,7 @@ public class Menu {
         System.out.println("1 - Clientes con conta corrente > 200.000€");
         System.out.println("2 - Clientes en numeros vermellos");
         System.out.println("3 - Saldo medio de clientes");
+        System.out.println("4 - Ver cuentas");
         System.out.println("0 - Atras");
         System.out.println("Selecione a opcion");
         return Byte.parseByte(lee.readLine());

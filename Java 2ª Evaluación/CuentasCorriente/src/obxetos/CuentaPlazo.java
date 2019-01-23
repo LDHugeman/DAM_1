@@ -2,6 +2,8 @@
 package obxetos;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -9,10 +11,10 @@ import java.io.IOException;
  */
 public class CuentaPlazo extends Cuenta{
     private float intereses;
-    private String fechaVencimiento;
+    private Date fechaVencimiento;
     private long depositoPlazo;
     
-    public CuentaPlazo(String numero, String sucursal, Cliente primerCliente, float intereses, String fechaVencimiento, long depositoPlazo) throws IOException{
+    public CuentaPlazo(String numero, String sucursal, Cliente primerCliente, float intereses, Date fechaVencimiento, long depositoPlazo) throws IOException{
         super(numero, sucursal, primerCliente);
         this.intereses = intereses;
         this.fechaVencimiento = fechaVencimiento;
@@ -23,8 +25,13 @@ public class CuentaPlazo extends Cuenta{
         return intereses;
     }
 
-    public String getFechaVencimiento() {
+    public Date getFechaVencimiento() {
         return fechaVencimiento;
+    }
+    
+    public String getStringFechaVencimieto(){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        return formatoFecha.format(fechaVencimiento);
     }
 
     public long getDepositoPlazo() {

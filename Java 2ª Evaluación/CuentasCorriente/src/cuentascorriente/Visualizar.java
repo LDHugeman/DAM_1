@@ -41,10 +41,9 @@ public class Visualizar {
             System.out.println("Saldo Actual: " + ((CuentaCorriente) cuenta).getSaldoActual());
         } else if (cuenta instanceof CuentaPlazo) {
             System.out.println("Deposito Plazo: " + ((CuentaPlazo) cuenta).getDepositoPlazo());
-            System.out.println("Fecha de vencimiento: " + ((CuentaPlazo) cuenta).getFechaVencimiento());
+            System.out.println("Fecha de vencimiento: " + ((CuentaPlazo) cuenta).getStringFechaVencimieto());
             System.out.println("Intereses: " + ((CuentaPlazo) cuenta).getIntereses());
         }
         System.out.println("---------------------------------------");
-
     }
 }

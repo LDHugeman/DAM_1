@@ -3,9 +3,11 @@ package cuentascorriente;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import obxetos.Cliente;
 import obxetos.Cuenta;
+import obxetos.CuentaCorriente;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Altas {
         cuentasGuardadas.add(nuevaCuenta);
     }
 
-    public static void altaCuentaPlazo(ArrayList<Cuenta> cuentasGuardadas, ArrayList<Cliente> clientesGuardados, BufferedReader lee) throws IOException {
+    public static void altaCuentaPlazo(ArrayList<Cuenta> cuentasGuardadas, ArrayList<Cliente> clientesGuardados, BufferedReader lee) throws IOException, ParseException {
         Cliente primerCliente = obtenerPrimerCliente(clientesGuardados, lee);
         String nuevoNumeroCuenta = Crear.pedirNuevoNumeroCuenta(cuentasGuardadas, lee);
         Cuenta nuevaCuenta = Crear.nuevaCuentaPlazo(nuevoNumeroCuenta, lee, primerCliente);
@@ -61,5 +63,16 @@ public class Altas {
 
         return clienteEscogido;
     }
-
+    
+    public static void altaMovimiento(BufferedReader lee, ArrayList<Cuenta> cuentas)throws IOException, ParseException{
+        String numeroCuenta = Crear.pedirNumeroCuenta(lee);
+        Cuenta cuenta = Consultar.encontrarCuenta(numeroCuenta, cuentas);
+        if(cuenta!=null){
+            if(cuenta instanceof CuentaCorriente){
+                ((CuentaCorriente) cuenta).agregarNuevoMovimiento();
+            }
+        }else{
+            System.err.printf("No existe esa cuenta. %n");
+        }
+    }
 }
