@@ -1,6 +1,8 @@
 
 package obxetos;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -10,15 +12,15 @@ import java.util.Date;
 public class Movimiento {
     private String numero;
     private Date fechaMovimiento;
-    private Date hora;
+    private Time hora;
     private float cantidad;
     private double saldoActual;
     
     
-    public Movimiento (String numero, Date fechaMovimiento, Date hora, float cantidad, double saldoActual){
+    public Movimiento (String numero, float cantidad, double saldoActual){
         this.numero = numero;
-        this.fechaMovimiento = fechaMovimiento;
-        this.hora = hora;
+        this.fechaMovimiento = new Date();
+        this.hora = new Time(fechaMovimiento.getTime()); 
         this.cantidad = cantidad;
         this.saldoActual = saldoActual;
     }
@@ -27,8 +29,18 @@ public class Movimiento {
         return numero;
     }
 
-    public Date getFechaMovimiento() {
+    public Date getFechaMovimiento() {      
         return fechaMovimiento;
+    }
+    
+    public String getStringFechaMovimiento(){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        return formatoFecha.format(fechaMovimiento);
+    }
+    
+    public String getStringHora(){
+        SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm");
+        return formatoHora.format(hora);
     }
 
     public Date getHora() {

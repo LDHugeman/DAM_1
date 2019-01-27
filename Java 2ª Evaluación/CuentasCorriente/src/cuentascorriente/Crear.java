@@ -4,6 +4,7 @@ package cuentascorriente;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class Crear {
         String sucursal = pedirSucursal(lee);
         System.out.println("Inserte intereses");
         float intereses = Float.parseFloat(lee.readLine());
-        System.out.println("Inserte fecha de vencemento");      
+        System.out.println("Inserte fecha de vencemento (dd/MM/yyyy)");      
         Date fechaVencimiento = obtenerFecha(lee.readLine());
         System.out.println("Inserte deposito plazo");
         long depositoPlazo = Long.parseLong(lee.readLine());
@@ -123,13 +124,19 @@ public class Crear {
     }
     
     public static Movimiento crearMovimiento(String numeroCuenta, double saldoActual)throws IOException, ParseException{        
-        BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));     
-        System.out.printf("Fecha del movimiento: ");
-        Date fecha = obtenerFecha(lee.readLine());
-        System.out.printf("Hora del movimiento: ");
-        Date hora = obtenerHora(lee.readLine());
+        BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
+        byte tipoMovimiento= Menu.menuTipoMovimiento(lee);
+        float cantidad = obtenerCantidadMovimiento(lee, tipoMovimiento);             
+        return new Movimiento(numeroCuenta, cantidad, saldoActual);
+    }
+    
+    public static float obtenerCantidadMovimiento (BufferedReader lee, byte tipoMovimiento)throws IOException{
         System.out.printf("Cantidad: ");
-        float cantidad = Float.parseFloat(lee.readLine());
-        return new Movimiento(numeroCuenta, fecha, hora, cantidad, saldoActual);
+        float cantidad= Float.parseFloat(lee.readLine());
+        if(tipoMovimiento==1){
+            return cantidad;
+        }else{
+            return cantidad - cantidad*2;            
+        }
     }
 }

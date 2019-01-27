@@ -22,6 +22,10 @@ public class CuentaCorriente extends Cuenta{
     public double getSaldoActual() {
         return saldoActual;
     }
+
+    public ArrayList<Movimiento> getMovimientos() {
+        return movimientos;
+    }        
     
     public void agregarNuevoMovimiento() throws IOException, ParseException{
         Movimiento nuevoMovimiento = Crear.crearMovimiento(super.getNumero(), saldoActual);

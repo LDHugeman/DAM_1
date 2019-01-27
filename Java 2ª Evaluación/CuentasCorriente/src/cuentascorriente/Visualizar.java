@@ -6,6 +6,7 @@ import obxetos.Cliente;
 import obxetos.Cuenta;
 import obxetos.CuentaCorriente;
 import obxetos.CuentaPlazo;
+import obxetos.Movimiento;
 
 /**
  *
@@ -46,4 +47,20 @@ public class Visualizar {
         }
         System.out.println("---------------------------------------");
     }
+    
+    private static void mostrarMovimiento(Movimiento movimiento){
+        System.out.println("-------------------------------------------");
+        System.out.println("Número de cuenta: "+ movimiento.getNumero());
+        System.out.println("Fecha del movimiento: "+ movimiento.getStringFechaMovimiento());
+        System.out.println("Hora del movimiento: "+ movimiento.getStringHora());
+        System.out.println("Cantidad a ingresar o retirar: "+ movimiento.getCantidad());
+        System.out.println("-------------------------------------------");
+    } 
+    
+    public static void mostrarMovimientos(ArrayList<Movimiento> movimientos){
+        for(Movimiento movimiento : movimientos){
+            mostrarMovimiento(movimiento);
+        }
+    }
+   
 }

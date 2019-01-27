@@ -8,7 +8,7 @@ import java.util.Iterator;
  *
  * @author Luis David
  */
-public class Cuenta {
+public abstract class Cuenta {
 
     private String numero;
     private String sucursal;

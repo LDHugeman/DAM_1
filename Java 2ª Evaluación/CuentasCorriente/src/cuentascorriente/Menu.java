@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import obxetos.Cliente;
 import obxetos.Cuenta;
 import obxetos.CuentaPlazo;
+import obxetos.Movimiento;
 
 /**
  *
@@ -46,6 +47,14 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
     
+    public static byte menuTipoMovimiento(BufferedReader lee) throws IOException {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarTipoMovimiento(lee);                                                            
+        } while (opcionSeleccionada !=1 && opcionSeleccionada!=2);
+        return opcionSeleccionada;
+    }
+    
     public static void menuModificacions(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
         byte opcionSeleccionada = 0;
         do {
@@ -63,7 +72,7 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
     
-    public static void menuVisualizar(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException {
+    public static void menuVisualizar(BufferedReader lee, ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) throws IOException, ParseException{
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = selecionarOpcionMenuVisualizar(lee);
@@ -82,6 +91,11 @@ public class Menu {
                     break;
                 case 4:
                     Visualizar.mostrarCuentas(cuentas);
+                    break;
+                case 5:
+                    ArrayList<Movimiento> movimientos =Consultar.obtenerMovimientosCuenta(lee, cuentas);
+                    ArrayList<Movimiento> movimientosEntreFechas = Consultar.obtenerMovimientosEntreFechas(movimientos, lee);
+                    Visualizar.mostrarMovimientos(movimientosEntreFechas);
                     break;
             }
         } while (opcionSeleccionada != 0);
@@ -130,8 +144,17 @@ public class Menu {
         System.out.println("2 - Clientes en numeros vermellos");
         System.out.println("3 - Saldo medio de clientes");
         System.out.println("4 - Ver cuentas");
+        System.out.println("5 - Ver movimientos de una cuenta");
         System.out.println("0 - Atras");
         System.out.println("Selecione a opcion");
+        return Byte.parseByte(lee.readLine());
+    }
+    
+    public static byte seleccionarTipoMovimiento(BufferedReader lee)throws IOException{
+        System.out.printf("Elija el tipo de movimiento: %n"
+                + "1 - Ingreso %n"
+                + "2 - Retirada %n"
+                + "Movimiento: ");
         return Byte.parseByte(lee.readLine());
     }
 }

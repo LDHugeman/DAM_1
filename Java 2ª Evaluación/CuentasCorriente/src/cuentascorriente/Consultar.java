@@ -1,10 +1,14 @@
-
 package cuentascorriente;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import obxetos.Cliente;
 import obxetos.Cuenta;
 import obxetos.CuentaCorriente;
+import obxetos.Movimiento;
 
 /**
  *
@@ -79,12 +83,40 @@ public class Consultar {
         return saldo;
     }
 
-    public static double obterSaldoMedioDeClientes(ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas){
+    public static double obterSaldoMedioDeClientes(ArrayList<Cliente> clientes, ArrayList<Cuenta> cuentas) {
         double saldoTotalClientes = 0;
-        for(Cliente cliente : clientes){
+        for (Cliente cliente : clientes) {
             saldoTotalClientes += obterSaldoDeCliente(cliente.getDNI(), cuentas);
         }
-        return saldoTotalClientes/ clientes.size();
+        return saldoTotalClientes / clientes.size();
     }
 
+    public static ArrayList<Movimiento> obtenerMovimientosCuenta(BufferedReader lee, ArrayList<Cuenta> cuentas) throws IOException {
+        String numeroCuenta = Crear.pedirNumeroCuenta(lee);
+        Cuenta cuenta = encontrarCuenta(numeroCuenta, cuentas);
+        if (cuenta != null) {
+            if (cuenta instanceof CuentaCorriente) {
+                return ((CuentaCorriente) cuenta).getMovimientos();
+            }else{
+                System.err.printf("No es una cuenta corriente.%n");
+            }
+        }else{
+            System.err.printf("No existe esa cuenta %n");
+        }
+        return null;
+    }
+    
+    public static ArrayList<Movimiento> obtenerMovimientosEntreFechas(ArrayList<Movimiento> movimientos, BufferedReader lee)throws IOException, ParseException{
+        System.out.printf("Fecha inicial: ");     
+        Date fechaInicial = Crear.obtenerFecha(lee.readLine());
+        System.out.printf("Fecha final: ");     
+        Date fechaFinal = Crear.obtenerFecha(lee.readLine());
+        ArrayList<Movimiento> movimientosFiltrados = new ArrayList<>();
+        for(Movimiento movimiento:movimientos){
+            if(movimiento.getFechaMovimiento().getTime()>fechaInicial.getTime() && movimiento.getFechaMovimiento().getTime()<fechaFinal.getTime()){
+                movimientosFiltrados.add(movimiento);
+            }
+        }
+        return movimientosFiltrados;       
+    }
 }
