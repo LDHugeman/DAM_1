@@ -133,7 +133,7 @@ public class Crear {
         float cantidad = obtenerCantidadMovimiento(lee, tipoMovimiento);
         return new Movimiento(numeroCuenta, cantidad, saldoActual);
     }
-
+    
     public static float obtenerCantidadMovimiento(BufferedReader lee, byte tipoMovimiento) throws IOException {
         System.out.printf("Cantidad: ");
         float cantidad = Float.parseFloat(lee.readLine());

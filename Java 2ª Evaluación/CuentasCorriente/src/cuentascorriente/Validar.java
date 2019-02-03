@@ -13,7 +13,7 @@ public class Validar {
                 dniEsValido = false;
                 throw new Excepciones("Longitud errónea");
             }
-            if(texto.substring(0,8).matches("[0-9]*")){
+            if(texto.substring(0,8).matches("[0-9]*")){ //El * es para que se compruebe 9 veces, (0,8) posicion 7 dato 8
                 dniEsValido = true;
             }else{
                 dniEsValido=false;
