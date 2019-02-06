@@ -18,7 +18,7 @@ public class Validar {
             }
             if (!texto.substring(0, 8).matches("[0-9]*")) {
                 dniEsValido = false;
-                throw new Excepciones("Letra errónea");
+                throw new Excepciones("Número erróneo");
             }
             if (!texto.substring(8).matches("[A-Za-z]")){
                 dniEsValido = false;
