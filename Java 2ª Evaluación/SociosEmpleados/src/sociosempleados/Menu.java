@@ -26,7 +26,7 @@ public class Menu {
                         Socio socio = Crear.crearNuevoSocio(lee, empleados);
                         Altas.altaNuevoEmpleado(lee, socio, empleados);
                         break;
-                    case 0:
+                    case 0:                      
                         break;
                     default:
                         System.err.printf("Esa opción no existe %n");
@@ -40,7 +40,7 @@ public class Menu {
         System.out.println("[1] Altas");
         System.out.println("[2] Bajas");
         System.out.println("[3] Modificar sueldo y retención");
-        System.out.println("[4] Visualizar Jefes");
+        System.out.println("[4] Visualizar Jefes y Socios");
         System.out.println("[0] Salir");
         System.out.printf("Seleccione una opción: ");
         return Byte.parseByte(lee.readLine());

@@ -29,4 +29,8 @@ public class Socio extends Empleado implements I_Dividendos{
         double sueldo = super.getSueldo()-retencion;
         return sueldo + dividendo();
     }  
+
+    public int getParticipaciones() {
+        return participaciones;
+    }    
 }

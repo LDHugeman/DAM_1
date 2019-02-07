@@ -20,7 +20,7 @@ public class SociosEmpleados {
             opcionSeleccionada = Menu.seleccionarOpcionMenuPrincipal(lee);
             switch (opcionSeleccionada) {
                 case 1:
-                    Menu.menuAltas(lee, empleados);
+                    Menu.menuAltas(lee, empleados);                   
                     break;
                 case 2:
                     Empleado empleadoEncontradoPorDni = Consultar.buscarEmpleadoPorDni(Crear.pedirDni(lee), empleados);
@@ -42,7 +42,10 @@ public class SociosEmpleados {
                     }
                     break;
                 case 4:
+                    System.out.printf("------------- JEFES -------------%n");
                     Visualizar.verJefes(empleados);
+                    System.out.printf("------------- SOCIOS -------------%n");
+                    Visualizar.verSocios(empleados);
                     break;
                 case 0:
                     break;
