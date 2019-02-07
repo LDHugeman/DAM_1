@@ -69,7 +69,7 @@ public class Consultar {
         if (dni.compareToIgnoreCase(empleados.get(low).getDni()) == 0) {
             return empleados.get(low);
         } else {
-            System.out.printf("No se ha encontrado el empleado con dni %s %n", dni);
+            System.err.printf("No se ha encontrado el empleado con dni %s %n", dni);
         }
         return null;
     }

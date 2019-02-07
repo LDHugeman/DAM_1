@@ -35,8 +35,8 @@ public class SociosEmpleados {
                     if(empleadoEncontrado!=null){
                         Modificar.sueldoYRetencion(empleadoEncontrado, lee);
                         System.out.printf("Sueldo y retención del empleado %s modificados. %n", empleadoEncontrado.getNombre());
-                        System.out.printf("El nuevo sueldo es %d %n", empleadoEncontrado.getSueldo());
-                        System.out.printf("El nuevo porcentaje de retención es %d %n",empleadoEncontrado.getPorcentajeRetencion());
+                        System.out.printf("El nuevo sueldo es %d. %n", empleadoEncontrado.getSueldo());
+                        System.out.printf("El nuevo porcentaje de retención es %d. %n",empleadoEncontrado.getPorcentajeRetencion());
                     }else{
                         System.err.printf("No se ha encontrado al empleado %s %n", nombreBusqueda);
                     }
