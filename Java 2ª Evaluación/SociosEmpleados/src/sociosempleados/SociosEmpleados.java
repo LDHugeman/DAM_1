@@ -48,7 +48,7 @@ public class SociosEmpleados {
                     break;
                 default:
                     System.err.printf("Esa opción no existe %n");
-            }
+                    }
         } while (opcionSeleccionada != 0);
     }
 
