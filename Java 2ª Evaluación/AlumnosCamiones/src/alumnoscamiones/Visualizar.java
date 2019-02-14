@@ -18,6 +18,7 @@ public class Visualizar {
         System.out.println("Nombre: "+alumno.getNombre());
         System.out.println("Dni: "+alumno.getDni());
         System.out.println("Ciclo: "+alumno.getCiclo());
+        System.out.println("Nota media: "+alumno.calcular());
         System.out.println("--- Asignaturas ---");
         mostrarAsignaturas(alumno.getAsignaturas());
         System.out.println("-------------------------------------------");

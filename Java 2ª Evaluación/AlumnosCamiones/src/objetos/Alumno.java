@@ -23,7 +23,15 @@ public class Alumno implements I_Nexo{
 
     @Override
     public float calcular() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float sumanotas=0;
+        if(asignaturas.size()>0){
+            for(Asignatura asignatura:asignaturas){
+            sumanotas+=asignatura.getNota();
+        }
+        sumanotas=sumanotas/asignaturas.size();
+            
+        }
+        return sumanotas;
     }
 
     public String getNombre() {
