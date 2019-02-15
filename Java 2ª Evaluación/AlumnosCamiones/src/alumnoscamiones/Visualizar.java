@@ -1,7 +1,6 @@
 
 package alumnoscamiones;
 
-import interfaces.I_Nexo;
 import java.util.ArrayList;
 import objetos.Alumno;
 import objetos.Asignatura;
