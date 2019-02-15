@@ -45,9 +45,13 @@ public class Crear {
     public static Asignatura crearNuevaAsignatura(BufferedReader lee) throws IOException{
         System.out.printf("Nombre: ");
         String nombre = lee.readLine();
-        System.out.printf("Nota: ");
-        Float nota = Float.parseFloat(lee.readLine());
-        return new Asignatura(nombre, nota);
+        System.out.printf("Nota 1: ");
+        Float nota1 = Float.parseFloat(lee.readLine());
+        System.out.printf("Nota 2: ");
+        Float nota2 = Float.parseFloat(lee.readLine());
+        System.out.printf("Nota 3: ");
+        Float nota3 = Float.parseFloat(lee.readLine());
+        return new Asignatura(nombre, nota1,nota2,nota3);
     }
     public static String pedirNuevoDni(BufferedReader lee, ArrayList<I_Nexo> listado) throws IOException {
         String dni = "";

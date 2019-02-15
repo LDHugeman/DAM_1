@@ -26,10 +26,9 @@ public class Alumno implements I_Nexo{
         float sumanotas=0;
         if(asignaturas.size()>0){
             for(Asignatura asignatura:asignaturas){
-            sumanotas+=asignatura.getNota();
+            sumanotas+=asignatura.getNotaMediaAsignatura();
         }
-        sumanotas=sumanotas/asignaturas.size();
-            
+        sumanotas=sumanotas/asignaturas.size();        
         }
         return sumanotas;
     }

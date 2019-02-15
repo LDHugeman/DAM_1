@@ -27,7 +27,10 @@ public class Visualizar {
     public static void mostrarAsignatura(Asignatura asignatura){
         System.out.println("---------------------");
         System.out.println("Nombre: "+asignatura.getNombre());
-        System.out.println("Nota: "+asignatura.getNota());
+        System.out.println("Nota 1: "+asignatura.getNota1());
+        System.out.println("Nota 2: "+asignatura.getNota2());
+        System.out.println("Nota 3: "+asignatura.getNota3());
+        System.out.println("Nota Media de la asignatura: "+ asignatura.getNotaMediaAsignatura());
         System.out.println("---------------------");
     }
     

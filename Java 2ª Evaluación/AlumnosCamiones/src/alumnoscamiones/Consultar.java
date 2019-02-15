@@ -64,7 +64,7 @@ public class Consultar {
         for (Alumno alumno : alumnos) {
             int numeroAsignaturasSuspensas = 0;
             for (Asignatura asignatura : alumno.getAsignaturas()) {
-                if (asignatura.getNota()<5) {
+                if (asignatura.getNotaMediaAsignatura()<5) {
                     numeroAsignaturasSuspensas++;                   
                 }
             }
