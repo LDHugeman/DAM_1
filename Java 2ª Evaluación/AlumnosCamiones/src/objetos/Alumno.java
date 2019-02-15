@@ -23,14 +23,14 @@ public class Alumno implements I_Nexo{
 
     @Override
     public float calcular() {
-        float sumanotas=0;
+        float sumaNotas=0;
         if(asignaturas.size()>0){
             for(Asignatura asignatura:asignaturas){
-            sumanotas+=asignatura.getNotaMediaAsignatura();
+            sumaNotas+=asignatura.getNotaMediaAsignatura();
         }
-        sumanotas=sumanotas/asignaturas.size();        
+        sumaNotas=sumaNotas/asignaturas.size();        
         }
-        return sumanotas;
+        return sumaNotas;
     }
 
     public String getNombre() {
