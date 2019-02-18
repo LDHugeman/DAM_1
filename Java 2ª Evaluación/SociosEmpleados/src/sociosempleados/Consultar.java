@@ -12,7 +12,7 @@ public class Consultar {
     public static Empleado encontrarEmpleadoPorDni(String dni, ArrayList<Empleado> empleados){
         Empleado empleadoEncontrado= null;
         for(Empleado empleado:empleados){
-            if(empleado.getDni().equals(dni)){
+            if(empleado.getDni().equalsIgnoreCase(dni)){
                 empleadoEncontrado=empleado;
             }
         }
@@ -26,7 +26,7 @@ public class Consultar {
     public static Empleado encontrarEmpleadoPorNombre(String nombre, ArrayList<Empleado> empleados){
         Empleado empleadoEncontrado= null;
         for(Empleado empleado:empleados){
-            if(empleado.getNombre().equals(nombre)){
+            if(empleado.getNombre().equalsIgnoreCase(nombre)){
                 empleadoEncontrado=empleado;
             }
         }
