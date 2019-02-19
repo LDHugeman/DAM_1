@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
 import objetos.Coche;
+import objetos.CocheAlquiler;
 import objetos.Empresa;
 
 /**
@@ -29,6 +30,15 @@ public class CochesNuevosUsados {
                     Menu.menuBajas(lee, coches);
                     break;
                 case 3:
+                    System.out.printf("--- Introduzca el código del coche en alquiler al que desea modificar el precio por día ---%n");
+                    String codigo = Crear.pedirCodigoExistente(lee, coches);
+                    CocheAlquiler coche = Consultar.encontrarCocheAlquilerPorCodigo(codigo, coches);
+                    if(coche!=null){
+                        Modificar.modificarPrecioDiaAlquiler(coche, lee);
+                        System.out.printf("Precio por día del coche con código %s modificado.%n",((Coche)coche).getCodigo());
+                    }else{
+                        System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");
+                    }
                     break;
                 case 4:
                     break;

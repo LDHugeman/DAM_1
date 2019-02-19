@@ -21,6 +21,10 @@ public class CocheAlquiler extends Coche{
         return precioDia;
     }
 
+    public void setPrecioDia(float precioDia) {
+        this.precioDia = precioDia;
+    }
+
     public ArrayList<Uso> getUsos() {
         return usos;
     }
@@ -28,5 +32,9 @@ public class CocheAlquiler extends Coche{
     public void addUso(Uso uso){
         uso.calcularImporte(precioDia);
         usos.add(uso);
+    }
+    
+    public float getImporte(Uso uso){
+        return uso.calcularImporte(precioDia);
     }
 }

@@ -56,4 +56,6 @@ public class Consultar {
     public static boolean existeCocheAlquilerPorCodigo(String codigo, ArrayList<Coche> coches) {
         return encontrarCocheAlquilerPorCodigo(codigo, coches) != null;
     }
+    
+    public static 
 }
