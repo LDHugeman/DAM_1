@@ -40,8 +40,8 @@ public class Visualizar {
 
     public static void mostrarUso(Uso uso) {
         System.out.println("-------------------------------------------");
-        System.out.println("Fecha de alquiler: " + uso.getFechaAlquiler());
-        System.out.println("Fecha de devolución: " + uso.getFechaDevolucion());
+        System.out.println("Fecha de alquiler: " + Crear.getStringFecha(uso.getFechaAlquiler()));
+        System.out.println("Fecha de devolución: " + Crear.getStringFecha(uso.getFechaDevolucion()));
         System.out.println("Importe: " + uso.getImporte());
         System.out.println("-------------------------------------------");
     }

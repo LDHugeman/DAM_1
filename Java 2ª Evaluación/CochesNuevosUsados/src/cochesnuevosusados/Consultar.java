@@ -66,14 +66,17 @@ public class Consultar {
     public static ArrayList<Uso> obtenerUsosEntreDosFechas(BufferedReader lee, CocheAlquiler coche)throws IOException, ParseException{
         ArrayList<Uso> usosEncontrados = new ArrayList<>();
         System.out.printf("--- Introduzca dos fechas entre las que desea ver usos ---%n");
-        System.out.printf("Primer fecha: ");
+        System.out.printf("Primer fecha(dd/MM/yyyy): ");
         Date primerFecha = obtenerFecha(lee.readLine());
-        System.out.printf("Segunda fecha: ");                              
+        System.out.printf("Segunda fecha(dd/MM/yyyy): ");                              
         Date segundaFecha = obtenerFecha(lee.readLine());  
         for(Uso uso:coche.getUsos()){
             if(estaEnRangoDeFechas(primerFecha, segundaFecha, uso)){
                 usosEncontrados.add(uso);
             }            
+        }
+        if(usosEncontrados.isEmpty()){
+            System.err.printf("No existe ningún uso entre dos fechas. %n");
         }
         return usosEncontrados;
     }  

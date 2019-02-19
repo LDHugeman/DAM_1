@@ -39,10 +39,10 @@ public class Menu {
                             Uso uso = Crear.nuevoUso(lee);
                             ((CocheAlquiler) coche).addUso(uso);
                         } else {
-                            System.out.printf("Ese código no corresponde a un coche de alquiler %n");
+                            System.err.printf("Ese código no corresponde a un coche de alquiler %n");
                         }
                     } else {
-                        System.out.printf("No existe ningún coche con ese código.%n");
+                        System.err.printf("No existe ningún coche con ese código.%n");
                     }
                     break;
                 case 0:
@@ -88,6 +88,7 @@ public class Menu {
                     String codigo = Crear.pedirCodigoExistente(lee, coches);
                     CocheAlquiler coche = Consultar.encontrarCocheAlquilerPorCodigo(codigo, coches);
                     if (coche != null) {
+                        Visualizar.mostrarCocheAlquiler(coche);
                         Visualizar.mostrarUsos(Consultar.obtenerUsosEntreDosFechas(lee, coche));
                     } else {
                         System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");

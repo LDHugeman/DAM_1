@@ -52,9 +52,9 @@ public class Crear {
     }
 
     public static Uso nuevoUso(BufferedReader lee) throws IOException, ParseException {
-        System.out.printf("Fecha de alquiler: ");
+        System.out.printf("Fecha de alquiler(dd/MM/yyyy): ");
         Date fechaAlquiler = obtenerFecha(lee.readLine());
-        System.out.printf("Fecha de devolución: ");
+        System.out.printf("Fecha de devolución(dd/MM/yyyy): ");
         Date fechaDevolucion = obtenerFecha(lee.readLine());
         return new Uso(fechaAlquiler, fechaDevolucion);
     }
@@ -63,6 +63,11 @@ public class Crear {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha = formatoFecha.parse(texto);
         return fecha;
+    }
+    
+    public static String getStringFecha(Date fecha){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");      
+        return formatoFecha.format(fecha);
     }
 
     public static String pedirNuevoCodigoCocheVenta(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
