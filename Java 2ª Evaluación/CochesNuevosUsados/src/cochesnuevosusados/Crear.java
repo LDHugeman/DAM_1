@@ -19,6 +19,7 @@ import objetos.Uso;
 public class Crear {
 
     public static Empresa nuevaEmpresa(BufferedReader lee) throws IOException {
+        System.out.println(" --- Introduzca los datos de  la empresa ---");
         System.out.printf("Cif: ");
         String cif = lee.readLine();
         System.out.printf("Nombre: ");
@@ -29,7 +30,7 @@ public class Crear {
     }
 
     public static CocheVenta nuevoCocheVenta(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
-        String codigo = pedirNuevoCodigo(lee, coches);
+        String codigo = pedirNuevoCodigoCocheVenta(lee, coches);
         System.out.printf("Marca: ");
         String marca = lee.readLine();
         System.out.printf("Modelo: ");
@@ -40,7 +41,7 @@ public class Crear {
     }
 
     public static CocheAlquiler nuevoCocheAlquiler(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
-        String codigo = pedirNuevoCodigo(lee, coches);
+        String codigo = pedirNuevoCodigoCocheAlquiler(lee, coches);
         System.out.printf("Marca: ");
         String marca = lee.readLine();
         System.out.printf("Modelo: ");
@@ -64,12 +65,21 @@ public class Crear {
         return fecha;
     }
 
-    public static String pedirNuevoCodigo(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
+    public static String pedirNuevoCodigoCocheVenta(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
         String codigo = "";
         do {
             System.out.printf("Código: ");
             codigo = lee.readLine();
-        } while (!Validar.esCodigoCocheValido(codigo, coches));
+        } while (!Validar.esCodigoCocheVentaValido(codigo, coches));
+        return codigo;
+    }
+    
+    public static String pedirNuevoCodigoCocheAlquiler(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
+        String codigo = "";
+        do {
+            System.out.printf("Código: ");
+            codigo = lee.readLine();
+        } while (!Validar.esCodigoCocheAlquilerValido(codigo, coches));
         return codigo;
     }
 

@@ -17,7 +17,7 @@ public class CochesNuevosUsados {
 
     public static void main(String[] args) throws IOException, ParseException{
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
-        byte opcionSeleccionada = 0;
+        byte opcionSeleccionada = 0;     
         Empresa empresa = Crear.nuevaEmpresa(lee);
         ArrayList <Coche> coches = empresa.getCoches();
         do{
