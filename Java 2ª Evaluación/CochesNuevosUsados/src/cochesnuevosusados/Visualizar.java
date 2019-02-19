@@ -38,17 +38,17 @@ public class Visualizar {
         System.out.println("-------------------------------------------");
     }
 
-    public static void mostrarUso(Uso uso, CocheAlquiler coche) {
+    public static void mostrarUso(Uso uso) {
         System.out.println("-------------------------------------------");
         System.out.println("Fecha de alquiler: " + uso.getFechaAlquiler());
         System.out.println("Fecha de devolución: " + uso.getFechaDevolucion());
-        System.out.println("Importe: " + coche.getImporte(uso));
+        System.out.println("Importe: " + uso.getImporte());
         System.out.println("-------------------------------------------");
     }
 
-    public static void mostrarUsos(CocheAlquiler coche) {
-        for (Uso uso : ((CocheAlquiler) coche).getUsos()) {
-            mostrarUso(uso, (CocheAlquiler) coche);
+    public static void mostrarUsos(ArrayList<Uso> usos) {
+        for (Uso uso :usos) {
+            mostrarUso(uso);
         }
     }
 }

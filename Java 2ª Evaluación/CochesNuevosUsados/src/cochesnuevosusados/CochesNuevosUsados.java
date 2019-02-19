@@ -41,6 +41,7 @@ public class CochesNuevosUsados {
                     }
                     break;
                 case 4:
+                    Menu.menuVisualizar(lee, coches);
                     break;
                 case 0:
                     break;

@@ -1,9 +1,15 @@
 package cochesnuevosusados;
 
+import static cochesnuevosusados.Crear.obtenerFecha;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import objetos.Coche;
 import objetos.CocheAlquiler;
 import objetos.CocheVenta;
+import objetos.Uso;
 
 /**
  *
@@ -57,5 +63,25 @@ public class Consultar {
         return encontrarCocheAlquilerPorCodigo(codigo, coches) != null;
     }
     
-    public static 
+    public static ArrayList<Uso> obtenerUsosEntreDosFechas(BufferedReader lee, CocheAlquiler coche)throws IOException, ParseException{
+        ArrayList<Uso> usosEncontrados = new ArrayList<>();
+        System.out.printf("--- Introduzca dos fechas entre las que desea ver usos ---%n");
+        System.out.printf("Primer fecha: ");
+        Date primerFecha = obtenerFecha(lee.readLine());
+        System.out.printf("Segunda fecha: ");                              
+        Date segundaFecha = obtenerFecha(lee.readLine());  
+        for(Uso uso:coche.getUsos()){
+            if(estaEnRangoDeFechas(primerFecha, segundaFecha, uso)){
+                usosEncontrados.add(uso);
+            }            
+        }
+        return usosEncontrados;
+    }  
+    
+    public static boolean estaEnRangoDeFechas(Date primerFecha, Date segundaFecha, Uso uso){
+        long fechaUso = uso.getFechaAlquiler().getTime();
+        long primerFechaMs = primerFecha.getTime();
+        long segundaFechaMs = segundaFecha.getTime();
+        return fechaUso> primerFechaMs && fechaUso < segundaFechaMs;
+    }
 }

@@ -86,18 +86,12 @@ public class Menu {
                     break;
                 case 2:
                     String codigo = Crear.pedirCodigoExistente(lee, coches);
-
                     CocheAlquiler coche = Consultar.encontrarCocheAlquilerPorCodigo(codigo, coches);
                     if (coche != null) {
-                        System.out.printf("--- Introduzca dos fechas entre las que desea ver usos ---%n");
-                        System.out.printf("Primer fecha: ");
-                        Date primerFecha = obtenerFecha(lee.readLine());
-                        System.out.printf("Segunda fecha: ");
-                        Date segundaFecha = obtenerFecha(lee.readLine());
+                        Visualizar.mostrarUsos(Consultar.obtenerUsosEntreDosFechas(lee, coche));
                     } else {
                         System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");
                     }
-
                     break;
                 case 0:
                     break;

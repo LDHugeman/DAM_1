@@ -33,8 +33,4 @@ public class CocheAlquiler extends Coche{
         uso.calcularImporte(precioDia);
         usos.add(uso);
     }
-    
-    public float getImporte(Uso uso){
-        return uso.calcularImporte(precioDia);
-    }
 }

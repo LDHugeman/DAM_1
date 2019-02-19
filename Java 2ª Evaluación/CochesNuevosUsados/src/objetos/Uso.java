@@ -17,12 +17,12 @@ public class Uso {
         this.fechaDevolucion=fechaEntrega;       
     }
     
-    public float calcularImporte(float precioDia){
+    public void calcularImporte(float precioDia){
+        final int MS_POR_DIA = 24*60*60*1000;
         long fechaAlquilerMs = fechaAlquiler.getTime();
         long fechaDevolucionMs= fechaDevolucion.getTime();
-        long diferenciaDias = (fechaDevolucionMs - fechaAlquilerMs) /86400000;
+        long diferenciaDias = (fechaDevolucionMs - fechaAlquilerMs) /MS_POR_DIA;
         importe= diferenciaDias * precioDia;
-        return importe;
     }
 
     public Date getFechaAlquiler() {
@@ -32,4 +32,8 @@ public class Uso {
     public Date getFechaDevolucion() {
         return fechaDevolucion;
     }
+
+    public float getImporte() {
+        return importe;
+    } 
 }
