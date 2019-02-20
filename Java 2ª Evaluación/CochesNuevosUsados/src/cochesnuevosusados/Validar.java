@@ -16,7 +16,7 @@ public class Validar {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Longitud errónea");
             }
-            if(!texto.substring(0,1).matches("[Vv]")){
+            if (!texto.substring(0, 1).matches("[Vv]")) {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Letra errónea");
             }
@@ -24,8 +24,8 @@ public class Validar {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Número erróneo");
             }
-            if(Consultar.existeCochePorCodigo(texto, coches)){
-                codigoCocheEsValido=false;
+            if (Consultar.existeCochePorCodigo(texto, coches)) {
+                codigoCocheEsValido = false;
                 throw new Excepciones("Ese código ya existe");
             }
         } catch (Excepciones excepcion) {
@@ -33,7 +33,7 @@ public class Validar {
         }
         return codigoCocheEsValido;
     }
-    
+
     public static boolean esCodigoCocheAlquilerValido(String texto, ArrayList<Coche> coches) {
         boolean codigoCocheEsValido = true;
         try {
@@ -41,7 +41,7 @@ public class Validar {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Longitud errónea");
             }
-            if(!texto.substring(0,1).matches("[Aa]")){
+            if (!texto.substring(0, 1).matches("[Aa]")) {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Letra errónea");
             }
@@ -49,8 +49,8 @@ public class Validar {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Número erróneo");
             }
-            if(Consultar.existeCochePorCodigo(texto, coches)){
-                codigoCocheEsValido=false;
+            if (Consultar.existeCochePorCodigo(texto, coches)) {
+                codigoCocheEsValido = false;
                 throw new Excepciones("Ese código ya existe");
             }
         } catch (Excepciones excepcion) {
@@ -58,7 +58,7 @@ public class Validar {
         }
         return codigoCocheEsValido;
     }
-    
+
     public static boolean esCodigoCocheExistenteValido(String texto, ArrayList<Coche> coches) {
         boolean codigoCocheEsValido = true;
         try {
@@ -66,14 +66,14 @@ public class Validar {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Longitud errónea");
             }
-            if(!texto.substring(0,1).matches("[AaVv]")){
+            if (!texto.substring(0, 1).matches("[AaVv]")) {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Letra errónea");
             }
             if (!texto.substring(1).matches("[0-9]*")) {
                 codigoCocheEsValido = false;
                 throw new Excepciones("Número erróneo");
-            }           
+            }
         } catch (Excepciones excepcion) {
             System.out.println(excepcion.getError());
         }

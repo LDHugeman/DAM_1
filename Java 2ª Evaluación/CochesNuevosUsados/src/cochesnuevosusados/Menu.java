@@ -1,11 +1,9 @@
 package cochesnuevosusados;
 
-import static cochesnuevosusados.Crear.obtenerFecha;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import objetos.Coche;
 import objetos.CocheAlquiler;
 import objetos.CocheVenta;
@@ -91,11 +89,11 @@ public class Menu {
                         Visualizar.mostrarCocheAlquiler(coche);
                         ArrayList<Uso> usos = Consultar.obtenerUsosEntreDosFechas(lee, coche);
                         Visualizar.mostrarUsos(usos);
-                        float importe=0f;
-                        for(Uso uso:usos){
-                            importe+=uso.getImporte();
+                        float importe = 0f;
+                        for (Uso uso : usos) {
+                            importe += uso.getImporte();
                         }
-                        System.out.printf("El importe total entre las dos fechas es de %.2f€ %n",importe);
+                        System.out.printf("El importe total entre las dos fechas es de %.2f€ %n", importe);
                     } else {
                         System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");
                     }

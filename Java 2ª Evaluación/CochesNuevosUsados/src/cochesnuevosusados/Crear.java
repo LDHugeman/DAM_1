@@ -64,9 +64,9 @@ public class Crear {
         Date fecha = formatoFecha.parse(texto);
         return fecha;
     }
-    
-    public static String getStringFecha(Date fecha){
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");      
+
+    public static String getStringFecha(Date fecha) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         return formatoFecha.format(fecha);
     }
 
@@ -78,7 +78,7 @@ public class Crear {
         } while (!Validar.esCodigoCocheVentaValido(codigo, coches));
         return codigo;
     }
-    
+
     public static String pedirNuevoCodigoCocheAlquiler(BufferedReader lee, ArrayList<Coche> coches) throws IOException {
         String codigo = "";
         do {

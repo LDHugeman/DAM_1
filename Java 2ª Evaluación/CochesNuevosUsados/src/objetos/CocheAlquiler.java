@@ -1,4 +1,3 @@
-
 package objetos;
 
 import java.util.ArrayList;
@@ -7,14 +6,15 @@ import java.util.ArrayList;
  *
  * @author a18luisdvp
  */
-public class CocheAlquiler extends Coche{
+public class CocheAlquiler extends Coche {
+
     private float precioDia;
     private ArrayList<Uso> usos;
-    
-    public CocheAlquiler(String codigo, String marca, String modelo,float precioDia){
+
+    public CocheAlquiler(String codigo, String marca, String modelo, float precioDia) {
         super(codigo, marca, modelo);
-        this.precioDia=precioDia;
-        this.usos=new ArrayList<>();
+        this.precioDia = precioDia;
+        this.usos = new ArrayList<>();
     }
 
     public float getPrecioDia() {
@@ -28,8 +28,8 @@ public class CocheAlquiler extends Coche{
     public ArrayList<Uso> getUsos() {
         return usos;
     }
-    
-    public void addUso(Uso uso){
+
+    public void addUso(Uso uso) {
         uso.calcularImporte(precioDia);
         usos.add(uso);
     }

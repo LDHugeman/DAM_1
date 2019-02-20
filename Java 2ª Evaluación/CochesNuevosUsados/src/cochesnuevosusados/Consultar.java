@@ -36,52 +36,52 @@ public class Consultar {
         for (Coche coche : coches) {
             if (coche instanceof CocheVenta) {
                 if (coche.getCodigo().equalsIgnoreCase(codigo)) {
-                    cocheEncontrado = ((CocheVenta)coche);
+                    cocheEncontrado = ((CocheVenta) coche);
                 }
             }
         }
         return cocheEncontrado;
     }
-    
+
     public static boolean existeCocheVentaPorCodigo(String codigo, ArrayList<Coche> coches) {
         return encontrarCocheVentaPorCodigo(codigo, coches) != null;
     }
-    
+
     public static CocheAlquiler encontrarCocheAlquilerPorCodigo(String codigo, ArrayList<Coche> coches) {
         CocheAlquiler cocheEncontrado = null;
         for (Coche coche : coches) {
             if (coche instanceof CocheAlquiler) {
                 if (coche.getCodigo().equalsIgnoreCase(codigo)) {
-                    cocheEncontrado = ((CocheAlquiler)coche);
+                    cocheEncontrado = ((CocheAlquiler) coche);
                 }
             }
         }
         return cocheEncontrado;
     }
-    
+
     public static boolean existeCocheAlquilerPorCodigo(String codigo, ArrayList<Coche> coches) {
         return encontrarCocheAlquilerPorCodigo(codigo, coches) != null;
     }
-    
-    public static ArrayList<Uso> obtenerUsosEntreDosFechas(BufferedReader lee, CocheAlquiler coche)throws IOException, ParseException{
+
+    public static ArrayList<Uso> obtenerUsosEntreDosFechas(BufferedReader lee, CocheAlquiler coche) throws IOException, ParseException {
         ArrayList<Uso> usosEncontrados = new ArrayList<>();
         System.out.printf("--- Introduzca dos fechas entre las que desea ver usos ---%n");
         System.out.printf("Primer fecha(dd/MM/yyyy): ");
         Date primerFecha = obtenerFecha(lee.readLine());
-        System.out.printf("Segunda fecha(dd/MM/yyyy): ");                              
-        Date segundaFecha = obtenerFecha(lee.readLine());  
-        for(Uso uso:coche.getUsos()){
-            if(estaEnRangoDeFechas(primerFecha, segundaFecha, uso)){
+        System.out.printf("Segunda fecha(dd/MM/yyyy): ");
+        Date segundaFecha = obtenerFecha(lee.readLine());
+        for (Uso uso : coche.getUsos()) {
+            if (estaEnRangoDeFechas(primerFecha, segundaFecha, uso)) {
                 usosEncontrados.add(uso);
-            }            
+            }
         }
-        if(usosEncontrados.isEmpty()){
+        if (usosEncontrados.isEmpty()) {
             System.err.printf("No existe ningún uso entre dos fechas. %n");
         }
         return usosEncontrados;
-    }  
-    
-    public static boolean estaEnRangoDeFechas(Date primerFecha, Date segundaFecha, Uso uso){
+    }
+
+    public static boolean estaEnRangoDeFechas(Date primerFecha, Date segundaFecha, Uso uso) {
         long fechaAlquiler = uso.getFechaAlquiler().getTime();
         long fechaDevolucion = uso.getFechaDevolucion().getTime();
         long primerFechaMs = primerFecha.getTime();

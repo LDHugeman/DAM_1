@@ -15,14 +15,14 @@ import objetos.Empresa;
  */
 public class CochesNuevosUsados {
 
-    public static void main(String[] args) throws IOException, ParseException{
+    public static void main(String[] args) throws IOException, ParseException {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
-        byte opcionSeleccionada = 0;     
+        byte opcionSeleccionada = 0;
         Empresa empresa = Crear.nuevaEmpresa(lee);
-        ArrayList <Coche> coches = empresa.getCoches();
-        do{
+        ArrayList<Coche> coches = empresa.getCoches();
+        do {
             opcionSeleccionada = Menu.seleccionarOpcionMenuPrincipal(lee);
-            switch(opcionSeleccionada){
+            switch (opcionSeleccionada) {
                 case 1:
                     Menu.menuAltas(lee, coches);
                     break;
@@ -33,10 +33,10 @@ public class CochesNuevosUsados {
                     System.out.printf("--- Introduzca el código del coche en alquiler al que desea modificar el precio por día ---%n");
                     String codigo = Crear.pedirCodigoExistente(lee, coches);
                     CocheAlquiler coche = Consultar.encontrarCocheAlquilerPorCodigo(codigo, coches);
-                    if(coche!=null){
+                    if (coche != null) {
                         Modificar.modificarPrecioDiaAlquiler(coche, lee);
-                        System.out.printf("Precio por día del coche con código %s modificado.%n",((Coche)coche).getCodigo());
-                    }else{
+                        System.out.printf("Precio por día del coche con código %s modificado.%n", ((Coche) coche).getCodigo());
+                    } else {
                         System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");
                     }
                     break;
@@ -48,7 +48,6 @@ public class CochesNuevosUsados {
                 default:
                     System.err.printf("Esa opción no existe %n");
             }
-        }while(opcionSeleccionada!=0);
+        } while (opcionSeleccionada != 0);
     }
-
 }
