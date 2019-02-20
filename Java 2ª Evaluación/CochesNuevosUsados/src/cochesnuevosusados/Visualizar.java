@@ -17,7 +17,7 @@ public class Visualizar {
         System.out.println("Código: " + coche.getCodigo());
         System.out.println("Marca: " + coche.getMarca());
         System.out.println("Modelo: " + coche.getModelo());
-        System.out.println("Precio de venta: " + coche.getPrecioVenta());
+        System.out.println("Precio de venta: " + coche.getPrecioVenta()+"€");
         System.out.println("-------------------------------------------");
     }
 
@@ -34,7 +34,7 @@ public class Visualizar {
         System.out.println("Código: " + coche.getCodigo());
         System.out.println("Marca: " + coche.getMarca());
         System.out.println("Modelo: " + coche.getModelo());
-        System.out.println("Precio por día: " + coche.getPrecioDia());
+        System.out.println("Precio por día: " + coche.getPrecioDia()+"€");
         System.out.println("-------------------------------------------");
     }
 
@@ -42,7 +42,7 @@ public class Visualizar {
         System.out.println("-------------------------------------------");
         System.out.println("Fecha de alquiler: " + Crear.getStringFecha(uso.getFechaAlquiler()));
         System.out.println("Fecha de devolución: " + Crear.getStringFecha(uso.getFechaDevolucion()));
-        System.out.println("Importe: " + uso.getImporte());
+        System.out.println("Importe: " + uso.getImporte()+"€");
         System.out.println("-------------------------------------------");
     }
 

@@ -82,9 +82,10 @@ public class Consultar {
     }  
     
     public static boolean estaEnRangoDeFechas(Date primerFecha, Date segundaFecha, Uso uso){
-        long fechaUso = uso.getFechaAlquiler().getTime();
+        long fechaAlquiler = uso.getFechaAlquiler().getTime();
+        long fechaDevolucion = uso.getFechaDevolucion().getTime();
         long primerFechaMs = primerFecha.getTime();
         long segundaFechaMs = segundaFecha.getTime();
-        return fechaUso> primerFechaMs && fechaUso < segundaFechaMs;
+        return fechaAlquiler > primerFechaMs && fechaDevolucion < segundaFechaMs;
     }
 }

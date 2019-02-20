@@ -89,7 +89,13 @@ public class Menu {
                     CocheAlquiler coche = Consultar.encontrarCocheAlquilerPorCodigo(codigo, coches);
                     if (coche != null) {
                         Visualizar.mostrarCocheAlquiler(coche);
-                        Visualizar.mostrarUsos(Consultar.obtenerUsosEntreDosFechas(lee, coche));
+                        ArrayList<Uso> usos = Consultar.obtenerUsosEntreDosFechas(lee, coche);
+                        Visualizar.mostrarUsos(usos);
+                        float importe=0f;
+                        for(Uso uso:usos){
+                            importe+=uso.getImporte();
+                        }
+                        System.out.printf("El importe total entre las dos fechas es de %.2f€ %n",importe);
                     } else {
                         System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");
                     }
