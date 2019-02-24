@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Crear {
     
-    public static C_Articulo crear (C_Articulo p, BufferedReader leer) throws IOException {
+    public static Articulo crear (Articulo p, BufferedReader leer) throws IOException {
         
         byte op;
         System.out.println("¿Desea eliminar la lista actual y crear una nueva?"

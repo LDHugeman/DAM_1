@@ -6,7 +6,7 @@ import clases.*;
 
 public class Visualizar {
     
-    public static void visualizar(C_Articulo p) {
+    public static void visualizar(Articulo p) {
         
         
         System.out.printf("%n%n--Artículo:"
@@ -17,7 +17,7 @@ public class Visualizar {
 
     }
     
-    public static void visualizarListado(C_Articulo p) {
+    public static void visualizarListado(Articulo p) {
         
         System.out.printf("--LISTA DE ARTICULOS--"
                 +"%n%n    Articulo       Unidades       Precio"

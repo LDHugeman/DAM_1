@@ -13,7 +13,7 @@ public class ArticulosPilas {
     
         byte op=0;
         BufferedReader leer=new BufferedReader(new InputStreamReader (System.in));
-        C_Articulo p=null;
+        Articulo p=null;
         
         
         do{

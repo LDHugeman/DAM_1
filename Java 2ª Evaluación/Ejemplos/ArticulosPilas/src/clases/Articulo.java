@@ -3,17 +3,17 @@ package clases;
 
 // @author 
 
-public class C_Articulo {
+public class Articulo {
     
     private int codigo;
     private int unidades;
     private float precio;
-    private C_Articulo siguiente=null;
+    private Articulo anterior=null;
     
     
-    public C_Articulo () {}
+    public Articulo () {}
     
-    public C_Articulo (int codigo, int unidades, float precio){
+    public Articulo (int codigo, int unidades, float precio){
         
         this.codigo=codigo;
         this.unidades=unidades;
@@ -45,12 +45,12 @@ public class C_Articulo {
         this.precio = precio;
     }
 
-    public C_Articulo getSiguiente() {
-        return siguiente;
+    public Articulo getSiguiente() {
+        return anterior;
     }
 
-    public void setSiguiente(C_Articulo siguiente) {
-        this.siguiente = siguiente;
+    public void setSiguiente(Articulo siguiente) {
+        this.anterior = anterior;
     }
     
     
