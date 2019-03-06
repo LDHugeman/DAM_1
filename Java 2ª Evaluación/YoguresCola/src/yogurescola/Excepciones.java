@@ -1,14 +1,14 @@
-
 package yogurescola;
 
 /**
  *
  * @author David
  */
-public class Excepciones extends Exception{
+public class Excepciones extends Exception {
+
     private String error;
-    
-    public Excepciones(String message){
+
+    public Excepciones(String message) {
         super(message);
         this.error = message;
     }

@@ -1,7 +1,6 @@
 package yogurescola;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import objetos.Yogourt;
 
 /**
@@ -10,7 +9,7 @@ import objetos.Yogourt;
  */
 public class Menu {
 
-    public static void menuModificaciones(Yogourt cabecera, BufferedReader lee) throws IOException {
+    public static void menuModificaciones(Yogourt cabecera, BufferedReader lee) {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = seleccionarOpcionMenuModificaciones(lee);
@@ -41,7 +40,7 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
 
-    public static void menuVisualizar(Yogourt cabecera, BufferedReader lee) throws IOException {
+    public static void menuVisualizar(Yogourt cabecera, BufferedReader lee) {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = seleccionarOpcionMenuVisualizar(lee);
@@ -61,26 +60,26 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
 
-    public static byte seleccionarOpcionMenuModificaciones(BufferedReader lee) throws IOException {
+    public static byte seleccionarOpcionMenuModificaciones(BufferedReader lee) {
         System.out.println("------- MODIFICACIONES -------");
         System.out.println("[1] Código");
         System.out.println("[2] Marca");
         System.out.println("[3] Tipo");
         System.out.println("[0] Salir");
         System.out.printf("Seleccione una opción: ");
-        return Byte.parseByte(lee.readLine());
+        return Pedir.numeroByte(lee);
     }
 
-    public static byte seleccionarOpcionMenuVisualizar(BufferedReader lee) throws IOException {
+    public static byte seleccionarOpcionMenuVisualizar(BufferedReader lee) {
         System.out.println("------- VISUALIZAR -------");
         System.out.println("[1] Yogur por marca");
         System.out.println("[2] Todos los yogures");
         System.out.println("[0] Salir");
         System.out.printf("Seleccione una opción: ");
-        return Byte.parseByte(lee.readLine());
+        return Pedir.numeroByte(lee);
     }
 
-    public static byte seleccionarOpcionMenuPrincipal(BufferedReader lee) throws IOException {
+    public static byte seleccionarOpcionMenuPrincipal(BufferedReader lee) {
         System.out.println("------- MENÚ -------");
         System.out.println("[1] Crear nueva cola");
         System.out.println("[2] Insertar nuevos yogures");
@@ -89,6 +88,6 @@ public class Menu {
         System.out.println("[5] Visualizar");
         System.out.println("[0] Salir");
         System.out.printf("Seleccione una opción: ");
-        return Byte.parseByte(lee.readLine());
+        return Pedir.numeroByte(lee);
     }
 }

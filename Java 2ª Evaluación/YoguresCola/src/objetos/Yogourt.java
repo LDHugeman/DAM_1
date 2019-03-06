@@ -1,4 +1,3 @@
-
 package objetos;
 
 /**
@@ -6,13 +5,13 @@ package objetos;
  * @author David
  */
 public class Yogourt {
+
     private String codigo;
     private String marca;
     private String tipo;
     private Yogourt siguiente = null;
-    
-    
-    public Yogourt(String codigo, String marca, String tipo){
+
+    public Yogourt(String codigo, String marca, String tipo) {
         this.codigo = codigo;
         this.marca = marca;
         this.tipo = tipo;
@@ -49,8 +48,5 @@ public class Yogourt {
     public void setSiguiente(Yogourt siguiente) {
         this.siguiente = siguiente;
     }
-    
-    
+
 }
-
-

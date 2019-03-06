@@ -15,15 +15,15 @@ public class Validar {
                 codigoEsValido = false;
                 throw new Excepciones("Longitud errónea");
             }
-            if(!texto.substring(0,2).matches("[A-Za-z]*")){
+            if (!texto.substring(0, 2).matches("[A-Za-z]*")) {
                 codigoEsValido = false;
                 throw new Excepciones("Letra errónea");
             }
-            if(!texto.substring(2).matches("[0-9]*")){
+            if (!texto.substring(2).matches("[0-9]*")) {
                 codigoEsValido = false;
                 throw new Excepciones("Número erróneo");
             }
-            if(Consultar.existeYogurPorCodigo(texto, cabecera)){
+            if (Consultar.existeYogurPorCodigo(texto, cabecera)) {
                 codigoEsValido = false;
                 throw new Excepciones("Ese código ya existe");
             }
@@ -32,7 +32,7 @@ public class Validar {
         }
         return codigoEsValido;
     }
-    
+
     public static boolean esCodigoExistenteValido(String texto, Yogourt cabecera) {
         boolean codigoEsValido = true;
         try {
@@ -40,15 +40,15 @@ public class Validar {
                 codigoEsValido = false;
                 throw new Excepciones("Longitud errónea");
             }
-            if(!texto.substring(0,2).matches("[A-Za-z]*")){
+            if (!texto.substring(0, 2).matches("[A-Za-z]*")) {
                 codigoEsValido = false;
                 throw new Excepciones("Letra errónea");
             }
-            if(!texto.substring(2).matches("[0-9]*")){
+            if (!texto.substring(2).matches("[0-9]*")) {
                 codigoEsValido = false;
                 throw new Excepciones("Número erróneo");
             }
-            if(!Consultar.existeYogurPorCodigo(texto, cabecera)){
+            if (!Consultar.existeYogurPorCodigo(texto, cabecera)) {
                 codigoEsValido = false;
                 throw new Excepciones("Ese código no existe");
             }

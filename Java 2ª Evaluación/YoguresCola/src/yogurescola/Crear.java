@@ -39,7 +39,7 @@ public class Crear {
         } while (Consultar.existeYogurPorMarca(marca, cabecera));
         return marca;
     }
-    
+
     public static String pedirMarcaExistente(Yogourt cabecera, BufferedReader lee) {
         String marca = "";
         boolean existeYogur = false;
@@ -47,7 +47,7 @@ public class Crear {
             System.out.printf("Marca: ");
             marca = Pedir.texto(lee);
             existeYogur = Consultar.existeYogurPorMarca(marca, cabecera);
-            if(!existeYogur){
+            if (!existeYogur) {
                 System.err.printf("Esa marca no existe %n");
             }
         } while (!existeYogur);
