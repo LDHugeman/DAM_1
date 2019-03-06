@@ -1,6 +1,7 @@
-package yogurescola;
+package Excepciones;
 
 import objetos.Yogourt;
+import yogurescola.Consultar;
 
 /**
  *

@@ -1,5 +1,6 @@
 package yogurescola;
 
+import Excepciones.Validar;
 import java.io.BufferedReader;
 import objetos.Yogourt;
 
