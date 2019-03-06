@@ -32,11 +32,8 @@ public class Crear {
     }
 
     public static String pedirNuevaMarca(Yogourt cabecera, BufferedReader lee) {
-        String marca = "";
-        do {
-            System.out.printf("Marca: ");
-            marca = Pedir.texto(lee);
-        } while (Consultar.existeYogurPorMarca(marca, cabecera));
+        System.out.printf("Marca: ");
+        String marca = Pedir.texto(lee);
         return marca;
     }
 
