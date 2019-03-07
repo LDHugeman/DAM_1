@@ -9,7 +9,7 @@ public class Yogourt {
     private String codigo;
     private String marca;
     private String tipo;
-    private Yogourt siguiente = null;
+    private Yogourt siguiente;
 
     public Yogourt(String codigo, String marca, String tipo) {
         this.codigo = codigo;
