@@ -7,50 +7,43 @@ import Clases.*;
 
 public class Insertar {
     
-    public static C_Espectador insertar (C_Espectador p, BufferedReader leer) throws IOException {
+    public static C_Espectador insertar (C_Espectador cabecera, BufferedReader leer) throws IOException {
         
         String nombre, pelicula;
         int asiento;
         
-        C_Espectador q;
-        C_Espectador actual=p;
+        C_Espectador nuevoEspectador;
+        C_Espectador actual=cabecera;
         
         
         
         System.out.printf("%nIntroducir nombre:  ('fin' para finalizar) %n");
         nombre=leer.readLine();
         
-        while(nombre.compareToIgnoreCase("fin")!=0)
-        {
-
+        while(nombre.compareToIgnoreCase("fin")!=0){
             System.out.println("Introducir título de la pelicula:");
             pelicula=leer.readLine();
             System.out.println("Introducir número de asiento:");
             asiento=Integer.parseInt(leer.readLine());
             
-            if (p==null)
-            {/*INSERTAR PRIMER ELEMENTO*/
-                q = new C_Espectador(nombre, pelicula, asiento,p);
-                p = q;
-                actual=q;
-            }
-             else
-            {
-                while (actual.getSiguiente()!=null)
-                {
+            if (cabecera==null){
+                /*INSERTAR PRIMER ELEMENTO*/
+                nuevoEspectador = new C_Espectador(nombre, pelicula, asiento,cabecera);
+                cabecera = nuevoEspectador;
+                actual=nuevoEspectador;
+            } else{
+                while (actual.getSiguiente()!=null){
                     actual=actual.getSiguiente();
                 }
-                
-                q = new C_Espectador(nombre, pelicula, asiento,p);
-                q.setSiguiente(null);
-                actual.setSiguiente(q);
-                
+                nuevoEspectador = new C_Espectador(nombre, pelicula, asiento,cabecera);
+                nuevoEspectador.setSiguiente(null);
+                actual.setSiguiente(nuevoEspectador);
             }
             
             System.out.printf("%nIntroducir nombre:  ('fin' para finalizar) %n");
             nombre=leer.readLine();
         }
-        return p;
+        return cabecera;
         
     }
     

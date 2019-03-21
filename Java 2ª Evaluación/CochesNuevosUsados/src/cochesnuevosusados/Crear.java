@@ -2,8 +2,7 @@ package cochesnuevosusados;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.ArrayList;
 import java.util.Date;
 import objetos.Coche;
@@ -61,8 +60,7 @@ public class Crear {
 
     public static Date obtenerFecha(String texto) throws ParseException {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha = formatoFecha.parse(texto);
-        return fecha;
+        return formatoFecha.parse(texto);
     }
 
     public static String getStringFecha(Date fecha) {

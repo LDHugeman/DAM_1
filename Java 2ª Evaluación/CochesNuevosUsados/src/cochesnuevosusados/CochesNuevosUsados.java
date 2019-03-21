@@ -35,7 +35,7 @@ public class CochesNuevosUsados {
                     CocheAlquiler coche = Consultar.encontrarCocheAlquilerPorCodigo(codigo, coches);
                     if (coche != null) {
                         Modificar.modificarPrecioDiaAlquiler(coche, lee);
-                        System.out.printf("Precio por día del coche con código %s modificado.%n", ((Coche) coche).getCodigo());
+                        System.out.printf("Precio por día del coche con código %s modificado.%n", coche.getCodigo());
                     } else {
                         System.err.println("No existe ningún coche con ese código o no corresponde a un coche en alquiler.%n");
                     }
