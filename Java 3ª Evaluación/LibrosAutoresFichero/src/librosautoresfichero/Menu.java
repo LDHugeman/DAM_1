@@ -35,7 +35,7 @@ public class Menu {
                     break;
                 case 2:
                     if (fichero.exists()) {
-                        Altas.libros(fichero, lee);                       
+                        Altas.libros(fichero, lee);
                     } else {
                         System.err.printf("Fichero inexistente %n");
                     }
@@ -56,12 +56,21 @@ public class Menu {
                 case 1:
                     Autor autorEncontrado = Consultar.encontrarAutorPorDni(fichero, Crear.pedirDniExistente(fichero, lee));
                     if (autorEncontrado != null) {
-                        Bajas.bajaAutor(fichero, autorEncontrado);
-                        System.out.println("El autor " + autorEncontrado.getNombre() + " ha sido eliminado");
+                        Visualizar.mostrar(autorEncontrado);
+                        System.out.println("¿Es este el autor que desea borrar?");
+                        System.out.println("[1] Sí");
+                        System.out.println("[2] No");
+                        System.out.printf("Seleccione una opcion: ");
+                        byte opcion = Pedir.numeroByte(lee);
+                        if (opcion == 1) {
+                            Bajas.bajaAutor(fichero, autorEncontrado);
+                            System.out.println("El autor " + autorEncontrado.getNombre() + " ha sido eliminado");
+                        }
                     } else {
                         System.err.printf("Autor no encontrado %n");
                     }
                     break;
+
                 case 2:
                     Bajas.bajaLibro(fichero, Crear.pedirTitulo(lee), lee);
                     break;
