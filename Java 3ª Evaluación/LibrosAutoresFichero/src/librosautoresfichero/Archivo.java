@@ -29,12 +29,7 @@ public class Archivo {
                 flujoArchivo = crearFichero(fichero);
                 cerrarFlujo(flujoArchivo);
                 System.out.println("Fichero creado");
-            } else {
-                /*
-                // Esto usase?
-                flujoArchivo = abrirFichero(fichero);
-                flujoArchivo.close();
-                 */
+            } else {              
                 System.out.println("Operación cancelada");
             }
         } else {
@@ -110,7 +105,6 @@ public class Archivo {
                 }
             } while (true);
         } catch (EOFException exception) {
-           // System.out.println("Fin del fichero"); //Es necesario?
         } catch (IOException exception) {
             System.out.println("Error de lectura");
         } catch (ClassNotFoundException exception) {

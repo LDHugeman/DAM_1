@@ -28,6 +28,7 @@ public class LibrosAutoresFichero {
                     Menu.menuBajas(fichero, lee);
                     break;
                 case 4:
+                    Modificar.precioLibro(fichero, lee);
                     break;
                 case 5:
                     break;

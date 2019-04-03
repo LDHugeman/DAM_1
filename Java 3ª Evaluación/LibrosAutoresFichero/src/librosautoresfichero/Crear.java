@@ -14,8 +14,7 @@ public class Crear {
 
     public static Autor nuevoAutor(File fichero, BufferedReader lee) {
         String dni = pedirNuevoDni(fichero, lee);
-        System.out.printf("Nombre: ");
-        String nombre = Pedir.texto(lee);
+        String nombre = pedirNombre(lee);
         System.out.printf("Ciudad: ");
         String ciudad = Pedir.texto(lee);
         return new Autor(dni, nombre, ciudad);
@@ -25,8 +24,7 @@ public class Crear {
         System.out.printf("Isbn: ");
         String isbn = Pedir.texto(lee);
         String titulo = pedirTitulo(lee);
-        System.out.printf("Precio: ");
-        Float precio = Pedir.numeroReal(lee);
+        Float precio = pedirPrecio(lee);
         return new Libro(isbn, titulo, precio);
     }
 
@@ -50,6 +48,16 @@ public class Crear {
 
     public static String pedirTitulo(BufferedReader lee) {
         System.out.printf("Título: ");
+        return Pedir.texto(lee);
+    }
+    
+    public static float pedirPrecio(BufferedReader lee) {
+        System.out.printf("Precio: ");
+        return Pedir.numeroReal(lee);
+    }
+    
+    public static String pedirNombre(BufferedReader lee) {
+        System.out.printf("Nombre: ");
         return Pedir.texto(lee);
     }
 }
