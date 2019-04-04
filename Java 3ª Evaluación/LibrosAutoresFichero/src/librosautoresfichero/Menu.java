@@ -1,7 +1,6 @@
 package librosautoresfichero;
 
 import Objetos.Autor;
-import Objetos.Libro;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -120,7 +119,7 @@ public class Menu {
         System.out.println("[1] Crear fichero");
         System.out.println("[2] Altas");
         System.out.println("[3] Bajas");
-        System.out.println("[4] Modificaciones");
+        System.out.println("[4] Modificar precio de un libro");
         System.out.println("[5] Consultar");
         System.out.println("[0] Salir");
         System.out.printf("Seleccione una opción: ");
