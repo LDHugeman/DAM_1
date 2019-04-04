@@ -15,8 +15,7 @@ public class Crear {
     public static Autor nuevoAutor(File fichero, BufferedReader lee) {
         String dni = pedirNuevoDni(fichero, lee);
         String nombre = pedirNombre(lee);
-        System.out.printf("Ciudad: ");
-        String ciudad = Pedir.texto(lee);
+        String ciudad = pedirCiudad(lee);
         return new Autor(dni, nombre, ciudad);
     }
 
@@ -58,6 +57,11 @@ public class Crear {
     
     public static String pedirNombre(BufferedReader lee) {
         System.out.printf("Nombre: ");
+        return Pedir.texto(lee);
+    }
+    
+    public static String pedirCiudad(BufferedReader lee) {
+        System.out.printf("Ciudad: ");
         return Pedir.texto(lee);
     }
 }

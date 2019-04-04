@@ -1,6 +1,7 @@
 package librosautoresfichero;
 
 import Objetos.Autor;
+import Objetos.Libro;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -82,6 +83,38 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
 
+    public static void menuConsultas(File fichero, BufferedReader lee) {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarOpcionMenuConsultas(lee);
+            switch (opcionSeleccionada) {
+                case 1:
+                    Autor autorEncontrado = Consultar.encontrarAutorPorNombre(fichero, Crear.pedirNombre(lee));
+                    if (autorEncontrado != null) {
+                        if (!autorEncontrado.getLibros().isEmpty()) {
+                            System.out.println("--- Libros de " + autorEncontrado.getNombre() + " ---");
+                            Visualizar.mostrarLibros(autorEncontrado);
+                        } else {
+                            System.err.printf("Este autor no tiene ningún libro %n");
+                        }
+                    } else {
+                        System.err.printf("Autor no encontrado %n");
+                    }
+                    break;
+                case 2:
+                    Visualizar.autoresDeUnaCiudad(fichero, Crear.pedirCiudad(lee));
+                    break;
+                case 3:
+                    Visualizar.librosPrecioSuperior(fichero);
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.err.printf("Esa opción no existe %n");
+            }
+        } while (opcionSeleccionada != 0);
+    }
+
     public static byte seleccionarOpcionMenuPrincipal(BufferedReader lee) {
         System.out.println("------- MENÚ -------");
         System.out.println("[1] Crear fichero");
@@ -107,6 +140,16 @@ public class Menu {
         System.out.println("------- BAJAS -------");
         System.out.println("[1] Baja de un autor");
         System.out.println("[2] Baja de un determinado libro de un autor");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opción: ");
+        return Pedir.numeroByte(lee);
+    }
+
+    public static byte seleccionarOpcionMenuConsultas(BufferedReader lee) {
+        System.out.println("------- CONSULTAS -------");
+        System.out.println("[1] Visualizar libros de un autor");
+        System.out.println("[2] Visualizar autores de una ciudad con sus libros");
+        System.out.println("[3] Visualizar libros con precio superior a 50€");
         System.out.println("[0] Salir");
         System.out.printf("Seleccione una opción: ");
         return Pedir.numeroByte(lee);

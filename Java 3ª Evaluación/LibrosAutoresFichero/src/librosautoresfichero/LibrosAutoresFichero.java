@@ -31,6 +31,7 @@ public class LibrosAutoresFichero {
                     Modificar.precioLibro(fichero, lee);
                     break;
                 case 5:
+                    Menu.menuConsultas(fichero, lee);
                     break;
                 case 0:
                     break;

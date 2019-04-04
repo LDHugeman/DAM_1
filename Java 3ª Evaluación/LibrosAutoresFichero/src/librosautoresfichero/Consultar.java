@@ -57,7 +57,7 @@ public class Consultar {
             Archivo.cerrarFlujo(flujoLectura);
         }    
         return autorEncontrado;
-    }
+    }  
 
     public static Autor encontrarAutorPorTituloLibro(File fichero, String titulo) {
         ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
@@ -80,5 +80,9 @@ public class Consultar {
             Archivo.cerrarFlujo(flujoLectura);
         }      
         return autorEncontrado;
+    }
+    
+    public static boolean esLibroSuperiorAPrecio(Libro libro, float precio){
+        return libro.getPrecio()> precio;
     }
 }
