@@ -39,12 +39,12 @@ public class Altas {
                 }
             } while (opcion == 1);
             autor(temporal, autorEncontrado);
-            if (fichero.delete()){
+            if (fichero.delete()) {
                 temporal.renameTo(fichero);
-            }else {
+            } else {
                 System.out.println("Error al borrar");
             }
-            
+
         } else {
             System.err.printf("Autor no encontrado %n");
         }

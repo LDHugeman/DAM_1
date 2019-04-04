@@ -39,7 +39,7 @@ public class Modificar {
                     temporal.renameTo(fichero);
                     System.out.println("Se ha modificado el precio del libro " + libroEncontrado.getTitulo() + ".");
                 }
-            }else{
+            } else {
                 System.err.printf("Libro no encontrado %n");
             }
         } else {

@@ -29,7 +29,7 @@ public class Archivo {
                 flujoArchivo = crearFichero(fichero);
                 cerrarFlujo(flujoArchivo);
                 System.out.println("Fichero creado");
-            } else {              
+            } else {
                 System.out.println("Operación cancelada");
             }
         } else {

@@ -49,17 +49,17 @@ public class Crear {
         System.out.printf("Título: ");
         return Pedir.texto(lee);
     }
-    
+
     public static float pedirPrecio(BufferedReader lee) {
         System.out.printf("Precio: ");
         return Pedir.numeroReal(lee);
     }
-    
+
     public static String pedirNombre(BufferedReader lee) {
         System.out.printf("Nombre: ");
         return Pedir.texto(lee);
     }
-    
+
     public static String pedirCiudad(BufferedReader lee) {
         System.out.printf("Ciudad: ");
         return Pedir.texto(lee);

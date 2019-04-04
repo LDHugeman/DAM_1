@@ -30,14 +30,14 @@ public class Consultar {
             System.out.println("Error al leer el fichero");
         } finally {
             Archivo.cerrarFlujo(flujoLectura);
-        }     
+        }
         return autorEncontrado;
     }
 
     public static boolean existeAutorPorDni(File fichero, String dni) {
         return encontrarAutorPorDni(fichero, dni) != null;
     }
-    
+
     public static Autor encontrarAutorPorNombre(File fichero, String nombre) {
         ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
         Autor autorEncontrado = null;
@@ -55,9 +55,9 @@ public class Consultar {
             System.out.println("Error al leer el fichero");
         } finally {
             Archivo.cerrarFlujo(flujoLectura);
-        }    
+        }
         return autorEncontrado;
-    }  
+    }
 
     public static Autor encontrarAutorPorTituloLibro(File fichero, String titulo) {
         ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
@@ -76,13 +76,13 @@ public class Consultar {
             System.out.println("Clase no encontrada");
         } catch (IOException expepcion) {
             System.out.println("Error al leer el fichero");
-        }finally{
+        } finally {
             Archivo.cerrarFlujo(flujoLectura);
-        }      
+        }
         return autorEncontrado;
     }
-    
-    public static boolean esLibroSuperiorAPrecio(Libro libro, float precio){
-        return libro.getPrecio()> precio;
+
+    public static boolean esLibroSuperiorAPrecio(Libro libro, float precio) {
+        return libro.getPrecio() > precio;
     }
 }
