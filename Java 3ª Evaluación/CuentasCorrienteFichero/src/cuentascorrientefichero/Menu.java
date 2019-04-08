@@ -56,12 +56,9 @@ public class Menu {
                                 cuentaCorriente.agregarNuevoMovimiento(lee);
                             }
                         } while (opcionMasMovimientos == 1);
-                        Altas.cuenta(fichero, cuentaCorriente);
-                        System.out.println("Cuenta creada");
-                    } else {
-                        Altas.cuenta(fichero, cuentaCorriente);
-                        System.out.println("Cuenta creada");
                     }
+                    Altas.cuenta(fichero, cuentaCorriente);
+                    System.out.println("Cuenta creada");
                     break;
                 case 2:
                     CuentaPlazo cuentaPlazo = Crear.nuevaCuentaPlazo(fichero, lee);
