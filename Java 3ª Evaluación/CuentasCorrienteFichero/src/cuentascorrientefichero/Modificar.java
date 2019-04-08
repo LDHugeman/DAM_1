@@ -22,7 +22,7 @@ public class Modificar {
     
     public static void agregarCliente(File fichero, Cuenta cuenta, BufferedReader lee){
         File temporal = Archivo.obtenerTemporal(fichero, cuenta);
-        Cliente cliente = Consultar.obtenerCliente(lee, fichero);
+        Cliente cliente = Consultar.obtenerCliente(lee, fichero, cuenta);
         cuenta.getClientes().add(cliente);
         cliente.getCuentas().add(cuenta);
         Altas.cuenta(temporal, cuenta);

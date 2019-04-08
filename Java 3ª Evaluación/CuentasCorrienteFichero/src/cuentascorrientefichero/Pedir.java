@@ -18,7 +18,7 @@ public class Pedir {
                 texto = lee.readLine();
             } catch (IOException excepcion) {
                 System.err.printf("No es un texto válido %n");
-                System.out.printf("Vuelva a introducirlo %n");
+                System.out.printf("Vuelva a introducirlo: ");
                 esTextoValido = false;
             }
         } while (!esTextoValido);

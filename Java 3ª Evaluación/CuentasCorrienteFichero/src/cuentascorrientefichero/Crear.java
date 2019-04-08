@@ -30,17 +30,17 @@ public class Crear {
         String numero = pedirNuevoNumeroCuenta(fichero, lee);
         System.out.printf("Sucursal: ");
         String sucursal = Pedir.texto(lee);
-        System.out.printf("Intereses");
+        System.out.printf("Intereses: ");
         float intereses = Pedir.numeroRealFloat(lee);
         System.out.printf("Fecha de vencimiento (dd/MM/yyyy): ");
-        Date fechaVencimiento = obtenerFecha(Pedir.texto(lee));
+        Date fechaVencimiento = obtenerFecha(lee);
         System.out.printf("Deposito a plazo: ");
         long depositoPlazo = Pedir.numeroLong(lee);
         return new CuentaPlazo(numero, sucursal, intereses, fechaVencimiento, depositoPlazo);
     }
-    
-    public static Cliente nuevoCliente(BufferedReader lee, String dni, File fichero){
-        if (dni == null){
+
+    public static Cliente nuevoCliente(BufferedReader lee, String dni, File fichero) {
+        if (dni == null) {
             dni = pedirNuevoDni(fichero, lee);
         }
         System.out.printf("Nombre: ");
@@ -49,8 +49,8 @@ public class Crear {
         String direccion = Pedir.texto(lee);
         return new Cliente(dni, nombre, direccion);
     }
-    
-    public static Movimiento nuevoMovimiento(String numeroCuenta, double saldoActualCuenta, BufferedReader lee){
+
+    public static Movimiento nuevoMovimiento(String numeroCuenta, double saldoActualCuenta, BufferedReader lee) {
         String numero = numeroCuenta;
         System.out.printf("Cantidad: ");
         float cantidad = Consultar.obtenerCantidadMovimiento(lee, Menu.seleccionarTipoMovimiento(lee));
@@ -58,18 +58,21 @@ public class Crear {
         return new Movimiento(numero, cantidad, saldoActual);
     }
 
-    public static Date obtenerFecha(String texto) {
+    public static Date obtenerFecha(BufferedReader lee) {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha = null;
-        boolean fechaEsValida = true;
-        try {
-            do {
-                fecha = formatoFecha.parse(texto);
-            } while (!fechaEsValida);
-        } catch (ParseException excepcion) {
-            System.out.println("Fecha incorrecta");
-            fechaEsValida = false;
-        }
+        boolean esFechaValida;
+        do {
+            try {
+                esFechaValida = true;
+                String texto = Pedir.texto(lee);
+                fecha = formatoFecha.parse(texto);               
+            } catch (ParseException excepcion) {
+                System.out.println("Fecha incorrecta");
+                System.out.printf("Vuelva a introducirla: ");
+                esFechaValida = false;
+            }
+        } while (!esFechaValida);
         return fecha;
     }
 
@@ -81,7 +84,7 @@ public class Crear {
         } while (!Validar.esNuevoNumeroCuentaValido(fichero, numero));
         return numero;
     }
-    
+
     public static String pedirNumeroCuentaExistente(File fichero, BufferedReader lee) {
         String numero = "";
         do {
@@ -90,7 +93,7 @@ public class Crear {
         } while (!Validar.esNumeroCuentaExistenteValido(fichero, numero));
         return numero;
     }
-    
+
     public static String pedirDni(BufferedReader lee) {
         String dni = "";
         do {
@@ -99,7 +102,7 @@ public class Crear {
         } while (!Validar.esDniValido(dni));
         return dni;
     }
-    
+
     public static String pedirNuevoDni(File fichero, BufferedReader lee) {
         String dni = "";
         do {
@@ -108,7 +111,7 @@ public class Crear {
         } while (!Validar.esNuevoDniValido(fichero, dni));
         return dni;
     }
-    
+
     public static String pedirDniExistente(File fichero, BufferedReader lee) {
         String dni = "";
         do {

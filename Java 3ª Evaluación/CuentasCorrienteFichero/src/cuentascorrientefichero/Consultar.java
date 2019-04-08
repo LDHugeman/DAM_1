@@ -90,12 +90,28 @@ public class Consultar {
         return encontrarClientePorDni(fichero, dni) != null;
     }
     
-    public static Cliente obtenerCliente(BufferedReader lee, File fichero) {
+    public static Cliente encontrarClientePorDniMemoria(Cuenta cuenta, String dni){
+        Cliente clienteEncontrado = null;
+        for(Cliente cliente:cuenta.getClientes()){
+            if(cliente.getDni().equalsIgnoreCase(dni)){
+                clienteEncontrado = cliente;
+            }
+        }
+        return clienteEncontrado;
+    }
+    
+    public static boolean existeClientePorDniMemoria(Cuenta cuenta, String dni){
+        return encontrarClientePorDniMemoria(cuenta, dni) !=null;
+    }  
+    
+    public static Cliente obtenerCliente(BufferedReader lee, File fichero, Cuenta cuenta) {
         String dni = Crear.pedirDni(lee);
         Cliente cliente;
         if (existeClientePorDni(fichero, dni)){
             cliente = Consultar.encontrarClientePorDni(fichero, dni);
-        } else {
+        } else if(existeClientePorDniMemoria(cuenta, dni)){
+            cliente = Consultar.encontrarClientePorDniMemoria(cuenta, dni);
+        }else{
             cliente = Crear.nuevoCliente(lee, dni, fichero);
         }
         return cliente;    
