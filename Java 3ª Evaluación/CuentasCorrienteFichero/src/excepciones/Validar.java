@@ -120,7 +120,7 @@ public class Validar {
                 numeroCuentaEsValido = false;
                 throw new Excepcion("Letra errónea");
             }
-            if (!Consultar.existeCuentaCorrientePorNumero(fichero, texto)) {
+            if (!Consultar.existeCuentaPorNumero(fichero, texto)) {
                 numeroCuentaEsValido = false;
                 throw new Excepcion("No existe ninguna cuenta con ese número");
             }

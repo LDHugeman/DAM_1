@@ -5,16 +5,20 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
 import objetos.Cliente;
 import objetos.Cuenta;
 import objetos.CuentaCorriente;
+import objetos.Movimiento;
 
 /**
  *
  * @author David
  */
 public class Consultar {
-    
+
     public static Cuenta encontrarCuentaPorNumero(File fichero, String numero) {
         ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
         Cuenta cuentaEncontrada = null;
@@ -22,8 +26,8 @@ public class Consultar {
             do {
                 Cuenta cuenta = (Cuenta) flujoLectura.readObject();
                 if (cuenta.getNumero().equalsIgnoreCase(numero)) {
-                        cuentaEncontrada = cuenta;
-                    }
+                    cuentaEncontrada = cuenta;
+                }
             } while (true);
         } catch (EOFException excepcion) {
         } catch (ClassNotFoundException excepcion) {
@@ -34,6 +38,10 @@ public class Consultar {
             Archivo.cerrarFlujo(flujoLectura);
         }
         return cuentaEncontrada;
+    }
+    
+    public static boolean existeCuentaPorNumero(File fichero, String numero) {
+        return encontrarCuentaPorNumero(fichero, numero) != null;
     }
 
     public static CuentaCorriente encontrarCuentaCorrientePorNumero(File fichero, String numero) {
@@ -89,34 +97,34 @@ public class Consultar {
     public static boolean existeClientePorDni(File fichero, String dni) {
         return encontrarClientePorDni(fichero, dni) != null;
     }
-    
-    public static Cliente encontrarClientePorDniMemoria(Cuenta cuenta, String dni){
+
+    public static Cliente encontrarClientePorDniMemoria(Cuenta cuenta, String dni) {
         Cliente clienteEncontrado = null;
-        for(Cliente cliente:cuenta.getClientes()){
-            if(cliente.getDni().equalsIgnoreCase(dni)){
+        for (Cliente cliente : cuenta.getClientes()) {
+            if (cliente.getDni().equalsIgnoreCase(dni)) {
                 clienteEncontrado = cliente;
             }
         }
         return clienteEncontrado;
     }
-    
-    public static boolean existeClientePorDniMemoria(Cuenta cuenta, String dni){
-        return encontrarClientePorDniMemoria(cuenta, dni) !=null;
-    }  
-    
+
+    public static boolean existeClientePorDniMemoria(Cuenta cuenta, String dni) {
+        return encontrarClientePorDniMemoria(cuenta, dni) != null;
+    }
+
     public static Cliente obtenerCliente(BufferedReader lee, File fichero, Cuenta cuenta) {
         String dni = Crear.pedirDni(lee);
         Cliente cliente;
-        if (existeClientePorDni(fichero, dni)){
+        if (existeClientePorDni(fichero, dni)) {
             cliente = Consultar.encontrarClientePorDni(fichero, dni);
-        } else if(existeClientePorDniMemoria(cuenta, dni)){
+        } else if (existeClientePorDniMemoria(cuenta, dni)) {
             cliente = Consultar.encontrarClientePorDniMemoria(cuenta, dni);
-        }else{
+        } else {
             cliente = Crear.nuevoCliente(lee, dni, fichero);
         }
-        return cliente;    
+        return cliente;
     }
-    
+
     public static float obtenerCantidadMovimiento(BufferedReader lee, byte tipoMovimiento) {
         System.out.printf("Cantidad: ");
         float cantidad = Pedir.numeroRealFloat(lee);
@@ -125,5 +133,51 @@ public class Consultar {
         } else {
             return cantidad - cantidad * 2;
         }
+    }
+
+    public static ArrayList<Cuenta> extraerCuentas(File fichero) {
+        ArrayList<Cuenta> cuentas = new ArrayList<>();
+        ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
+        try {
+            while (true) {
+                Cuenta actual = (Cuenta) flujoLectura.readObject();
+                cuentas.add(actual);
+            }
+        } catch (EOFException exception) {
+        } catch (IOException exception) {
+            System.out.println("Error en lectura (EC)");
+        } catch (ClassNotFoundException exception) {
+            System.out.println("Clase no encontrada (EC)");
+        } finally {
+            Archivo.cerrarFlujo(flujoLectura);
+        }
+        return cuentas;
+    }
+
+    public static ArrayList<Cuenta> encontrarCuentasDeCliente(File fichero, Cliente clienteEncontrado) {
+        ArrayList<Cuenta> cuentas = extraerCuentas(fichero);
+        ArrayList<Cuenta> cuentasEncontradas = new ArrayList<>();
+        for (Cuenta cuenta : cuentas) {
+            for (Cliente cliente : cuenta.getClientes()) {
+                if (cliente.getDni().equalsIgnoreCase(clienteEncontrado.getDni())) {
+                    cuentasEncontradas.add(cuenta);
+                }
+            }
+        }
+        return cuentasEncontradas;
+    }
+
+    public static ArrayList<Movimiento> obtenerMovimientosEntreFechas(ArrayList<Movimiento> movimientos, BufferedReader lee) {
+        System.out.printf("Fecha inicial (dd/MM/yyyy): ");
+        Date fechaInicial = Crear.obtenerFecha(lee);
+        System.out.printf("Fecha final (dd/MM/yyyy): ");
+        Date fechaFinal = Crear.obtenerFecha(lee);
+        ArrayList<Movimiento> movimientosFiltrados = new ArrayList<>();
+        for (Movimiento movimiento : movimientos) {
+            if (movimiento.getFechaMovimiento().getTime() > fechaInicial.getTime() && movimiento.getFechaMovimiento().getTime() < fechaFinal.getTime()) {
+                movimientosFiltrados.add(movimiento);
+            }
+        }
+        return movimientosFiltrados;
     }
 }

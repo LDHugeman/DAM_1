@@ -33,6 +33,10 @@ public class Cliente implements Serializable{
         return direccion;
     } 
 
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }   
+
     public ArrayList<Cuenta> getCuentas() {
         return cuentas;
     }

@@ -2,10 +2,12 @@ package cuentascorrientefichero;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.util.ArrayList;
 import objetos.Cliente;
 import objetos.Cuenta;
 import objetos.CuentaCorriente;
 import objetos.CuentaPlazo;
+import objetos.Movimiento;
 
 /**
  *
@@ -19,76 +21,97 @@ public class Menu {
             opcionSeleccionada = seleccionarOpcionMenuAltas(lee);
             switch (opcionSeleccionada) {
                 case 1:
-                    CuentaCorriente cuentaCorriente = Crear.nuevaCuentaCorriente(fichero, lee);
-                    System.out.println("--- Inserte un nuevo cliente para la cuenta ---");
-                    Cliente cliente = Consultar.obtenerCliente(lee, fichero, cuentaCorriente);
-                    cuentaCorriente.getClientes().add(cliente);
-                    cliente.getCuentas().add(cuentaCorriente);
-                    byte opcionCliente = 0;
-                    byte opcionMovimiento = 0;
-                    byte opcionMasMovimientos = 0;
+                    byte opcionCuenta = 0;
                     do {
-                        System.out.println("¿Desea añadir más clientes a esta cuenta?");
-                        System.out.println("[1] Sí");
-                        System.out.println("[2] No");
-                        System.out.printf("Seleccione una opción: ");
-                        opcionCliente = Pedir.numeroByte(lee);
-                        if (opcionCliente == 1) {
-                            Cliente clienteNuevo = Consultar.obtenerCliente(lee, fichero, cuentaCorriente);
-                            clienteNuevo.getCuentas().add(cuentaCorriente);
-                            cuentaCorriente.getClientes().add(clienteNuevo);
-                        }
-                    } while (opcionCliente == 1);
-                    System.out.println("¿Desea añadir un movimiento a esta cuenta?");
-                    System.out.println("[1] Sí");
-                    System.out.println("[2] No");
-                    System.out.printf("Seleccione una opción: ");
-                    opcionMovimiento = Pedir.numeroByte(lee);
-                    if (opcionMovimiento == 1) {
-                        cuentaCorriente.agregarNuevoMovimiento(lee);
+                        CuentaCorriente cuentaCorriente = Crear.nuevaCuentaCorriente(fichero, lee);
+                        System.out.println("--- Inserte un nuevo cliente para la cuenta ---");
+                        Cliente cliente = Consultar.obtenerCliente(lee, fichero, cuentaCorriente);
+                        cuentaCorriente.getClientes().add(cliente);
+                        cliente.getCuentas().add(cuentaCorriente);
+                        byte opcionCliente = 0;
+                        byte opcionMovimiento = 0;
+                        byte opcionMasMovimientos = 0;
                         do {
-                            System.out.println("¿Desea añadir más movimientos a esta cuenta?");
+                            System.out.println("¿Desea añadir más clientes a esta cuenta?");
                             System.out.println("[1] Sí");
                             System.out.println("[2] No");
                             System.out.printf("Seleccione una opción: ");
-                            opcionMasMovimientos = Pedir.numeroByte(lee);
-                            if (opcionMasMovimientos == 1) {
-                                cuentaCorriente.agregarNuevoMovimiento(lee);
+                            opcionCliente = Pedir.numeroByte(lee);
+                            if (opcionCliente == 1) {
+                                Cliente clienteNuevo = Consultar.obtenerCliente(lee, fichero, cuentaCorriente);
+                                clienteNuevo.getCuentas().add(cuentaCorriente);
+                                cuentaCorriente.getClientes().add(clienteNuevo);
                             }
-                        } while (opcionMasMovimientos == 1);
-                    }
-                    Altas.cuenta(fichero, cuentaCorriente);
-                    System.out.println("Cuenta creada");
-                    break;
-                case 2:
-                    CuentaPlazo cuentaPlazo = Crear.nuevaCuentaPlazo(fichero, lee);
-                    System.out.println("--- Inserte un nuevo cliente para la cuenta ---");
-                    Cliente primerCliente = Consultar.obtenerCliente(lee, fichero, cuentaPlazo);
-                    cuentaPlazo.getClientes().add(primerCliente);
-                    primerCliente.getCuentas().add(cuentaPlazo);
-                    byte opcionClientes = 0;
-                    do {
-                        System.out.println("¿Desea añadir más clientes a esta cuenta?");
+                        } while (opcionCliente == 1);
+                        System.out.println("¿Desea añadir un movimiento a esta cuenta?");
                         System.out.println("[1] Sí");
                         System.out.println("[2] No");
                         System.out.printf("Seleccione una opción: ");
-                        opcionClientes = Pedir.numeroByte(lee);
-                        if (opcionClientes == 1) {
-                            Cliente clienteNuevo = Consultar.obtenerCliente(lee, fichero, cuentaPlazo);
-                            cuentaPlazo.getClientes().add(clienteNuevo);
-                            clienteNuevo.getCuentas().add(cuentaPlazo);
+                        opcionMovimiento = Pedir.numeroByte(lee);
+                        if (opcionMovimiento == 1) {
+                            cuentaCorriente.agregarNuevoMovimiento(lee);
+                            do {
+                                System.out.println("¿Desea añadir más movimientos a esta cuenta?");
+                                System.out.println("[1] Sí");
+                                System.out.println("[2] No");
+                                System.out.printf("Seleccione una opción: ");
+                                opcionMasMovimientos = Pedir.numeroByte(lee);
+                                if (opcionMasMovimientos == 1) {
+                                    cuentaCorriente.agregarNuevoMovimiento(lee);
+                                }
+                            } while (opcionMasMovimientos == 1);
                         }
-                    } while (opcionClientes == 1);
-                    Altas.cuenta(fichero, cuentaPlazo);
-                    System.out.println("Cuenta creada");
+                        Altas.cuenta(fichero, cuentaCorriente);
+                        System.out.println("Cuenta creada");
+                        System.out.println("¿Desea añadir más cuentas corriente?");
+                        System.out.println("[1] Sí");
+                        System.out.println("[2] No");
+                        System.out.printf("Seleccione una opción: ");
+                        opcionCuenta = Pedir.numeroByte(lee);
+                    } while (opcionCuenta == 1);
+                    break;
+                case 2:
+                    byte opcionCuentaPlazo = 0;
+                    do {
+                        CuentaPlazo cuentaPlazo = Crear.nuevaCuentaPlazo(fichero, lee);
+                        System.out.println("--- Inserte un nuevo cliente para la cuenta ---");
+                        Cliente primerCliente = Consultar.obtenerCliente(lee, fichero, cuentaPlazo);
+                        cuentaPlazo.getClientes().add(primerCliente);
+                        primerCliente.getCuentas().add(cuentaPlazo);
+                        byte opcionClientes = 0;
+                        do {
+                            System.out.println("¿Desea añadir más clientes a esta cuenta?");
+                            System.out.println("[1] Sí");
+                            System.out.println("[2] No");
+                            System.out.printf("Seleccione una opción: ");
+                            opcionClientes = Pedir.numeroByte(lee);
+                            if (opcionClientes == 1) {
+                                Cliente clienteNuevo = Consultar.obtenerCliente(lee, fichero, cuentaPlazo);
+                                cuentaPlazo.getClientes().add(clienteNuevo);
+                                clienteNuevo.getCuentas().add(cuentaPlazo);
+                            }
+                        } while (opcionClientes == 1);
+                        Altas.cuenta(fichero, cuentaPlazo);
+                        System.out.println("Cuenta creada");
+                        System.out.println("¿Desea añadir más cuentas a plazo?");
+                        System.out.println("[1] Sí");
+                        System.out.println("[2] No");
+                        System.out.printf("Seleccione una opción: ");
+                        opcionCuentaPlazo = Pedir.numeroByte(lee);
+                    } while (opcionCuentaPlazo == 1);
                     break;
                 case 3:
                     CuentaCorriente cuenta = Consultar.encontrarCuentaCorrientePorNumero(fichero, Crear.pedirNumeroCuentaExistente(fichero, lee));
-                    Modificar.agregarMovimiento(fichero, cuenta, lee);
+                    if (cuenta != null) {
+                        Modificar.agregarMovimiento(fichero, cuenta, lee);
+                    } else {
+                        System.out.println("No se ha encontrado ninguna cuenta corriente con ese número de cuenta");
+                    }
                     break;
                 case 4:
                     System.out.println("--- Inserte el número de cuenta a la que desea añadir clientes ---");
                     Cuenta cuentaEncontrada = Consultar.encontrarCuentaPorNumero(fichero, Crear.pedirNumeroCuentaExistente(fichero, lee));
+                    Visualizar.mostrarCuenta(cuentaEncontrada);
                     byte opcion = 0;
                     do {
                         System.out.println("¿Desea añadir más clientes a esta cuenta?");
@@ -109,14 +132,28 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
 
-    public static void menuBajas(BufferedReader lee) {
+    public static void menuBajas(File fichero, BufferedReader lee) {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = seleccionarOpcionMenuBajas(lee);
             switch (opcionSeleccionada) {
                 case 1:
+                    Cuenta cuentaEncontrada = Consultar.encontrarCuentaPorNumero(fichero, Crear.pedirNumeroCuentaExistente(fichero, lee));
+                    Visualizar.mostrarCuenta(cuentaEncontrada);
+                    System.out.println("¿Es esta la cuenta que desea eliminar?");
+                    System.out.println("[1] Sí");
+                    System.out.println("[2] No");
+                    System.out.printf("Seleccione una opción: ");
+                    byte opcion = Pedir.numeroByte(lee);
+                    if (opcion == 1) {
+                        Bajas.cuenta(fichero, cuentaEncontrada);
+                        System.out.println("Cuenta eliminada");
+                    } else {
+                        System.out.println("Operación cancelada");
+                    }
                     break;
                 case 2:
+                    Bajas.cliente(fichero, Crear.pedirDniExistente(fichero, lee), lee);
                     break;
                 case 0:
                     break;
@@ -126,16 +163,29 @@ public class Menu {
         } while (opcionSeleccionada != 0);
     }
 
-    public static void menuConsultas(BufferedReader lee) {
+    public static void menuConsultas(File fichero, BufferedReader lee) {
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = seleccionarOpcionMenuConsultas(lee);
             switch (opcionSeleccionada) {
                 case 1:
+                    Cuenta cuentaEncontrada = Consultar.encontrarCuentaPorNumero(fichero, Crear.pedirNumeroCuentaExistente(fichero, lee));
+                    Visualizar.mostrarClientes(cuentaEncontrada.getClientes());
                     break;
                 case 2:
+                    ArrayList<Cuenta> cuentas = Consultar.encontrarCuentasDeCliente(fichero, Consultar.encontrarClientePorDni(fichero, Crear.pedirDniExistente(fichero, lee)));
+                    Visualizar.mostrarCuentas(cuentas);
                     break;
                 case 3:
+                    System.out.println("--- Introduzca el número de cuenta ---");
+                    String numero = Crear.pedirNumeroCuentaExistente(fichero, lee);
+                    CuentaCorriente cuentaCorrienteEncontrada = Consultar.encontrarCuentaCorrientePorNumero(fichero, numero);
+                    ArrayList<Movimiento> movimientosEncontrados = Consultar.obtenerMovimientosEntreFechas(cuentaCorrienteEncontrada.getMovimientos(), lee);
+                    if (!movimientosEncontrados.isEmpty()) {
+                        Visualizar.mostrarMovimientos(movimientosEncontrados);
+                    } else {
+                        System.out.println("No hay ningún movimiento entre esas dos fechas");
+                    }
                     break;
                 case 0:
                     break;

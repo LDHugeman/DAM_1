@@ -39,7 +39,7 @@ public class Archivo {
         }
     }
 
-    private static ObjectOutputStream crearFichero(File fichero) {
+    public static ObjectOutputStream crearFichero(File fichero) {
         ObjectOutputStream flujoArchivo = null;
         try {
             flujoArchivo = new ObjectOutputStream(new FileOutputStream(fichero));
