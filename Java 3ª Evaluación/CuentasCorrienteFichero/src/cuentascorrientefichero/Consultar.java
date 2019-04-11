@@ -5,7 +5,6 @@ import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import objetos.Cliente;
