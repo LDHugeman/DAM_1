@@ -1,13 +1,13 @@
 package cuentascorrientefichero;
 
 import java.io.BufferedReader;
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import objetos.Cuenta;
 import objetos.ObjectOutputStreamSinCabecera;
 
@@ -17,7 +17,7 @@ import objetos.ObjectOutputStreamSinCabecera;
  */
 public class Archivo {
     
-    public static void nuevoFichero (File fichero, BufferedReader lee){
+    public static void nuevoFichero (ArrayList<Cuenta> cuentas, File fichero, BufferedReader lee){
         ObjectOutputStream flujoArchivo;
         if(fichero.exists()){
             System.out.println("¿Desea eliminar el fichero actual y crear uno nuevo?");
@@ -28,14 +28,15 @@ public class Archivo {
             if(opcion == 1){
                 flujoArchivo = crearFichero(fichero);
                 cerrarFlujo(flujoArchivo);
-                System.out.println("Fichero creado");
+                cuentas.clear();
+                System.out.println("Fichero creado");               
             }else{
                 System.out.println("Operación cancelada");
             }
         } else {
             flujoArchivo = crearFichero(fichero);
             cerrarFlujo(flujoArchivo);
-            System.out.println("Fichero creado");
+            System.out.println("Fichero creado");           
         }
     }
 
@@ -83,28 +84,19 @@ public class Archivo {
         } catch (IOException excepcion) {
             System.out.println("Error al cerrar el fichero");
         }
-    }
+    }    
     
-    public static File obtenerTemporal(File original, Cuenta cuentaBuscada) {
-        File temporal = new File("temporal.dat");
-        ObjectInputStream lecturaOriginal = abrirLecturaFichero(original);
-        ObjectOutputStream escrituraTemporal = crearFichero(temporal);
-        Cuenta cuenta = null;
+    public static File reescribirFichero(File fichero, ArrayList<Cuenta> cuentas) {
+        fichero.delete();
+        File nuevoFichero = new File(fichero.getName());
+        ObjectOutputStream escrituraNuevoFichero = crearFichero(nuevoFichero);       
         try {
-            do {
-                cuenta = (Cuenta) lecturaOriginal.readObject();
-                if (!cuenta.getNumero().equalsIgnoreCase(cuentaBuscada.getNumero())) {
-                    escrituraTemporal.writeObject(cuenta);  
-                }
-            } while (true);
-        } catch (EOFException exception) {
+            escrituraNuevoFichero.writeObject(cuentas);
         } catch (IOException exception) {
-            System.out.println("Error de lectura");
-        } catch (ClassNotFoundException exception) {
-            System.out.println("Clase no encontrada");
+            System.out.println("Error al abrir el fichero");
+        }finally{
+            Archivo.cerrarFlujo(escrituraNuevoFichero);
         }
-        cerrarFlujo(lecturaOriginal);
-        cerrarFlujo(escrituraTemporal);
-        return temporal;
+        return nuevoFichero;
     }
 }

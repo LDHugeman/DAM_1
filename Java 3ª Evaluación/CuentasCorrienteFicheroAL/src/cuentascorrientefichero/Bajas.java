@@ -2,6 +2,7 @@ package cuentascorrientefichero;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.util.ArrayList;
 import objetos.Cliente;
 import objetos.Cuenta;
 
@@ -11,14 +12,13 @@ import objetos.Cuenta;
  */
 public class Bajas {
 
-    public static void cuenta(File fichero, Cuenta cuentaEncontrada) {
-        File temporal = Archivo.obtenerTemporal(fichero, cuentaEncontrada);
-        fichero.delete();
-        temporal.renameTo(fichero);
+    public static void cuenta(ArrayList<Cuenta> cuentas, File fichero, Cuenta cuentaEncontrada) {
+        cuentas.remove(cuentaEncontrada);
+        Archivo.reescribirFichero(fichero, cuentas);
     }
 
-    public static void cliente(File fichero, String dni, BufferedReader lee) {
-        Cuenta cuentaEncontrada = Consultar.encontrarCuentaPorNumero(fichero, Crear.pedirNumeroCuentaExistente(fichero, lee));
+    public static void cliente(ArrayList<Cuenta> cuentas, File fichero, String dni, BufferedReader lee) {
+        Cuenta cuentaEncontrada = Consultar.encontrarCuentaPorNumero(cuentas, Crear.pedirNumeroCuentaExistente(cuentas, lee));
         Cliente clienteEncontrado = null;
         for (Cliente cliente : cuentaEncontrada.getClientes()) {
             if (cliente.getDni().equalsIgnoreCase(dni)) {
@@ -33,11 +33,8 @@ public class Bajas {
             System.out.printf("Seleccione una opción: ");
             byte opcion = Pedir.numeroByte(lee);
             if (opcion == 1) {
-                File temporal = Archivo.obtenerTemporal(fichero, cuentaEncontrada);
-                cuentaEncontrada.getClientes().remove(clienteEncontrado);
-                Altas.cuenta(temporal, cuentaEncontrada);
-                fichero.delete();
-                temporal.renameTo(fichero);
+                cuentaEncontrada.getClientes().remove(clienteEncontrado);                             
+                Archivo.reescribirFichero(fichero, cuentas);
                 System.out.println("Cliente eliminado");
             } else {
                 System.out.println("Operación cancelada");

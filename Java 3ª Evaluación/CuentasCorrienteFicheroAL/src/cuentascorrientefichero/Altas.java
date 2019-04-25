@@ -1,9 +1,8 @@
 package cuentascorrientefichero;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import objetos.Cuenta;
-import objetos.ObjectOutputStreamSinCabecera;
 
 /**
  *
@@ -11,14 +10,8 @@ import objetos.ObjectOutputStreamSinCabecera;
  */
 public class Altas {
 
-    public static void cuenta(File fichero, Cuenta cuenta) {
-        ObjectOutputStreamSinCabecera flujoArchivo = Archivo.abrirEscrituraFichero(fichero);
-        try {
-            flujoArchivo.writeObject(cuenta);
-        } catch (IOException excepcion) {
-            System.out.println("Error en escritura");
-        } finally {
-            Archivo.cerrarFlujo(flujoArchivo);
-        }
+    public static void cuenta(ArrayList<Cuenta> cuentas, File fichero, Cuenta cuenta) {
+        cuentas.add(cuenta);
+        Archivo.reescribirFichero(fichero, cuentas);
     }
 }

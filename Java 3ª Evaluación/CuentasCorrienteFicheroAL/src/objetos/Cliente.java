@@ -12,13 +12,11 @@ public class Cliente implements Serializable{
     private String dni;
     private String nombre;
     private String direccion;
-    private ArrayList<Cuenta> cuentas;
     
     public Cliente(String dni, String nombre, String direccion){
         this.dni = dni;
         this.direccion = direccion;
         this.nombre = nombre;
-        cuentas = new ArrayList<>();
     }
     
     public String getDni(){
@@ -36,8 +34,4 @@ public class Cliente implements Serializable{
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }   
-
-    public ArrayList<Cuenta> getCuentas() {
-        return cuentas;
-    }
 }

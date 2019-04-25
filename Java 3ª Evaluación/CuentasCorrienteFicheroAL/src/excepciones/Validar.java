@@ -2,6 +2,8 @@ package excepciones;
 
 import cuentascorrientefichero.Consultar;
 import java.io.File;
+import java.util.ArrayList;
+import objetos.Cuenta;
 
 /**
  *
@@ -30,7 +32,7 @@ public class Validar {
         return dniEsValido;
     }
     
-    public static boolean esNuevoDniValido(File fichero, String texto) {
+    public static boolean esNuevoDniValido(ArrayList<Cuenta> cuentas, String texto) {
         boolean dniEsValido = true;
         try {
             if (texto.length() != 9) {
@@ -45,7 +47,7 @@ public class Validar {
                 dniEsValido = false;
                 throw new Excepcion("Letra errónea");
             }
-            if (Consultar.existeClientePorDni(fichero, texto)) {
+            if (Consultar.existeClientePorDni(cuentas, texto)) {
                 dniEsValido = false;
                 throw new Excepcion("Ya existe un cliente con ese Dni");
             }
@@ -55,7 +57,7 @@ public class Validar {
         return dniEsValido;
     }
 
-    public static boolean esDniExistenteValido(File fichero, String texto) {
+    public static boolean esDniExistenteValido(ArrayList<Cuenta> cuentas, String texto) {
         boolean dniEsValido = true;
         try {
             if (texto.length() != 9) {
@@ -70,7 +72,7 @@ public class Validar {
                 dniEsValido = false;
                 throw new Excepcion("Letra errónea");
             }
-            if (!Consultar.existeClientePorDni(fichero, texto)) {
+            if (!Consultar.existeClientePorDni(cuentas, texto)) {
                 dniEsValido = false;
                 throw new Excepcion("No existe ningún cliente con ese Dni");
             }
@@ -80,7 +82,7 @@ public class Validar {
         return dniEsValido;
     }
 
-    public static boolean esNuevoNumeroCuentaValido(File fichero, String texto) {
+    public static boolean esNuevoNumeroCuentaValido(ArrayList<Cuenta> cuentas, String texto) {
         boolean numeroCuentaEsValido = true;
         try {
             if (texto.length() != 6) {
@@ -95,7 +97,7 @@ public class Validar {
                 numeroCuentaEsValido = false;
                 throw new Excepcion("Letra errónea");
             }
-            if (Consultar.existeCuentaCorrientePorNumero(fichero, texto)) {
+            if (Consultar.existeCuentaCorrientePorNumero(cuentas, texto)) {
                 numeroCuentaEsValido = false;
                 throw new Excepcion("Ya existe una cuenta con ese número");
             }
@@ -105,7 +107,7 @@ public class Validar {
         return numeroCuentaEsValido;
     }
 
-    public static boolean esNumeroCuentaExistenteValido(File fichero, String texto) {
+    public static boolean esNumeroCuentaExistenteValido(ArrayList<Cuenta> cuentas, String texto) {
         boolean numeroCuentaEsValido = true;
         try {
             if (texto.length() != 6) {
@@ -120,7 +122,7 @@ public class Validar {
                 numeroCuentaEsValido = false;
                 throw new Excepcion("Letra errónea");
             }
-            if (!Consultar.existeCuentaPorNumero(fichero, texto)) {
+            if (!Consultar.existeCuentaPorNumero(cuentas, texto)) {
                 numeroCuentaEsValido = false;
                 throw new Excepcion("No existe ninguna cuenta con ese número");
             }

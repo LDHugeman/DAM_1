@@ -2,11 +2,12 @@ package cuentascorrientefichero;
 
 import excepciones.Validar;
 import java.io.BufferedReader;
-import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import objetos.Cliente;
+import objetos.Cuenta;
 import objetos.CuentaCorriente;
 import objetos.CuentaPlazo;
 import objetos.Movimiento;
@@ -17,8 +18,8 @@ import objetos.Movimiento;
  */
 public class Crear {
 
-    public static CuentaCorriente nuevaCuentaCorriente(File fichero, BufferedReader lee) {
-        String numero = pedirNuevoNumeroCuenta(fichero, lee);
+    public static CuentaCorriente nuevaCuentaCorriente(ArrayList<Cuenta> cuentas, BufferedReader lee) {
+        String numero = pedirNuevoNumeroCuenta(cuentas, lee);
         System.out.printf("Sucursal: ");
         String sucursal = Pedir.texto(lee);
         System.out.printf("Saldo actual: ");
@@ -26,8 +27,8 @@ public class Crear {
         return new CuentaCorriente(numero, sucursal, saldoActual);
     }
 
-    public static CuentaPlazo nuevaCuentaPlazo(File fichero, BufferedReader lee) {
-        String numero = pedirNuevoNumeroCuenta(fichero, lee);
+    public static CuentaPlazo nuevaCuentaPlazo(ArrayList<Cuenta> cuentas, BufferedReader lee) {
+        String numero = pedirNuevoNumeroCuenta(cuentas, lee);
         System.out.printf("Sucursal: ");
         String sucursal = Pedir.texto(lee);
         System.out.printf("Intereses: ");
@@ -39,9 +40,9 @@ public class Crear {
         return new CuentaPlazo(numero, sucursal, intereses, fechaVencimiento, depositoPlazo);
     }
 
-    public static Cliente nuevoCliente(BufferedReader lee, String dni, File fichero) {
+    public static Cliente nuevoCliente(BufferedReader lee, String dni, ArrayList<Cuenta> cuentas) {
         if (dni == null) {
-            dni = pedirNuevoDni(fichero, lee);
+            dni = pedirNuevoDni(cuentas, lee);
         }
         System.out.printf("Nombre: ");
         String nombre = Pedir.texto(lee);
@@ -76,21 +77,21 @@ public class Crear {
         return fecha;
     }
 
-    public static String pedirNuevoNumeroCuenta(File fichero, BufferedReader lee) {
+    public static String pedirNuevoNumeroCuenta(ArrayList<Cuenta> cuentas, BufferedReader lee) {
         String numero = "";
         do {
             System.out.printf("Número: ");
             numero = Pedir.texto(lee);
-        } while (!Validar.esNuevoNumeroCuentaValido(fichero, numero));
+        } while (!Validar.esNuevoNumeroCuentaValido(cuentas, numero));
         return numero;
     }
 
-    public static String pedirNumeroCuentaExistente(File fichero, BufferedReader lee) {
+    public static String pedirNumeroCuentaExistente(ArrayList<Cuenta> cuentas, BufferedReader lee) {
         String numero = "";
         do {
             System.out.printf("Número: ");
             numero = Pedir.texto(lee);
-        } while (!Validar.esNumeroCuentaExistenteValido(fichero, numero));
+        } while (!Validar.esNumeroCuentaExistenteValido(cuentas, numero));
         return numero;
     }
 
@@ -103,21 +104,21 @@ public class Crear {
         return dni;
     }
 
-    public static String pedirNuevoDni(File fichero, BufferedReader lee) {
+    public static String pedirNuevoDni(ArrayList<Cuenta> cuentas, BufferedReader lee) {
         String dni = "";
         do {
             System.out.printf("Dni: ");
             dni = Pedir.texto(lee);
-        } while (!Validar.esNuevoDniValido(fichero, dni));
+        } while (!Validar.esNuevoDniValido(cuentas, dni));
         return dni;
     }
 
-    public static String pedirDniExistente(File fichero, BufferedReader lee) {
+    public static String pedirDniExistente(ArrayList<Cuenta> cuentas, BufferedReader lee) {
         String dni = "";
         do {
             System.out.printf("Dni: ");
             dni = Pedir.texto(lee);
-        } while (!Validar.esDniExistenteValido(fichero, dni));
+        } while (!Validar.esDniExistenteValido(cuentas, dni));
         return dni;
     }
 }

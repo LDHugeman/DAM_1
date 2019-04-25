@@ -3,6 +3,8 @@ package cuentascorrientefichero;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import objetos.Cuenta;
 
 /**
  *
@@ -13,25 +15,30 @@ public class CuentasCorrienteFichero {
     public static void main(String[] args) {
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         File fichero = new File("cuentas.dat");
+        ArrayList<Cuenta> cuentas = new ArrayList<>();
         byte opcionSeleccionada = 0;
         do {
             opcionSeleccionada = Menu.seleccionarOpcionMenuPrincipal(lee);
             switch (opcionSeleccionada) {
                 case 1:
-                    Archivo.nuevoFichero(fichero, lee);
+                    Archivo.nuevoFichero(cuentas, fichero, lee);
                     break;
                 case 2:
-                    Menu.menuAltas(fichero, lee);
+                    cuentas = Consultar.extraerCuentas(fichero);
+                    Menu.menuAltas(cuentas, fichero, lee);
                     break;
                 case 3:
-                    Menu.menuBajas(fichero, lee);
+                    cuentas = Consultar.extraerCuentas(fichero);
+                    Menu.menuBajas(cuentas, fichero, lee);
                     break;
                 case 4:
-                    Modificar.direccionCliente(fichero, Crear.pedirDniExistente(fichero, lee), lee);
+                    cuentas = Consultar.extraerCuentas(fichero);
+                    Modificar.direccionCliente(fichero, Crear.pedirDniExistente(cuentas, lee), lee);
                     System.out.println("Dirección modificada correctamente");
                     break;
                 case 5:
-                    Menu.menuConsultas(fichero, lee);
+                    cuentas = Consultar.extraerCuentas(fichero);
+                    Menu.menuConsultas(cuentas, fichero, lee);
                     break;
                 case 0:
                     break;

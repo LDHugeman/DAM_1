@@ -18,83 +18,50 @@ import objetos.Movimiento;
  */
 public class Consultar {
 
-    public static Cuenta encontrarCuentaPorNumero(File fichero, String numero) {
-        ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
+    public static Cuenta encontrarCuentaPorNumero(ArrayList<Cuenta> cuentas, String numero) {
         Cuenta cuentaEncontrada = null;
-        try {
-            do {
-                Cuenta cuenta = (Cuenta) flujoLectura.readObject();
-                if (cuenta.getNumero().equalsIgnoreCase(numero)) {
-                    cuentaEncontrada = cuenta;
-                }
-            } while (true);
-        } catch (EOFException excepcion) {
-        } catch (ClassNotFoundException excepcion) {
-            System.out.println("Clase no encontrada");
-        } catch (IOException excepcion) {
-            System.out.println("Error al leer el fichero");
-        } finally {
-            Archivo.cerrarFlujo(flujoLectura);
+        for(Cuenta cuenta:cuentas){
+            if(cuenta.getNumero().equalsIgnoreCase(numero)){
+                cuentaEncontrada = cuenta;
+            }
         }
         return cuentaEncontrada;
     }
     
-    public static boolean existeCuentaPorNumero(File fichero, String numero) {
-        return encontrarCuentaPorNumero(fichero, numero) != null;
+    public static boolean existeCuentaPorNumero(ArrayList<Cuenta> cuentas, String numero) {
+        return encontrarCuentaPorNumero(cuentas, numero) != null;
     }
 
-    public static CuentaCorriente encontrarCuentaCorrientePorNumero(File fichero, String numero) {
-        ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
+    public static CuentaCorriente encontrarCuentaCorrientePorNumero(ArrayList<Cuenta> cuentas, String numero) {
         CuentaCorriente cuentaCorrienteEncontrada = null;
-        try {
-            do {
-                Cuenta cuenta = (Cuenta) flujoLectura.readObject();
-                if (cuenta instanceof CuentaCorriente) {
-                    if (cuenta.getNumero().equalsIgnoreCase(numero)) {
-                        cuentaCorrienteEncontrada = (CuentaCorriente) cuenta;
-                    }
+        for(Cuenta cuenta:cuentas){
+            if(cuenta instanceof CuentaCorriente){
+                if(cuenta.getNumero().equalsIgnoreCase(numero)){
+                    cuentaCorrienteEncontrada = (CuentaCorriente) cuenta;
                 }
-            } while (true);
-        } catch (EOFException excepcion) {
-        } catch (ClassNotFoundException excepcion) {
-            System.out.println("Clase no encontrada");
-        } catch (IOException excepcion) {
-            System.out.println("Error al leer el fichero");
-        } finally {
-            Archivo.cerrarFlujo(flujoLectura);
-        }
+            }
+        }           
         return cuentaCorrienteEncontrada;
     }
 
-    public static boolean existeCuentaCorrientePorNumero(File fichero, String numero) {
-        return encontrarCuentaCorrientePorNumero(fichero, numero) != null;
+    public static boolean existeCuentaCorrientePorNumero(ArrayList<Cuenta> cuentas, String numero) {
+        return encontrarCuentaCorrientePorNumero(cuentas, numero) != null;
     }
 
-    public static Cliente encontrarClientePorDni(File fichero, String dni) {
-        ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
+    public static Cliente encontrarClientePorDni(ArrayList<Cuenta> cuentas, String dni) {
         Cliente clienteEncontrado = null;
-        try {
-            do {
-                Cuenta cuenta = (Cuenta) flujoLectura.readObject();
-                for (Cliente cliente : cuenta.getClientes()) {
-                    if (cliente.getDni().equalsIgnoreCase(dni)) {
-                        clienteEncontrado = cliente;
-                    }
+        for(Cuenta cuenta:cuentas){
+            for(Cliente cliente:cuenta.getClientes()){
+                if(cliente.getDni().equalsIgnoreCase(dni)){
+                    clienteEncontrado = cliente;
                 }
-            } while (true);
-        } catch (EOFException excepcion) {
-        } catch (ClassNotFoundException excepcion) {
-            System.out.println("Clase no encontrada");
-        } catch (IOException excepcion) {
-            System.out.println("Error al leer el archivo");
-        } finally {
-            Archivo.cerrarFlujo(flujoLectura);
-        }
+            }
+        }      
         return clienteEncontrado;
     }
 
-    public static boolean existeClientePorDni(File fichero, String dni) {
-        return encontrarClientePorDni(fichero, dni) != null;
+    public static boolean existeClientePorDni(ArrayList<Cuenta> cuentas, String dni) {
+        return encontrarClientePorDni(cuentas, dni) != null;
     }
 
     public static Cliente encontrarClientePorDniMemoria(Cuenta cuenta, String dni) {
@@ -111,15 +78,15 @@ public class Consultar {
         return encontrarClientePorDniMemoria(cuenta, dni) != null;
     }
 
-    public static Cliente obtenerCliente(BufferedReader lee, File fichero, Cuenta cuenta) {
+    public static Cliente obtenerCliente(BufferedReader lee, ArrayList<Cuenta> cuentas, Cuenta cuenta) {
         String dni = Crear.pedirDni(lee);
         Cliente cliente;
-        if (existeClientePorDni(fichero, dni)) {
-            cliente = Consultar.encontrarClientePorDni(fichero, dni);
+        if (existeClientePorDni(cuentas, dni)) {
+            cliente = Consultar.encontrarClientePorDni(cuentas, dni);
         } else if (existeClientePorDniMemoria(cuenta, dni)) {
             cliente = Consultar.encontrarClientePorDniMemoria(cuenta, dni);
         } else {
-            cliente = Crear.nuevoCliente(lee, dni, fichero);
+            cliente = Crear.nuevoCliente(lee, dni, cuentas);
         }
         return cliente;
     }
@@ -139,8 +106,7 @@ public class Consultar {
         ObjectInputStream flujoLectura = Archivo.abrirLecturaFichero(fichero);
         try {
             while (true) {
-                Cuenta actual = (Cuenta) flujoLectura.readObject();
-                cuentas.add(actual);
+                cuentas = (ArrayList<Cuenta>) flujoLectura.readObject();              
             }
         } catch (EOFException exception) {
         } catch (IOException exception) {
