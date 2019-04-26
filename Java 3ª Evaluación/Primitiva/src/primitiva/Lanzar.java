@@ -15,8 +15,7 @@ public class Lanzar {
                && numeros[2]!=numero && numeros[3]!=numero
                && numeros[4]!=numero && numeros[5]!=numero){
                 numeros[i] = numero;
-            }
-            
+            }           
         }
         return numeros;
     }
