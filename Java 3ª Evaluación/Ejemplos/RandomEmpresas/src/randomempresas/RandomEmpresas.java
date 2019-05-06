@@ -12,7 +12,7 @@ public class RandomEmpresas {
         
         File fDatos=new File ("Datos.dat");
         BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
-        int nRegs=Leer.leer(fDatos);
+        int nRegs=Leer.obtenerNumeroRegistros(fDatos);
         byte op=0;
         
         

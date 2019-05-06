@@ -8,10 +8,10 @@ import Clases.*;
 
 public class Modificar {
     
-    public static void modificar (File fDatos,int nRegs, BufferedReader leer) throws IOException {
+    public static void modificar (File fichero,int numeroRegistros, BufferedReader leer) throws IOException {
         
         
-        RandomAccessFile rafDatos=new RandomAccessFile(fDatos,"rw");
+        RandomAccessFile flujoArchivoRW=new RandomAccessFile(fichero,"rw");
 
         C_Empresa empresa;
         String cif;
@@ -20,11 +20,11 @@ public class Modificar {
         System.out.println("Introduzca cif a Modificar:");
         cif=leer.readLine();
 
-        for(int i=0;i<nRegs;i++)
+        for(int i=0;i<numeroRegistros;i++)
         {
             
-            rafDatos.seek(i*140);
-            empresa=new C_Empresa(rafDatos.readUTF(),rafDatos.readUTF(),rafDatos.readUTF(),rafDatos.readUTF());
+            flujoArchivoRW.seek(i*140);
+            empresa=new C_Empresa(flujoArchivoRW.readUTF(),flujoArchivoRW.readUTF(),flujoArchivoRW.readUTF(),flujoArchivoRW.readUTF());
             
             if(empresa.getCif().compareToIgnoreCase(cif)==0)
             {
@@ -34,11 +34,11 @@ public class Modificar {
                 
                 if(empresa.getTamañoReal()<=empresa.getTamañoMax())
                 {
-                    rafDatos.seek(i*empresa.getTamañoMax());
-                    rafDatos.writeUTF(empresa.getCif());
-                    rafDatos.writeUTF(empresa.getRazonSocial());
-                    rafDatos.writeUTF(empresa.getDireccion());
-                    rafDatos.writeUTF(empresa.getTelefono());
+                    flujoArchivoRW.seek(i*empresa.getTamañoMax());
+                    flujoArchivoRW.writeUTF(empresa.getCif());
+                    flujoArchivoRW.writeUTF(empresa.getRazonSocial());
+                    flujoArchivoRW.writeUTF(empresa.getDireccion());
+                    flujoArchivoRW.writeUTF(empresa.getTelefono());
                 }
                 else
                     System.out.println("Tamaño Excedido  -- Empresa NO MODIFICADA --");

@@ -6,18 +6,17 @@ import java.io.*;
 
 public class Leer {
     
-    public static int leer (File fDatos) throws IOException {
+    public static int obtenerNumeroRegistros (File fichero) throws IOException {
         
-        int nRegs=0;
-        if(fDatos.exists())
+        int numeroRegistros=0;
+        final int TAMAÑO_MAXIMO_REGISTRO = 140;
+        if(fichero.exists())
         {
-            
-            RandomAccessFile rafDatos=new RandomAccessFile(fDatos,"r");
-            nRegs=(int)Math.ceil((float)rafDatos.length()/140);
-            rafDatos.close();
-            
+            RandomAccessFile datosArchivo=new RandomAccessFile(fichero,"r");
+            numeroRegistros=(int)Math.ceil(datosArchivo.length()/TAMAÑO_MAXIMO_REGISTRO);
+            datosArchivo.close();
         }
-        return nRegs;
+        return numeroRegistros;
         
     }
     

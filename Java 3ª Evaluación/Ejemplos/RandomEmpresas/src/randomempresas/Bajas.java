@@ -1,64 +1,55 @@
-
 package randomempresas;
+
 import java.io.*;
 import Clases.*;
 
-
- // @author 
-
+// @author 
 public class Bajas {
-    
-    public static int bajas (File fDatos, int nRegs, BufferedReader leer) throws IOException {
-        
-       
-        File temporal=new File("temporal.dat");
-        RandomAccessFile rafTemp=new RandomAccessFile(temporal,"rw");
-        RandomAccessFile rafDatos=new RandomAccessFile(fDatos,"r");
+
+    public static int bajas(File fichero, int numeroRegistros, BufferedReader leer) throws IOException {
+
+        File temporal = new File("temporal.dat");
+        RandomAccessFile flujoTemporalRW = new RandomAccessFile(temporal, "rw");
+        RandomAccessFile flujoDatosR = new RandomAccessFile(fichero, "r");
 
         C_Empresa empresa;
         String cif;
-        byte b=0;
-        
-        System.out.println("Introduzca cif a borrar:");
-        cif=leer.readLine();
-        
-        for(int i=0;i<nRegs;i++)
-        {
-            rafDatos.seek(i*140);
-            empresa=new C_Empresa(rafDatos.readUTF(),rafDatos.readUTF(),rafDatos.readUTF(),rafDatos.readUTF());
-            
-            if(empresa.getCif().compareToIgnoreCase(cif)!=0)
-            {
-             
-                rafTemp.seek(b*140);
-                rafTemp.writeUTF(empresa.getCif());
-                rafTemp.writeUTF(empresa.getRazonSocial());
-                rafTemp.writeUTF(empresa.getDireccion());
-                rafTemp.writeUTF(empresa.getTelefono());
-                b++;
-            }
-            
-        }
-        
-        rafDatos.close();
-        rafTemp.close();
-        
-        fDatos.delete();
-        temporal.renameTo(fDatos);
-        
+        byte numeroRegistrosTemporal = 0;
 
-        if(b==nRegs)
-        {
+        System.out.println("Introduzca cif a borrar:");
+        cif = leer.readLine();
+
+        for (int i = 0; i < numeroRegistros; i++) {
+            flujoDatosR.seek(i * 140);
+            empresa = new C_Empresa(flujoDatosR.readUTF(), flujoDatosR.readUTF(), flujoDatosR.readUTF(), flujoDatosR.readUTF());
+
+            if (empresa.getCif().compareToIgnoreCase(cif) != 0) {
+
+                flujoTemporalRW.seek(numeroRegistrosTemporal * 140);
+                flujoTemporalRW.writeUTF(empresa.getCif());
+                flujoTemporalRW.writeUTF(empresa.getRazonSocial());
+                flujoTemporalRW.writeUTF(empresa.getDireccion());
+                flujoTemporalRW.writeUTF(empresa.getTelefono());
+                numeroRegistrosTemporal++;
+            }
+
+        }
+
+        flujoDatosR.close();
+        flujoTemporalRW.close();
+
+        fichero.delete();
+        temporal.renameTo(fichero);
+
+        if (numeroRegistrosTemporal == numeroRegistros) {
             System.out.println("--- Empresa NO ENCONTRADA ---");
-            
-        }
-        else
-        {
+
+        } else {
             System.out.println("---  EMPRESA BORRADA  ---");
-            nRegs--;
+            numeroRegistros--;
         }
-        
-        return nRegs;
+
+        return numeroRegistros;
 
     }
 
