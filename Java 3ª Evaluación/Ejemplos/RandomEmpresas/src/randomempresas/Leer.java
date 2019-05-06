@@ -13,7 +13,7 @@ public class Leer {
         if(fichero.exists())
         {
             RandomAccessFile datosArchivo=new RandomAccessFile(fichero,"r");
-            numeroRegistros=(int)Math.ceil(datosArchivo.length()/TAMAÑO_MAXIMO_REGISTRO);
+            numeroRegistros=(int)Math.ceil((float)datosArchivo.length()/TAMAÑO_MAXIMO_REGISTRO);
             datosArchivo.close();
         }
         return numeroRegistros;
