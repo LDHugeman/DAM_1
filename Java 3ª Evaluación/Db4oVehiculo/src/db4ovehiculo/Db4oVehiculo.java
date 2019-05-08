@@ -60,6 +60,7 @@ public class Db4oVehiculo {
                     }
                     break;
                 case 4:
+                    Menu.menuVisualizar(baseDatos, lee);
                     break;
                 case 0:
                     break;

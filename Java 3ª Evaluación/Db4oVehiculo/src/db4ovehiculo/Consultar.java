@@ -3,6 +3,7 @@ package db4ovehiculo;
 
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.query.Query;
 import java.util.ArrayList;
 import objetos.Camion;
 import objetos.Vehiculo;
@@ -14,9 +15,10 @@ public class Consultar {
     
     public static Vehiculo obtenerVehiculoPorMatricula(ObjectContainer baseDatos, String matricula){
         Vehiculo vehiculo = null;
-        baseDatos.query().constrain(Vehiculo.class);
-        baseDatos.query().descend("matricula").constrain(matricula);
-        ObjectSet resultado = baseDatos.query().execute();
+        Query query = baseDatos.query();
+        query.constrain(Vehiculo.class);
+        query.descend("matricula").constrain(matricula);
+        ObjectSet resultado = query.execute();
         while (resultado.hasNext()){
             vehiculo = (Vehiculo)resultado.next();
         }
@@ -39,9 +41,11 @@ public class Consultar {
     
     public static ArrayList<Vehiculo> obtenerVehiculosDeUnPropietario(ObjectContainer baseDatos, String propietario){
         ArrayList<Vehiculo> vehiculos = new ArrayList<>();
-        baseDatos.query().constrain(Vehiculo.class);
-        baseDatos.query().orderAscending().descend("propietario").constrain(propietario);       
-        ObjectSet resultado = baseDatos.query().execute();
+        Query query = baseDatos.query();
+        query.constrain(Vehiculo.class);
+        query.descend("propietario").constrain(propietario);   
+        query.descend("matricula").orderAscending();
+        ObjectSet resultado = query.execute();
         while(resultado.hasNext()){
             vehiculos.add((Vehiculo)resultado.next());
         }

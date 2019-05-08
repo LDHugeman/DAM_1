@@ -2,8 +2,10 @@ package db4ovehiculo;
 
 import com.db4o.ObjectContainer;
 import java.io.BufferedReader;
+import java.util.ArrayList;
 import objetos.Camion;
 import objetos.Coche;
+import objetos.Vehiculo;
 
 /**
  *
@@ -47,6 +49,8 @@ public class Menu {
                             System.out.println("[2] No");
                             System.out.printf("Seleccione una opción: ");
                             opcionCamion = Pedir.numeroByte(lee);
+                        } else {
+                            System.err.println("Ya existe un vehículo con esa matrícula");
                         }
                     } while (opcionCamion == 1);
                     break;
@@ -64,9 +68,22 @@ public class Menu {
             opcionSeleccionada = seleccionarOpcionMenuVisualizar(lee);
             switch (opcionSeleccionada) {
                 case 1:
-
+                    float precio = Crear.obtenerPrecio(lee);
+                    ArrayList<Camion> camiones = Consultar.obtenerCamionesPorPrecio(baseDatos, precio);
+                    if (!camiones.isEmpty()) {
+                        Visualizar.mostrarCamiones(camiones);
+                    } else {
+                        System.err.println("No hay camiones con ese precio");
+                    }
                     break;
                 case 2:
+                    String propietario = Crear.obtenerPropietario(lee);
+                    ArrayList<Vehiculo> vehiculos = Consultar.obtenerVehiculosDeUnPropietario(baseDatos, propietario);
+                    if (!vehiculos.isEmpty()) {
+                        Visualizar.mostrarVehiculos(vehiculos);
+                    } else {
+                        System.err.println("Esta persona no es propietaria de ningún vehículo");
+                    }
                     break;
                 case 0:
                     break;
@@ -87,7 +104,7 @@ public class Menu {
         return Pedir.numeroByte(lee);
     }
 
-    public static byte seleccionarOpcionMenuAltas(BufferedReader lee) {
+    private static byte seleccionarOpcionMenuAltas(BufferedReader lee) {
         System.out.println("------- ALTAS -------");
         System.out.println("[1] Coche");
         System.out.println("[2] Camión");
@@ -96,7 +113,7 @@ public class Menu {
         return Pedir.numeroByte(lee);
     }
 
-    public static byte seleccionarOpcionMenuVisualizar(BufferedReader lee) {
+    private static byte seleccionarOpcionMenuVisualizar(BufferedReader lee) {
         System.out.println("------- VISUALIZAR -------");
         System.out.println("[1] Camiones con el mismo precio");
         System.out.println("[2] Vehículos de un propietario");
