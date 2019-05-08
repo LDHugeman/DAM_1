@@ -1,6 +1,7 @@
 
 package objetos;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -28,6 +29,11 @@ public class Camion extends Vehiculo{
 
     public Date getFechaDeAlta() {
         return fechaDeAlta;
+    }
+    
+    public String getStringFechaDeAlta(){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        return formatoFecha.format(fechaDeAlta);
     }
 
     public void setFechaDeAlta(Date fechaDeAlta) {

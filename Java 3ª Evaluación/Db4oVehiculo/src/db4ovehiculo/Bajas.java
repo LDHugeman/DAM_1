@@ -12,5 +12,6 @@ public class Bajas {
     
     public static void vehiculo(ObjectContainer baseDatos, Vehiculo vehiculo){
         baseDatos.delete(vehiculo);
+        System.out.println("Vehículo con matrícula "+vehiculo.getMatricula()+" eliminado");
     }
 }
