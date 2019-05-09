@@ -21,7 +21,7 @@ public class Visualizar {
             System.out.println("Impuesto: " + vehiculo.getImpuesto());
         } else if (vehiculo instanceof Camion) {
             System.out.println("Potencia: " + ((Camion) vehiculo).getPotencia());
-            System.out.println("Número de años: " + vehiculo.getNumeroDeAnos());
+            System.out.println("Número de años: " + ((Camion) vehiculo).getNumeroDeAnos());
             System.out.println("Fecha de alta: " + ((Camion) vehiculo).getStringFechaDeAlta());
             System.out.println("Impuesto: " + vehiculo.getImpuesto());
         }

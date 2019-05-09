@@ -11,10 +11,11 @@ import java.util.Date;
 public class Camion extends Vehiculo{
     
     private float potencia;
+    private int numeroDeAnos;
     private Date fechaDeAlta;
 
-    public Camion(String matricula, String propietario, float precio, int numeroDeAnos, float potencia, Date fechaDeAlta) {
-        super(matricula, propietario, precio, numeroDeAnos);
+    public Camion(String matricula, String propietario, float precio, float potencia, Date fechaDeAlta) {
+        super(matricula, propietario, precio);
         this.potencia = potencia;
         this.fechaDeAlta = fechaDeAlta;
     }
@@ -40,8 +41,21 @@ public class Camion extends Vehiculo{
         this.fechaDeAlta = fechaDeAlta;
     }
 
+    public int getNumeroDeAnos() {
+        final int ANO_MS = 1000*60*60*24*365;
+        Date fechaActual = new Date(); 
+        long fechaAc = fechaActual.getTime();
+        long fechaAlta = this.fechaDeAlta.getTime();
+        numeroDeAnos = (int)((fechaAc - fechaAlta)/ANO_MS);      
+        return numeroDeAnos;
+    }
+
+    public void setNumeroDeAnos(int numeroDeAnos) {
+        this.numeroDeAnos = numeroDeAnos;
+    }
+
     @Override
     public float getImpuesto() {
-        return super.getPrecio() * 0.120f + super.getNumeroDeAnos() * 0.02f;
+        return super.getPrecio() * 0.120f + numeroDeAnos * 0.02f;
     }  
 }

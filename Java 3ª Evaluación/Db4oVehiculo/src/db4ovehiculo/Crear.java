@@ -22,13 +22,11 @@ public class Crear {
     public static Camion nuevoCamion(String matricula, BufferedReader lee) {
         String propietario = obtenerPropietario(lee);
         float precio = obtenerPrecio(lee);
-        System.out.printf("Numero de años: ");
-        int numeroDeAnos = Pedir.numeroEntero(lee);
         System.out.printf("Potencia: ");
         float potencia = Pedir.numeroRealFloat(lee);
         System.out.printf("Fecha de alta(dd/MM/yyyy): ");
         Date fechaDeAlta = Pedir.fecha(lee);
-        return new Camion(matricula, propietario, precio, numeroDeAnos, potencia, fechaDeAlta);
+        return new Camion(matricula, propietario, precio, potencia, fechaDeAlta);
     }
 
     public static String obtenerMatricula(BufferedReader lee) {

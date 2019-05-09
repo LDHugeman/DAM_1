@@ -31,7 +31,7 @@ public class Consultar {
     
     public static ArrayList<Camion> obtenerCamionesPorPrecio(ObjectContainer baseDatos, float precio){
         ArrayList<Camion> camiones = new ArrayList<>();
-        Camion camion = new Camion(null, null, precio, 0, 0, null);
+        Camion camion = new Camion(null, null, precio, 0, null);
         ObjectSet resultado = baseDatos.queryByExample(camion);
         while(resultado.hasNext()){
             camiones.add((Camion)resultado.next());
