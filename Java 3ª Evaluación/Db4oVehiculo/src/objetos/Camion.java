@@ -2,6 +2,8 @@
 package objetos;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 /**
@@ -42,11 +44,11 @@ public class Camion extends Vehiculo{
     }
 
     public int getNumeroDeAnos() {
-        final int ANO_MS = 1000*60*60*24*365;
-        Date fechaActual = new Date(); 
-        long fechaAc = fechaActual.getTime();
-        long fechaAlta = this.fechaDeAlta.getTime();
-        numeroDeAnos = (int)((fechaAc - fechaAlta)/ANO_MS);      
+        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaAlta = LocalDate.of(1900 + fechaDeAlta.getYear(), fechaDeAlta.getMonth()+1, fechaDeAlta.getDay());
+        Period periodNumeroAnos = Period.between(fechaAlta, fechaActual);
+        numeroDeAnos = periodNumeroAnos.getYears();
+        
         return numeroDeAnos;
     }
 
