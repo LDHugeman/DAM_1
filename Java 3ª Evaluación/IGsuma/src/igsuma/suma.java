@@ -1,3 +1,5 @@
+package igsuma;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -166,24 +168,30 @@ public class suma extends javax.swing.JFrame {
     }//GEN-LAST:event_numero2ActionPerformed
 
     private void botonSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSumaActionPerformed
+        desbloquear();
         int numero1 = Integer.parseInt(this.numero1.getText());
         int numero2 = Integer.parseInt(this.numero2.getText());
         int resultado = numero1 + numero2;
         this.resultado.setText(String.valueOf(resultado));
+        bloquear();
     }//GEN-LAST:event_botonSumaActionPerformed
 
     private void botonRestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRestarActionPerformed
+        desbloquear();
         int numero1 = Integer.parseInt(this.numero1.getText());
         int numero2 = Integer.parseInt(this.numero2.getText());
         int resultado = numero1 - numero2;
         this.resultado.setText(String.valueOf(resultado));
+        bloquear();
     }//GEN-LAST:event_botonRestarActionPerformed
 
     private void botonMultiplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMultiplicarActionPerformed
+        desbloquear();
         int numero1 = Integer.parseInt(this.numero1.getText());
         int numero2 = Integer.parseInt(this.numero2.getText());
         int resultado = numero1 * numero2;
         this.resultado.setText(String.valueOf(resultado));
+        bloquear();
     }//GEN-LAST:event_botonMultiplicarActionPerformed
 
 
@@ -192,6 +200,10 @@ public class suma extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonNuevaOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevaOperacionActionPerformed
+        numero1.setEnabled(true);
+        numero2.setEnabled(true);
+        resultado.setEnabled(true);
+        botonSuma.setEnabled(true);
         numero1.setText("");
         numero2.setText("");
         resultado.setText("");
