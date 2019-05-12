@@ -15,8 +15,9 @@ public class RadioButton extends javax.swing.JFrame {
      * Creates new form RadioButton
      */
     public RadioButton() {        
-        initComponents();
+        initComponents(); 
         RadioButtonRojo.setSelected(true);
+        
     }
 
     /**
