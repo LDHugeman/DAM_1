@@ -17,6 +17,7 @@ public class Check extends javax.swing.JFrame {
      */
     public Check() {
         initComponents();
+        
     }
 
     /**
