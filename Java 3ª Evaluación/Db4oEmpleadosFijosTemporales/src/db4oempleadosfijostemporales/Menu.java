@@ -1,0 +1,252 @@
+
+package db4oempleadosfijostemporales;
+
+import com.db4o.ObjectContainer;
+import java.io.BufferedReader;
+import objetos.Empleado;
+import objetos.EmpleadoFijo;
+import objetos.EmpleadoTemporal;
+import objetos.Empresa;
+import objetos.Producto;
+
+/**
+ *
+ * @author David
+ */
+public class Menu {
+    
+    public static void menuAltas(ObjectContainer baseDatos, BufferedReader lee) {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarOpcionMenuAltas(lee);
+            switch (opcionSeleccionada) {
+                case 1:
+                    Altas.altaEmpresa(baseDatos, Crear.nuevaEmpresa(lee));
+                    break;
+                case 2: 
+                    menuAltasEmpleados(baseDatos, lee);
+                    break;
+                case 3:
+                    Altas.producto(baseDatos, Crear.nuevoProducto(lee));
+                    break;
+                case 4:
+                    System.out.println("--- Introduzca el código del producto del que desea registrar ventas ---");
+                    String codigo = Crear.obtenerCodigoProducto(lee);
+                    Producto producto = Consultar.obtenerProductoPorCodigo(baseDatos, codigo);
+                    if(producto!=null){
+                        Altas.venta(baseDatos, Crear.nuevaVenta(producto, lee));
+                    } else {
+                        System.err.println("No existe ningún producto con el código "+ codigo);
+                    }                  
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.err.println("No existe esa opción");
+            }
+        } while (opcionSeleccionada != 0);
+    }
+    
+    public static void menuAltasEmpleados(ObjectContainer baseDatos, BufferedReader lee) {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarOpcionMenuAltasEmpleados(lee);
+            switch (opcionSeleccionada) {
+                case 1:
+                    Altas.empleado(baseDatos, Crear.nuevoEmpleadoFijo(lee));
+                    break;
+                case 2: 
+                    Altas.empleado(baseDatos, Crear.nuevoEmpleadoTemporal(lee));
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.err.println("No existe esa opción");
+            }
+        } while (opcionSeleccionada != 0);
+    }
+    
+    public static void menuBajas(ObjectContainer baseDatos, BufferedReader lee) {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarOpcionMenuBajas(lee);
+            switch (opcionSeleccionada) {
+                case 1:
+                    String dniEmpleadoFijo = Crear.obtenerDniEmpleado(lee);
+                    EmpleadoFijo empleadoFijo = Consultar.obtenerEmpleadoFijoPorDni(baseDatos, dniEmpleadoFijo);
+                    if(empleadoFijo!=null){
+                        Bajas.empleado(baseDatos, empleadoFijo);
+                    } else {
+                        System.err.println("No existe ningún empleado fijo con el dni "+dniEmpleadoFijo);
+                    }
+                    break;
+                case 2:  
+                    String dniEmpleadoTemporal = Crear.obtenerDniEmpleado(lee);
+                    EmpleadoTemporal empleadoTemporal = Consultar.obtenerEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal);
+                    if(empleadoTemporal!=null){
+                        Bajas.empleado(baseDatos, empleadoTemporal);
+                    } else {
+                        System.err.println("No existe ningún empleado temporal con el dni "+dniEmpleadoTemporal);
+                    }
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.err.println("No existe esa opción");
+            }
+        } while (opcionSeleccionada != 0);
+    }
+    
+    public static void menuModificaciones(ObjectContainer baseDatos, BufferedReader lee) {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarOpcionMenuModificaciones(lee);
+            switch (opcionSeleccionada) {
+                case 1:
+                    System.out.println("--- Introduzca el código del producto del que desea modificar el precio ---");
+                    String codigo = Crear.obtenerCodigoProducto(lee);
+                    Producto producto = Consultar.obtenerProductoPorCodigo(baseDatos, codigo);
+                    if(producto!=null){
+                        Modificar.precioProducto(baseDatos, producto, lee);
+                    } else {
+                        System.err.println("No existe ningún producto con el código "+codigo);
+                    }
+                    break;
+                case 2:
+                    System.out.println("--- Introduzca el dni del empleado fijo al que desea modificar el sueldo base ---");
+                    String dniEmpleadoFijo = Crear.obtenerDniEmpleado(lee);
+                    EmpleadoFijo empleadoFijo = Consultar.obtenerEmpleadoFijoPorDni(baseDatos, dniEmpleadoFijo);
+                    if(empleadoFijo!=null){
+                        Modificar.sueldoBaseEmpleadoFijo(baseDatos, empleadoFijo, lee);
+                    } else {
+                        System.err.println("No existe ningún empleado fijo con el dni "+dniEmpleadoFijo);
+                    }
+                    break;
+                case 3:
+                    System.out.println("--- Introduzca el empleado al que desea modificar el porcentaje de retención ---");
+                    String dniEmpleado = Crear.obtenerDniEmpleado(lee);
+                    Empleado empleado = Consultar.obtenerEmpleadoPorDni(baseDatos, dniEmpleado);
+                    if(empleado!=null){
+                        Modificar.porcentajeRetencionEmpleado(baseDatos, empleado, lee);
+                    } else {
+                        System.err.println("No existe ningún empleado con el dni "+dniEmpleado);
+                    }
+                    break;
+                case 4:
+                    System.out.println("--- Introduzca el dni del empleado temporal al que desea modificar el precio por día ---");
+                    String dniEmpleadoTemporal = Crear.obtenerDniEmpleado(lee);
+                    EmpleadoTemporal empleadoTemporal = Consultar.obtenerEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal);
+                    if(empleadoTemporal!=null){
+                        Modificar.pagoDiaEmpleadoTemporal(baseDatos, empleadoTemporal, lee);
+                    } else {
+                        System.err.println("No existe ningún empleado temporal con el dni "+dniEmpleadoTemporal);
+                    }
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.err.println("No existe esa opción");
+            }
+        } while (opcionSeleccionada != 0);
+    }
+    
+    public static void menuVisualizar(ObjectContainer baseDatos, BufferedReader lee) {
+        byte opcionSeleccionada = 0;
+        do {
+            opcionSeleccionada = seleccionarOpcionMenuVisualizar(lee);
+            switch (opcionSeleccionada) {
+                case 1: 
+                    Visualizar.mostrarEmpresas(Consultar.obtenerEmpresas(baseDatos));
+                    break;
+                case 2:
+                    System.out.println("--- Introduzca el cif de la empresa de la que desea ver sus productos ---");
+                    String cif = Crear.obtenerCifEmpresa(lee);
+                    Empresa empresa = Consultar.obtenerEmpresaPorCif(baseDatos, cif);
+                    if(empresa!=null){
+                        Visualizar.mostrarProductos(empresa);
+                    } else {
+                        System.err.println("No hay ninguna empresa con cif "+cif);
+                    }
+                    break;
+                case 3:
+                    System.out.println("--- Introduzca el dni del empleado temporal del que desea ver su nómina ---");
+                    String dni = Crear.obtenerDniEmpleado(lee);
+                    EmpleadoTemporal empleadoTemporal = Consultar.obtenerEmpleadoTemporalPorDni(baseDatos, dni);
+                    if(empleadoTemporal!=null){
+                        float suplemento = Consultar.obtenerImporteVentasEmpleadoTemporalEntreFechas(empleadoTemporal.getVentas(), empleadoTemporal);
+                        float nomina = empleadoTemporal.calculoNomina()+ suplemento;
+                        Visualizar.mostrarEmpleado(empleadoTemporal);
+                        System.out.println("A este empleado le corresponde una nómina de "+nomina+"€");
+                    } else {
+                        System.err.println("No existe ningún empleado con el dni "+dni);
+                    }
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.err.println("No existe esa opción");
+            }
+        } while (opcionSeleccionada != 0);
+    }    
+    
+    public static byte seleccionarOpcionMenuPrincipal(BufferedReader lee){
+        System.out.println("------- MENÚ -------");
+        System.out.println("[1] Altas");
+        System.out.println("[2] Bajas");
+        System.out.println("[3] Modificaciones");
+        System.out.println("[4] Visualizar");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opcion: ");
+        return Pedir.numeroByte(lee);
+    }
+    
+    private static byte seleccionarOpcionMenuAltas(BufferedReader lee) {
+        System.out.println("------- ALTAS -------");
+        System.out.println("[1] Empresas");
+        System.out.println("[2] Empleados");
+        System.out.println("[3] Productos");
+        System.out.println("[4] Ventas de Empleados Temporales");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opción: ");
+        return Pedir.numeroByte(lee);
+    }
+    
+    private static byte seleccionarOpcionMenuBajas(BufferedReader lee) {
+        System.out.println("------- BAJAS -------");
+        System.out.println("[1] Empleados Fijos");
+        System.out.println("[2] Empleados Temporales");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opción: ");
+        return Pedir.numeroByte(lee);
+    }
+    
+    private static byte seleccionarOpcionMenuAltasEmpleados(BufferedReader lee) {
+        System.out.println("------- ALTAS EMPLEADOS -------");
+        System.out.println("[1] Fijos");
+        System.out.println("[2] Temporales");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opción: ");
+        return Pedir.numeroByte(lee);
+    }
+    
+    private static byte seleccionarOpcionMenuModificaciones(BufferedReader lee) {
+        System.out.println("------- MODIFICACIONES -------");
+        System.out.println("[1] Precio de un producto");
+        System.out.println("[2] Sueldo base de un empleado fijo");
+        System.out.println("[3] Porcentaje de retención");
+        System.out.println("[4] Importe por día del empleado temporal");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opción: ");
+        return Pedir.numeroByte(lee);
+    }
+    
+    private static byte seleccionarOpcionMenuVisualizar(BufferedReader lee) {
+        System.out.println("------- VISUALIZAR -------");
+        System.out.println("[1] Empresas con sus empleados fijos y temporales");
+        System.out.println("[2] Productos de una empresa determinada");
+        System.out.println("[3] Nómina de un empleado temporal");
+        System.out.println("[0] Salir");
+        System.out.printf("Seleccione una opción: ");
+        return Pedir.numeroByte(lee);
+    }
+}
