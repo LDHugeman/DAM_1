@@ -8,6 +8,7 @@ import objetos.EmpleadoFijo;
 import objetos.EmpleadoTemporal;
 import objetos.Empresa;
 import objetos.Producto;
+import objetos.Venta;
 
 /**
  *
@@ -27,14 +28,19 @@ public class Menu {
                     menuAltasEmpleados(baseDatos, lee);
                     break;
                 case 3:
-                    Altas.producto(baseDatos, Crear.nuevoProducto(lee));
+                    Producto producto = Crear.nuevoProducto(baseDatos, lee);
+                    Empresa empresa = Consultar.obtenerEmpresaPorCif(baseDatos, producto.getCifEmpresa());
+                    Altas.producto(baseDatos, producto, empresa);
                     break;
                 case 4:
                     System.out.println("--- Introduzca el código del producto del que desea registrar ventas ---");
                     String codigo = Crear.obtenerCodigoProducto(lee);
-                    Producto producto = Consultar.obtenerProductoPorCodigo(baseDatos, codigo);
-                    if(producto!=null){
-                        Altas.venta(baseDatos, Crear.nuevaVenta(producto, lee));
+                    Producto productoBuscado = Consultar.obtenerProductoPorCodigo(baseDatos, codigo);                   
+                    if(productoBuscado!=null){
+                        Empresa empresaBuscada = Consultar.obtenerEmpresaPorCif(baseDatos, productoBuscado.getCifEmpresa());
+                        Venta venta = Crear.nuevaVenta(baseDatos, productoBuscado, lee);
+                        EmpleadoTemporal empleadoTemporalBuscado = Consultar.obtenerEmpleadoTemporalPorDni(baseDatos, venta.getDniEmpleadoTemporal());
+                        Altas.venta(baseDatos, venta, empleadoTemporalBuscado, empresaBuscada);
                     } else {
                         System.err.println("No existe ningún producto con el código "+ codigo);
                     }                  
@@ -53,10 +59,14 @@ public class Menu {
             opcionSeleccionada = seleccionarOpcionMenuAltasEmpleados(lee);
             switch (opcionSeleccionada) {
                 case 1:
-                    Altas.empleado(baseDatos, Crear.nuevoEmpleadoFijo(lee));
+                    EmpleadoFijo empleadoFijo = Crear.nuevoEmpleadoFijo(baseDatos, lee);
+                    Empresa empresaEF = Consultar.obtenerEmpresaPorCif(baseDatos, empleadoFijo.getCifEmpresa());
+                    Altas.empleado(baseDatos, empleadoFijo, empresaEF);
                     break;
                 case 2: 
-                    Altas.empleado(baseDatos, Crear.nuevoEmpleadoTemporal(lee));
+                    EmpleadoTemporal empleadoTemporal = Crear.nuevoEmpleadoTemporal(baseDatos, lee);
+                    Empresa empresaET = Consultar.obtenerEmpresaPorCif(baseDatos, empleadoTemporal.getCifEmpresa());
+                    Altas.empleado(baseDatos, empleadoTemporal, empresaET);
                     break;
                 case 0:
                     break;
@@ -107,7 +117,8 @@ public class Menu {
                     String codigo = Crear.obtenerCodigoProducto(lee);
                     Producto producto = Consultar.obtenerProductoPorCodigo(baseDatos, codigo);
                     if(producto!=null){
-                        Modificar.precioProducto(baseDatos, producto, lee);
+                        Empresa empresaP = Consultar.obtenerEmpresaPorCif(baseDatos, producto.getCifEmpresa());
+                        Modificar.precioProducto(baseDatos, empresaP, producto, lee);
                     } else {
                         System.err.println("No existe ningún producto con el código "+codigo);
                     }
@@ -117,7 +128,8 @@ public class Menu {
                     String dniEmpleadoFijo = Crear.obtenerDniEmpleado(lee);
                     EmpleadoFijo empleadoFijo = Consultar.obtenerEmpleadoFijoPorDni(baseDatos, dniEmpleadoFijo);
                     if(empleadoFijo!=null){
-                        Modificar.sueldoBaseEmpleadoFijo(baseDatos, empleadoFijo, lee);
+                        Empresa empresaEF = Consultar.obtenerEmpresaPorCif(baseDatos, empleadoFijo.getCifEmpresa());
+                        Modificar.sueldoBaseEmpleadoFijo(baseDatos, empresaEF, empleadoFijo, lee);
                     } else {
                         System.err.println("No existe ningún empleado fijo con el dni "+dniEmpleadoFijo);
                     }
@@ -127,7 +139,8 @@ public class Menu {
                     String dniEmpleado = Crear.obtenerDniEmpleado(lee);
                     Empleado empleado = Consultar.obtenerEmpleadoPorDni(baseDatos, dniEmpleado);
                     if(empleado!=null){
-                        Modificar.porcentajeRetencionEmpleado(baseDatos, empleado, lee);
+                        Empresa empresaE = Consultar.obtenerEmpresaPorCif(baseDatos, empleado.getCifEmpresa());
+                        Modificar.porcentajeRetencionEmpleado(baseDatos, empresaE, empleado, lee);
                     } else {
                         System.err.println("No existe ningún empleado con el dni "+dniEmpleado);
                     }
@@ -137,7 +150,8 @@ public class Menu {
                     String dniEmpleadoTemporal = Crear.obtenerDniEmpleado(lee);
                     EmpleadoTemporal empleadoTemporal = Consultar.obtenerEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal);
                     if(empleadoTemporal!=null){
-                        Modificar.pagoDiaEmpleadoTemporal(baseDatos, empleadoTemporal, lee);
+                        Empresa empresaET = Consultar.obtenerEmpresaPorCif(baseDatos, empleadoTemporal.getCifEmpresa());
+                        Modificar.pagoDiaEmpleadoTemporal(baseDatos, empresaET, empleadoTemporal, lee);
                     } else {
                         System.err.println("No existe ningún empleado temporal con el dni "+dniEmpleadoTemporal);
                     }

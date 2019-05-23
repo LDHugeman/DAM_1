@@ -4,9 +4,7 @@ package db4oempleadosfijostemporales;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.query.Query;
-import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.Date;
 import objetos.Empleado;
 import objetos.EmpleadoFijo;
 import objetos.EmpleadoTemporal;
@@ -22,7 +20,7 @@ public class Consultar {
     
     public static Producto obtenerProductoPorCodigo(ObjectContainer baseDatos, String codigo){
         Producto producto = null;
-        Producto productoABuscar = new Producto(codigo, null, 0, 0);
+        Producto productoABuscar = new Producto(codigo, null, 0, 0, null);
         ObjectSet resultado = baseDatos.queryByExample(productoABuscar);
         while (resultado.hasNext()) {
             producto = (Producto)resultado.next();
@@ -53,7 +51,7 @@ public class Consultar {
     
     public static EmpleadoFijo obtenerEmpleadoFijoPorDni(ObjectContainer baseDatos, String dni){
         EmpleadoFijo empleadoFijo = null;
-        EmpleadoFijo empleadoFijoABuscar = new EmpleadoFijo(dni, null, null, 0, 0, 0);
+        EmpleadoFijo empleadoFijoABuscar = new EmpleadoFijo(dni, null, null, 0, null, 0, 0);
         ObjectSet resultado = baseDatos.queryByExample(empleadoFijoABuscar);
         while (resultado.hasNext()) {
             empleadoFijo = (EmpleadoFijo)resultado.next();
@@ -67,7 +65,7 @@ public class Consultar {
     
     public static EmpleadoTemporal obtenerEmpleadoTemporalPorDni(ObjectContainer baseDatos, String dni){
         EmpleadoTemporal empleadoTemporal = null;
-        EmpleadoTemporal empleadoTemporalABuscar = new EmpleadoTemporal(dni, null, null, 0, null, null, 0);
+        EmpleadoTemporal empleadoTemporalABuscar = new EmpleadoTemporal(dni, null, null, 0, null, null, null, 0);
         ObjectSet resultado = baseDatos.queryByExample(empleadoTemporalABuscar);
         while (resultado.hasNext()) {
             empleadoTemporal = (EmpleadoTemporal)resultado.next();
