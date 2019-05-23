@@ -38,7 +38,7 @@ public class Crear {
         int trienios = Pedir.numeroEntero(lee);
         String cifEmpresa = "";
         do {
-            System.out.println("Cif de la empresa a la que desea añadir el empleado: ");
+            System.out.printf("Cif de la empresa a la que desea añadir el empleado: ");
             cifEmpresa = Pedir.texto(lee);
             if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
                 System.err.println("No existe ninguna empresa con ese cif");
@@ -61,7 +61,7 @@ public class Crear {
         float pagoDia = obtenerPagoDiaEmpleadoTemporal(lee);
         String cifEmpresa = "";
         do {
-            System.out.println("Cif de la empresa a la que desea añadir el empleado: ");
+            System.out.printf("Cif de la empresa a la que desea añadir el empleado: ");
             cifEmpresa = Pedir.texto(lee);
             if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
                 System.err.println("No existe ninguna empresa con ese cif");
@@ -79,7 +79,7 @@ public class Crear {
         float precioUnitario = obtenerPrecioProducto(lee);
         String cifEmpresa = "";
         do {
-            System.out.println("Cif de la empresa a la que desea añadir el producto: ");
+            System.out.printf("Cif de la empresa a la que desea añadir el producto: ");
             cifEmpresa = Pedir.texto(lee);
             if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
                 System.err.println("No existe ninguna empresa con ese cif");
@@ -95,7 +95,7 @@ public class Crear {
         int numeroUnidades = Pedir.numeroEntero(lee);
         String dniEmpleadoTemporal = "";
         do {
-            System.out.println("Cif de la empresa a la que desea añadir el producto: ");
+            System.out.printf("Dni del empleado temporal al que desea añadir la venta: ");
             dniEmpleadoTemporal = Pedir.texto(lee);
             if (!Consultar.existeEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal)) {
                 System.err.println("No existe ningun empleado temporal con ese dni");

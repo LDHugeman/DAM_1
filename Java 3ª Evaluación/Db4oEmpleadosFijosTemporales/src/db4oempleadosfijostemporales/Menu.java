@@ -85,7 +85,8 @@ public class Menu {
                     String dniEmpleadoFijo = Crear.obtenerDniEmpleado(lee);
                     EmpleadoFijo empleadoFijo = Consultar.obtenerEmpleadoFijoPorDni(baseDatos, dniEmpleadoFijo);
                     if(empleadoFijo!=null){
-                        Bajas.empleado(baseDatos, empleadoFijo);
+                        Empresa empresaEF = Consultar.obtenerEmpresaPorCif(baseDatos, empleadoFijo.getCifEmpresa());
+                        Bajas.empleado(baseDatos, empleadoFijo, empresaEF);
                     } else {
                         System.err.println("No existe ningún empleado fijo con el dni "+dniEmpleadoFijo);
                     }
@@ -94,7 +95,8 @@ public class Menu {
                     String dniEmpleadoTemporal = Crear.obtenerDniEmpleado(lee);
                     EmpleadoTemporal empleadoTemporal = Consultar.obtenerEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal);
                     if(empleadoTemporal!=null){
-                        Bajas.empleado(baseDatos, empleadoTemporal);
+                        Empresa empresaET = Consultar.obtenerEmpresaPorCif(baseDatos, empleadoTemporal.getCifEmpresa());
+                        Bajas.empleado(baseDatos, empleadoTemporal, empresaET);
                     } else {
                         System.err.println("No existe ningún empleado temporal con el dni "+dniEmpleadoTemporal);
                     }
