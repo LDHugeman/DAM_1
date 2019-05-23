@@ -45,7 +45,7 @@ public class Visualizar {
         System.out.println("---------------------- EMPRESA ----------------------");
         System.out.println("Cif: "+empresa.getCif());
         System.out.println("Nombre: "+empresa.getNombre());
-        System.out.println("Dirección: "+empresa.getNombre());
+        System.out.println("Dirección: "+empresa.getDireccion());
         System.out.println("Teléfono: "+empresa.getTelefono());
         System.out.println("--------------------------------------------");
         mostrarEmpleados(empresa.getEmpleados());

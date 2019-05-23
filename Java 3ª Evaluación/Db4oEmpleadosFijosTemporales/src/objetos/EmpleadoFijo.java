@@ -9,8 +9,8 @@ public class EmpleadoFijo extends Empleado {
     private int salarioBase;
     private int trienios;
 
-    public EmpleadoFijo(String dni, String nombre, String telefono, float porcentajeRetencion, String cifEmpresa, int salarioBase, int trienios) {
-        super(dni, nombre, telefono, porcentajeRetencion, cifEmpresa);
+    public EmpleadoFijo(String dni, String nombre, String telefono, float porcentajeRetencion, int salarioBase, int trienios) {
+        super(dni, nombre, telefono, porcentajeRetencion);
         this.salarioBase = salarioBase;
         this.trienios = trienios;
     }
@@ -33,6 +33,6 @@ public class EmpleadoFijo extends Empleado {
     
     @Override
     public float calculoNomina() {
-        return (salarioBase + trienios) - (salarioBase + trienios) * super.getPorcentajeRetencion();
+        return (salarioBase + trienios) - ((salarioBase + trienios) * super.getPorcentajeRetencion())/100;
     }
 }

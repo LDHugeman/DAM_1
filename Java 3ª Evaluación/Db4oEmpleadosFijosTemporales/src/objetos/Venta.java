@@ -12,14 +12,12 @@ public class Venta {
     private int numeroUnidades;
     private float importe;
     private Producto producto;
-    private String dniEmpleadoTemporal;
 
-    public Venta(Date fechaVenta, int numeroUnidades, Producto producto, String dniEmpleadoTemporal) {
+    public Venta(Date fechaVenta, int numeroUnidades, Producto producto) {
         this.fechaVenta = fechaVenta;
         this.numeroUnidades = numeroUnidades;
         this.importe = producto.getPrecioUnitario()* numeroUnidades;
         this.producto = producto;
-        this.dniEmpleadoTemporal = dniEmpleadoTemporal;
         producto.calcularStock(numeroUnidades);
     }
 
@@ -45,13 +43,5 @@ public class Venta {
 
     public void setImporte(float importe) {
         this.importe = importe;
-    }
-
-    public String getDniEmpleadoTemporal() {
-        return dniEmpleadoTemporal;
-    }
-
-    public void setDniEmpleadoTemporal(String dniEmpleadoTemporal) {
-        this.dniEmpleadoTemporal = dniEmpleadoTemporal;
     }
 }

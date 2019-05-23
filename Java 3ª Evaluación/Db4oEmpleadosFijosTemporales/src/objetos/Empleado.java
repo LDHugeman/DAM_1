@@ -10,15 +10,13 @@ public abstract class Empleado {
     private String dni;
     private String nombre;
     private String telefono;
-    private String cifEmpresa;
     private float porcentajeRetencion;
     
-    public Empleado (String dni, String nombre, String telefono, float porcentajeRetencion, String cifEmpresa){
+    public Empleado (String dni, String nombre, String telefono, float porcentajeRetencion){
         this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;
         this.porcentajeRetencion = porcentajeRetencion;
-        this.cifEmpresa = cifEmpresa;
     }
 
     public String getDni() {
@@ -52,14 +50,6 @@ public abstract class Empleado {
     public void setPorcentajeRetencion(float porcentajeRetencion) {
         this.porcentajeRetencion = porcentajeRetencion;
     }
-
-    public String getCifEmpresa() {
-        return cifEmpresa;
-    }
-
-    public void setCifEmpresa(String cifEmpresa) {
-        this.cifEmpresa = cifEmpresa;
-    }
-    
+ 
     public abstract float calculoNomina();
 }

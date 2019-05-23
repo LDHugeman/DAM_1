@@ -15,8 +15,8 @@ public class EmpleadoTemporal extends Empleado {
     private float pagoDia;
     private ArrayList<Venta> ventas;
 
-    public EmpleadoTemporal(String dni, String nombre, String telefono, float porcentajeRetencion, String cifEmpresa, Date fechaInicio, Date fechaFin, float pagoDia) {
-        super(dni, nombre, telefono, porcentajeRetencion, cifEmpresa);
+    public EmpleadoTemporal(String dni, String nombre, String telefono, float porcentajeRetencion, Date fechaInicio, Date fechaFin, float pagoDia) {
+        super(dni, nombre, telefono, porcentajeRetencion);
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.pagoDia = pagoDia;
@@ -66,7 +66,7 @@ public class EmpleadoTemporal extends Empleado {
     }
 
     public float calculoNomina() {
-        return (pagoDia * obtenerDiasTrabajados()) - (pagoDia * obtenerDiasTrabajados() * super.getPorcentajeRetencion());
+        return (pagoDia * obtenerDiasTrabajados()) - (pagoDia * obtenerDiasTrabajados() * super.getPorcentajeRetencion())/100;
     }
 
     private long obtenerDiasTrabajados() {

@@ -16,7 +16,8 @@ import objetos.Venta;
 public class Crear {
 
     public static Empresa nuevaEmpresa(BufferedReader lee) {
-        String cif = obtenerCifEmpresa(lee);
+        System.out.printf("Cif: ");
+        String cif = Pedir.texto(lee);
         System.out.printf("Nombre: ");
         String nombre = Pedir.texto(lee);
         System.out.printf("Dirección: ");
@@ -36,15 +37,7 @@ public class Crear {
         int salarioBase = obtenerSalarioBaseEmpleadoFijo(lee);
         System.out.printf("Trienios: ");
         int trienios = Pedir.numeroEntero(lee);
-        String cifEmpresa = "";
-        do {
-            System.out.printf("Cif de la empresa a la que desea añadir el empleado: ");
-            cifEmpresa = Pedir.texto(lee);
-            if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
-                System.err.println("No existe ninguna empresa con ese cif");
-            }
-        } while (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa));
-        return new EmpleadoFijo(dni, nombre, telefono, porcentajeRetencion, cifEmpresa, salarioBase, trienios);
+        return new EmpleadoFijo(dni, nombre, telefono, porcentajeRetencion, salarioBase, trienios);
     }
 
     public static EmpleadoTemporal nuevoEmpleadoTemporal(ObjectContainer baseDatos, BufferedReader lee) {
@@ -59,15 +52,7 @@ public class Crear {
         System.out.printf("Fecha de fin(dd/MM/yyyy): ");
         Date fechaFin = Pedir.fecha(lee);
         float pagoDia = obtenerPagoDiaEmpleadoTemporal(lee);
-        String cifEmpresa = "";
-        do {
-            System.out.printf("Cif de la empresa a la que desea añadir el empleado: ");
-            cifEmpresa = Pedir.texto(lee);
-            if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
-                System.err.println("No existe ninguna empresa con ese cif");
-            }
-        } while (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa));
-        return new EmpleadoTemporal(dni, nombre, telefono, porcentajeRetencion, cifEmpresa, fechaInicio, fechaFin, pagoDia);
+        return new EmpleadoTemporal(dni, nombre, telefono, porcentajeRetencion, fechaInicio, fechaFin, pagoDia);
     }
 
     public static Producto nuevoProducto(ObjectContainer baseDatos, BufferedReader lee) {
@@ -77,15 +62,7 @@ public class Crear {
         System.out.printf("Unidades en el almacén: ");
         int stockAlmacen = Pedir.numeroEntero(lee);
         float precioUnitario = obtenerPrecioProducto(lee);
-        String cifEmpresa = "";
-        do {
-            System.out.printf("Cif de la empresa a la que desea añadir el producto: ");
-            cifEmpresa = Pedir.texto(lee);
-            if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
-                System.err.println("No existe ninguna empresa con ese cif");
-            }
-        } while (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa));
-        return new Producto(codigo, descripcionArticulo, stockAlmacen, precioUnitario, cifEmpresa);
+        return new Producto(codigo, descripcionArticulo, stockAlmacen, precioUnitario);
     }
 
     public static Venta nuevaVenta(ObjectContainer baseDatos, Producto producto, BufferedReader lee) {
@@ -93,15 +70,7 @@ public class Crear {
         Date fechaVenta = Pedir.fecha(lee);
         System.out.printf("Número de unidades vendidas: ");
         int numeroUnidades = Pedir.numeroEntero(lee);
-        String dniEmpleadoTemporal = "";
-        do {
-            System.out.printf("Dni del empleado temporal al que desea añadir la venta: ");
-            dniEmpleadoTemporal = Pedir.texto(lee);
-            if (!Consultar.existeEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal)) {
-                System.err.println("No existe ningun empleado temporal con ese dni");
-            }
-        } while (!Consultar.existeEmpleadoTemporalPorDni(baseDatos, dniEmpleadoTemporal));
-        return new Venta(fechaVenta, numeroUnidades, producto, dniEmpleadoTemporal);
+        return new Venta(fechaVenta, numeroUnidades, producto);
     }
 
     public static String obtenerCodigoProducto(BufferedReader lee) {
@@ -134,8 +103,15 @@ public class Crear {
         return Pedir.numeroRealFloat(lee);
     }
 
-    public static String obtenerCifEmpresa(BufferedReader lee) {
-        System.out.printf("Cif: ");
-        return Pedir.texto(lee);
+    public static String obtenerCifEmpresa(ObjectContainer baseDatos, BufferedReader lee) {
+        String cifEmpresa = "";
+        do {
+            System.out.printf("Cif: ");
+            cifEmpresa = Pedir.texto(lee);
+            if (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa)) {
+                System.err.println("No existe ninguna empresa con ese cif");
+            }
+        } while (!Consultar.existeEmpresaPorCif(baseDatos, cifEmpresa));
+        return  cifEmpresa;
     }
 }
